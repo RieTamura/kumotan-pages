@@ -19,10 +19,14 @@ li { margin-bottom: 8px; }
 a { color: #1DA1F2; text-decoration: none; }
 a:hover { text-decoration: underline; }
 .footer { margin-top: 40px; padding-top: 20px; border-top: 1px solid #ddd; text-align: center; color: #666; }
-.back { display: inline-block; margin-bottom: 16px; font-size: 14px; }
-.lang-tabs { display: flex; gap: 8px; margin-bottom: 24px; }
-.lang-tab { padding: 6px 16px; border-radius: 4px; border: 1px solid #1DA1F2; cursor: pointer; background: white; color: #1DA1F2; font-size: 14px; }
-.lang-tab[aria-pressed="true"] { background: #1DA1F2; color: white; }
+/* 紹介ページ（index.html）と同じ見た目の上部バー。ボタンの塗りは #0d8bd9（白文字との比 3.68:1） */
+.page-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-bottom: 28px; }
+.back { display: inline-flex; align-items: center; gap: 6px; padding: 8px 18px; border-radius: 999px; background: #0d8bd9; color: #fff; font-size: 14px; font-weight: 700; text-decoration: none; }
+.back:hover { text-decoration: none; filter: brightness(0.95); }
+.back:focus-visible, .lang-tab:focus-visible { outline: 2px solid #1DA1F2; outline-offset: 2px; }
+.lang-tabs { display: flex; gap: 4px; padding: 3px; border-radius: 999px; background: #fff; border: 1px solid #E3EAF3; }
+.lang-tab { padding: 4px 12px; border-radius: 999px; border: 0; cursor: pointer; background: transparent; color: #5A6B83; font-size: 13px; font-family: inherit; }
+.lang-tab[aria-pressed="true"] { background: #1A2436; color: #fff; }
 .lang-block { display: none; }
 .lang-block.is-active { display: block; }
 @media (max-width: 600px) { .container { padding: 20px; } h1 { font-size: 1.5em; } h2 { font-size: 1.3em; } }
@@ -31,16 +35,20 @@ a:hover { text-decoration: underline; }
   .container { background-color: #17212b; box-shadow: none; }
   h2 { color: #e6edf3; } h3 { color: #c3cdd6; }
   .footer { color: #9aa8b5; border-top-color: #26343f; }
-  .lang-tab { background: transparent; }
+  .lang-tabs { background: #1A2538; border-color: #2A3650; }
+  .lang-tab { color: #8495AE; }
+  .lang-tab[aria-pressed="true"] { background: #F1F5FB; color: #0E1521; }
 }
 </style>
 </head>
 <body>
 <div class="container">
-<a class="back" href="./">← くもたん / Kumotan</a>
+<div class="page-top">
+<a class="back" href="./index.html"><span data-lang-inline="ja">← くもたん トップへ</span><span data-lang-inline="en" hidden>← Back to Kumotan</span></a>
 <div class="lang-tabs" role="group" aria-label="Language">
 <button type="button" class="lang-tab" data-lang="ja" aria-pressed="true">日本語</button>
 <button type="button" class="lang-tab" data-lang="en" aria-pressed="false">English</button>
+</div>
 </div>
 
 <div class="lang-block" data-lang-block="ja">
@@ -312,6 +320,9 @@ a:hover { text-decoration: underline; }
     document.documentElement.lang = lang;
     document.querySelectorAll('[data-lang-block]').forEach(function (el) {
       el.classList.toggle('is-active', el.getAttribute('data-lang-block') === lang);
+    });
+    document.querySelectorAll('[data-lang-inline]').forEach(function (el) {
+      el.hidden = el.getAttribute('data-lang-inline') !== lang;
     });
     document.querySelectorAll('.lang-tab').forEach(function (b) {
       b.setAttribute('aria-pressed', String(b.getAttribute('data-lang') === lang));
