@@ -43,6 +43,7 @@
             --savedInk: #3C8B5E;   /* 「登録済み」などの文字 */
             --shadow: 0 8px 24px rgba(26, 36, 54, 0.14);
             --cloud: #FFFFFF;
+            --bgGlass: rgba(246, 248, 252, 0.86);
         }
         @media (prefers-color-scheme: dark) {
             :root {
@@ -63,6 +64,7 @@
                 --accentSoft: #3A2028; --accentInk: #F7A9B0;
                 --savedInk: #9ED9B6;
                 --shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+                --bgGlass: rgba(14, 21, 33, 0.86);
             }
         }
         * { box-sizing: border-box; }
@@ -83,7 +85,21 @@
         .hero-text[data-lang-block].is-active { display: flex; }
 
         /* 上部 */
-        .topbar { display: flex; align-items: center; justify-content: space-between; padding: 18px 20px 0; max-width: 1040px; margin: 0 auto; }
+        .site-header {
+            position: sticky; top: 0; z-index: 10;
+            background: var(--bgGlass); border-bottom: 1px solid var(--line);
+            -webkit-backdrop-filter: saturate(180%) blur(16px); backdrop-filter: saturate(180%) blur(16px);
+        }
+        .topbar { display: flex; align-items: center; gap: 24px; padding: 12px 20px; max-width: 1040px; margin: 0 auto; }
+        .site-nav { display: flex; gap: 4px; margin-right: auto; }
+        .site-nav a {
+            padding: 6px 12px; border-radius: 999px; color: var(--ink2); text-decoration: none;
+            font-size: 14px; font-weight: 600; white-space: nowrap;
+        }
+        .site-nav a:hover { background: var(--primarySoft); color: var(--ink); }
+        .site-nav a:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+        /* 固定したヘッダーの下に見出しが隠れないように */
+        section[id] { scroll-margin-top: 72px; }
         .brand { display: flex; align-items: center; gap: 8px; font-weight: 800; font-size: 18px; letter-spacing: 0.04em; color: var(--ink); text-decoration: none; }
         .brand img { width: 30px; height: 30px; border-radius: 8px; }
         .lang-tabs { display: flex; gap: 4px; padding: 3px; border-radius: 999px; background: var(--surface); border: 1px solid var(--line); }
@@ -201,6 +217,14 @@
             .hero .lead { margin-left: auto; margin-right: auto; }
             .cta { justify-content: center; }
         }
+        @media (max-width: 720px) {
+            .topbar { flex-wrap: wrap; gap: 8px 12px; padding: 10px 16px; }
+            .lang-tabs { margin-left: auto; }
+            .site-nav { order: 3; width: 100%; margin: 0 -4px; overflow-x: auto; scrollbar-width: none; }
+            .site-nav::-webkit-scrollbar { display: none; }
+            .site-nav a { font-size: 13px; padding: 5px 10px; }
+            section[id] { scroll-margin-top: 104px; }
+        }
         @media (max-width: 480px) {
             .hero h1 { font-size: 30px; }
             section { padding: 48px 0; }
@@ -208,14 +232,22 @@
         }
     </style>
 </head>
-<body>
-    <div class="topbar">
-        <a class="brand" href="./"><img src="./icon.png" alt="" width="30" height="30">くもたん</a>
-        <div class="lang-tabs" role="group" aria-label="Language">
-            <button type="button" class="lang-tab" data-lang="ja" aria-pressed="true">日本語</button>
-            <button type="button" class="lang-tab" data-lang="en" aria-pressed="false">English</button>
+<body id="top">
+    <header class="site-header">
+        <div class="topbar">
+            <a class="brand" href="#top"><img src="./icon.png" alt="" width="30" height="30">くもたん</a>
+            <!-- リンク先は表示中の言語のセクション（features-ja / features-en など）。スクリプトで切り替える -->
+            <nav class="site-nav" aria-label="ページ内の見出し">
+                <a href="#features-ja" data-section="features"><span data-lang-inline="ja">できること</span><span data-lang-inline="en" hidden>Features</span></a>
+                <a href="#start-ja" data-section="start"><span data-lang-inline="ja">はじめかた</span><span data-lang-inline="en" hidden>Getting started</span></a>
+                <a href="#data-ja" data-section="data"><span data-lang-inline="ja">データの扱い</span><span data-lang-inline="en" hidden>Your data</span></a>
+            </nav>
+            <div class="lang-tabs" role="group" aria-label="Language">
+                <button type="button" class="lang-tab" data-lang="ja" aria-pressed="true">日本語</button>
+                <button type="button" class="lang-tab" data-lang="en" aria-pressed="false">English</button>
+            </div>
         </div>
-    </div>
+    </header>
 
     <header class="hero">
         <div class="wrap hero-grid">
@@ -276,7 +308,7 @@
     <main>
         <!-- 日本語 -->
         <div data-lang-block="ja" class="is-active">
-            <section class="alt">
+            <section id="features-ja" class="alt">
                 <div class="wrap">
                     <h2>できること</h2>
                     <p class="sub">読んで、調べて、覚えるまで、このアプリひとつでできます</p>
@@ -315,7 +347,7 @@
                 </div>
             </section>
 
-            <section>
+            <section id="start-ja">
                 <div class="wrap">
                     <h2>はじめかた</h2>
                     <p class="sub">Bluesky のアカウントがあれば、すぐに始められます</p>
@@ -327,7 +359,7 @@
                 </div>
             </section>
 
-            <section class="alt">
+            <section id="data-ja" class="alt">
                 <div class="wrap privacy">
                     <h2>データの扱い</h2>
                     <p class="sub">データの保存先と、外部に送るものについて</p>
@@ -343,7 +375,7 @@
 
         <!-- English -->
         <div data-lang-block="en">
-            <section class="alt">
+            <section id="features-en" class="alt">
                 <div class="wrap">
                     <h2>What you can do</h2>
                     <p class="sub">Read, look up and remember, all in one app</p>
@@ -382,7 +414,7 @@
                 </div>
             </section>
 
-            <section>
+            <section id="start-en">
                 <div class="wrap">
                     <h2>Getting started</h2>
                     <p class="sub">All you need is a Bluesky account</p>
@@ -394,7 +426,7 @@
                 </div>
             </section>
 
-            <section class="alt">
+            <section id="data-en" class="alt">
                 <div class="wrap privacy">
                     <h2>Your data</h2>
                     <p class="sub">Where your data is stored, and what is sent elsewhere</p>
@@ -435,6 +467,9 @@
                 document.querySelectorAll('.lang-tab').forEach(function (b) {
                     b.setAttribute('aria-pressed', String(b.getAttribute('data-lang') === lang));
                 });
+                document.querySelectorAll('.site-nav a').forEach(function (a) {
+                    a.setAttribute('href', '#' + a.getAttribute('data-section') + '-' + lang);
+                });
             }
             function save(lang) {
                 try { localStorage.setItem(KEY, lang); } catch (e) { /* 保存できなくても表示は切り替える */ }
@@ -442,6 +477,8 @@
             function initial() {
                 var hash = location.hash.replace('#', '');
                 if (hash === 'ja' || hash === 'en') return hash;
+                var m = hash.match(/-(ja|en)$/);
+                if (m) return m[1];
                 try {
                     var saved = localStorage.getItem(KEY);
                     if (saved === 'ja' || saved === 'en') return saved;
