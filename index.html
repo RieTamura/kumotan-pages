@@ -3,59 +3,332 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>くもたん (Kumotan) - OAuth Client Metadata</title>
+    <title>くもたん (Kumotan) - Bluesky で英語を学ぶ単語帳アプリ</title>
+    <meta name="description" content="くもたんは、Bluesky のタイムラインで出会った英単語を、そのまま自分の単語帳にできるアプリです。辞書・AI の解説・読み上げ・クイズで、読んだ英語を身につけていけます。">
+    <meta property="og:title" content="くもたん (Kumotan)">
+    <meta property="og:description" content="Bluesky のタイムラインから単語を登録して、あなただけの単語帳を作る英語学習アプリ">
+    <meta property="og:image" content="https://rietamura.github.io/kumotan-pages/icon.png">
+    <meta property="og:url" content="https://rietamura.github.io/kumotan-pages/">
+    <meta property="og:type" content="website">
+    <link rel="icon" href="./icon.png">
     <style>
+        :root {
+            --brand: #1DA1F2;
+            --accent: #FFE14D;
+            --bg: #ffffff;
+            --surface: #f4f9fd;
+            --text: #1f2933;
+            --muted: #5b6875;
+            --border: #dde7ef;
+        }
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #10171e;
+                --surface: #17212b;
+                --text: #e6edf3;
+                --muted: #9aa8b5;
+                --border: #26343f;
+            }
+        }
+        * { box-sizing: border-box; }
+        html { -webkit-text-size-adjust: 100%; }
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            max-width: 800px;
-            margin: 50px auto;
-            padding: 0 20px;
-            line-height: 1.6;
-            color: #333;
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Segoe UI", "Noto Sans JP", "Yu Gothic UI", Meiryo, sans-serif;
+            line-height: 1.75;
+            color: var(--text);
+            background: var(--bg);
         }
-        h1 {
-            color: #1976d2;
+        a { color: var(--brand); }
+        .wrap { max-width: 960px; margin: 0 auto; padding: 0 20px; }
+
+        /* 言語の切り替え */
+        .topbar { display: flex; justify-content: flex-end; padding: 16px 20px 0; max-width: 960px; margin: 0 auto; }
+        .lang-tabs { display: flex; gap: 6px; }
+        .lang-tab {
+            padding: 4px 14px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.7);
+            background: transparent; color: #fff; font-size: 13px; cursor: pointer;
         }
-        .metadata-link {
-            background: #f5f5f5;
-            padding: 20px;
-            border-radius: 8px;
-            margin: 20px 0;
+        .lang-tab[aria-pressed="true"] { background: #fff; color: var(--brand); }
+        [data-lang-block] { display: none; }
+        [data-lang-block].is-active { display: block; }
+
+        /* ヒーロー */
+        .hero { background: var(--brand); color: #fff; padding-bottom: 56px; }
+        .hero-inner { display: flex; flex-direction: column; align-items: center; text-align: center; padding-top: 32px; }
+        .hero-icon { width: 120px; height: 120px; border-radius: 28px; box-shadow: 0 8px 24px rgba(0,0,0,0.18); }
+        .hero h1 { font-size: 40px; margin: 20px 0 4px; letter-spacing: 0.08em; }
+        .hero .tagline { font-size: 22px; font-weight: 700; margin: 8px 0 12px; line-height: 1.5; }
+        .hero .tagline em { font-style: normal; color: var(--accent); }
+        .hero .lead { max-width: 560px; margin: 0 auto; opacity: 0.95; }
+        .cta { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-top: 28px; }
+        .btn {
+            display: inline-block; padding: 12px 28px; border-radius: 999px; font-weight: 700;
+            text-decoration: none; font-size: 16px;
         }
-        code {
-            background: #e0e0e0;
-            padding: 2px 6px;
-            border-radius: 3px;
-            font-family: "Courier New", monospace;
+        .btn-primary { background: #fff; color: var(--brand); }
+        .btn-primary:hover { background: #eef7fd; }
+        .note {
+            display: inline-block; margin-top: 18px; padding: 6px 14px; border-radius: 8px;
+            background: rgba(255,255,255,0.16); font-size: 14px;
         }
-        a {
-            color: #1976d2;
-            text-decoration: none;
+        .meta { margin-top: 10px; font-size: 13px; opacity: 0.85; }
+
+        /* セクション */
+        section { padding: 56px 0; }
+        section h2 { font-size: 26px; text-align: center; margin: 0 0 8px; }
+        section .sub { text-align: center; color: var(--muted); margin: 0 0 32px; }
+        .alt { background: var(--surface); }
+
+        .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px; }
+        .feature { background: var(--bg); border: 1px solid var(--border); border-radius: 16px; padding: 20px; }
+        .feature .emoji { font-size: 28px; line-height: 1; }
+        .feature h3 { font-size: 17px; margin: 10px 0 6px; }
+        .feature p { margin: 0; color: var(--muted); font-size: 15px; }
+
+        .steps { counter-reset: step; list-style: none; padding: 0; margin: 0 auto; max-width: 640px; }
+        .steps li { counter-increment: step; position: relative; padding: 0 0 22px 52px; }
+        .steps li::before {
+            content: counter(step); position: absolute; left: 0; top: 0;
+            width: 34px; height: 34px; border-radius: 50%; background: var(--brand); color: #fff;
+            display: flex; align-items: center; justify-content: center; font-weight: 700;
         }
-        a:hover {
-            text-decoration: underline;
+        .steps strong { display: block; }
+        .steps span { color: var(--muted); font-size: 15px; }
+
+        .privacy { max-width: 680px; margin: 0 auto; }
+        .privacy ul { padding-left: 1.2em; }
+        .privacy li { margin-bottom: 8px; }
+
+        footer { padding: 32px 0 48px; border-top: 1px solid var(--border); color: var(--muted); font-size: 14px; }
+        footer ul { list-style: none; padding: 0; margin: 0 0 16px; display: flex; flex-wrap: wrap; gap: 8px 20px; justify-content: center; }
+        footer p { text-align: center; margin: 4px 0; }
+
+        @media (max-width: 480px) {
+            .hero h1 { font-size: 32px; }
+            .hero .tagline { font-size: 19px; }
+            section { padding: 44px 0; }
+            section h2 { font-size: 22px; }
         }
     </style>
 </head>
 <body>
-    <h1>🌥️ くもたん (Kumotan)</h1>
-    <p>雲から学ぶ、あなたの単語帳</p>
+    <header class="hero">
+        <div class="topbar">
+            <div class="lang-tabs" role="group" aria-label="Language">
+                <button type="button" class="lang-tab" data-lang="ja" aria-pressed="true">日本語</button>
+                <button type="button" class="lang-tab" data-lang="en" aria-pressed="false">English</button>
+            </div>
+        </div>
+        <div class="wrap hero-inner">
+            <img class="hero-icon" src="./icon.png" alt="" width="120" height="120">
+            <h1>くもたん</h1>
 
-    <h2>OAuth Client Metadata</h2>
-    <div class="metadata-link">
-        <p>このページは、くもたんアプリのAT Protocol OAuth認証に使用されるクライアントメタデータをホストしています。</p>
-        <p><strong>Metadata URL:</strong><br>
-        <code><a href="./oauth-client-metadata.json">https://rietamura.github.io/kumotan-pages/oauth-client-metadata.json</a></code></p>
-    </div>
+            <div data-lang-block="ja" class="is-active">
+                <p class="tagline">タイムラインから学ぶ<br><em>あなただけの単語帳</em></p>
+                <p class="lead">Bluesky で見かけた英単語を、その場で自分の単語帳に。辞書や AI の解説、読み上げ、クイズで、読んだ英語を身につけていけます。</p>
+                <div class="cta">
+                    <a class="btn btn-primary" href="https://apps.apple.com/jp/app/id6757349745">App Store で入手</a>
+                </div>
+                <p class="meta">iPhone 向け・無料（iOS 16.4 以降）</p>
+                <p class="note">ブラウザで使える Web 版を準備しています</p>
+            </div>
 
-    <h2>About</h2>
-    <p>くもたんは、AT Protocol（Bluesky等）のタイムラインを見ながら英語を学習するモバイルアプリです。</p>
+            <div data-lang-block="en">
+                <p class="tagline">Learn from your timeline,<br><em>build your own word list</em></p>
+                <p class="lead">Save English words you come across on Bluesky straight into your own word list. Look them up, hear them read aloud, and review them with quizzes until they stick.</p>
+                <div class="cta">
+                    <a class="btn btn-primary" href="https://apps.apple.com/app/id6757349745">Download on the App Store</a>
+                </div>
+                <p class="meta">For iPhone · Free (iOS 16.4 or later)</p>
+                <p class="note">A web version that runs in your browser is on the way</p>
+            </div>
+        </div>
+    </header>
 
-    <h3>Links</h3>
-    <ul>
-        <li><a href="https://github.com/RieTamura/kumotan-pages">GitHub Repository</a></li>
-        <li><a href="./privacy-policy.html">Privacy Policy (プライバシーポリシー)</a></li>
-        <li><a href="./terms-of-service.html">Terms of Service (利用規約)</a></li>
-    </ul>
+    <main>
+        <!-- 日本語 -->
+        <div data-lang-block="ja" class="is-active">
+            <section>
+                <div class="wrap">
+                    <h2>できること</h2>
+                    <p class="sub">読む・調べる・覚えるを、ひとつのアプリで</p>
+                    <div class="features">
+                        <div class="feature">
+                            <div class="emoji" aria-hidden="true">📝</div>
+                            <h3>投稿から単語を登録</h3>
+                            <p>タイムラインの投稿で気になった英単語や熟語を選ぶと、意味を確かめてそのまま単語帳に追加できます。</p>
+                        </div>
+                        <div class="feature">
+                            <div class="emoji" aria-hidden="true">📖</div>
+                            <h3>辞書と AI の解説</h3>
+                            <p>オフライン辞書で意味をすぐに確認。Google AI Studio の API キーを設定すると、AI が意味や使い方を解説します。</p>
+                        </div>
+                        <div class="feature">
+                            <div class="emoji" aria-hidden="true">🔊</div>
+                            <h3>発音を聞く</h3>
+                            <p>単語や投稿の英文を読み上げて、音でも覚えられます。</p>
+                        </div>
+                        <div class="feature">
+                            <div class="emoji" aria-hidden="true">🧠</div>
+                            <h3>クイズで復習</h3>
+                            <p>登録した単語を、4 択・単語の入力・英作文の 3 つのモードで復習できます。英作文は AI が採点します。</p>
+                        </div>
+                        <div class="feature">
+                            <div class="emoji" aria-hidden="true">📊</div>
+                            <h3>学習の記録</h3>
+                            <p>カレンダーと統計で、続けてきた日々が見えます。結果は Bluesky でシェアできます。</p>
+                        </div>
+                        <div class="feature">
+                            <div class="emoji" aria-hidden="true">☁️</div>
+                            <h3>単語帳はあなたのもの</h3>
+                            <p>単語帳は、あなたの Bluesky のデータ置き場（PDS）にも保存されます。機種を変えても取り戻せます。</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="alt">
+                <div class="wrap">
+                    <h2>はじめかた</h2>
+                    <p class="sub">Bluesky のアカウントがあれば、すぐに始められます</p>
+                    <ol class="steps">
+                        <li><strong>Bluesky でログイン</strong><span>パスワードはくもたんに渡さず、Bluesky の画面でログインします。</span></li>
+                        <li><strong>タイムラインを読む</strong><span>いつものフォローやフィードの投稿を、くもたんの中で読めます。</span></li>
+                        <li><strong>気になった単語を登録</strong><span>意味を確かめて単語帳に追加します。あとはクイズで復習しましょう。</span></li>
+                    </ol>
+                </div>
+            </section>
+
+            <section>
+                <div class="wrap privacy">
+                    <h2>データの扱い</h2>
+                    <ul>
+                        <li>単語帳や学習の記録を、運営者のサーバーで預かることはありません。データは端末と、あなた自身の PDS に保存されます。</li>
+                        <li>PDS に保存したデータは、AT Protocol の仕組み上、誰でも読める公開データです。投稿の本文は保存せず、元の投稿へのリンクだけを残します。</li>
+                        <li>AI の機能（単語の解説や英作文の採点）は、あなたが設定した API キーで Google のサービスを呼び出します。キーは端末の中にだけ保存されます。</li>
+                    </ul>
+                    <p>詳しくは<a href="./privacy-policy.html">プライバシーポリシー</a>をご覧ください。</p>
+                </div>
+            </section>
+        </div>
+
+        <!-- English -->
+        <div data-lang-block="en">
+            <section>
+                <div class="wrap">
+                    <h2>What you can do</h2>
+                    <p class="sub">Read, look up and remember, all in one app</p>
+                    <div class="features">
+                        <div class="feature">
+                            <div class="emoji" aria-hidden="true">📝</div>
+                            <h3>Save words from posts</h3>
+                            <p>Pick a word or phrase in a post on your timeline, check its meaning, and add it to your word list.</p>
+                        </div>
+                        <div class="feature">
+                            <div class="emoji" aria-hidden="true">📖</div>
+                            <h3>Dictionary and AI explanations</h3>
+                            <p>See meanings right away with the offline dictionary. Add a Google AI Studio API key and AI explains meaning and usage.</p>
+                        </div>
+                        <div class="feature">
+                            <div class="emoji" aria-hidden="true">🔊</div>
+                            <h3>Hear the pronunciation</h3>
+                            <p>Have words and post text read aloud so you learn them by ear, too.</p>
+                        </div>
+                        <div class="feature">
+                            <div class="emoji" aria-hidden="true">🧠</div>
+                            <h3>Review with quizzes</h3>
+                            <p>Review your saved words in three modes: multiple choice, typing the word, and writing a sentence that AI grades.</p>
+                        </div>
+                        <div class="feature">
+                            <div class="emoji" aria-hidden="true">📊</div>
+                            <h3>Track your progress</h3>
+                            <p>A calendar and stats show the days you kept at it. Share your results on Bluesky.</p>
+                        </div>
+                        <div class="feature">
+                            <div class="emoji" aria-hidden="true">☁️</div>
+                            <h3>Your word list is yours</h3>
+                            <p>Your word list is also stored in your own Bluesky data store (PDS), so you can get it back on a new phone.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="alt">
+                <div class="wrap">
+                    <h2>Getting started</h2>
+                    <p class="sub">All you need is a Bluesky account</p>
+                    <ol class="steps">
+                        <li><strong>Sign in with Bluesky</strong><span>You sign in on Bluesky's own page. Kumotan never sees your password.</span></li>
+                        <li><strong>Read your timeline</strong><span>Your usual follows and feeds, right inside Kumotan.</span></li>
+                        <li><strong>Save the words you notice</strong><span>Check the meaning, add it to your list, then review with quizzes.</span></li>
+                    </ol>
+                </div>
+            </section>
+
+            <section>
+                <div class="wrap privacy">
+                    <h2>Your data</h2>
+                    <ul>
+                        <li>Your word list and study records are never kept on our servers. They stay on your device and in your own PDS.</li>
+                        <li>Data in a PDS is public by design of the AT Protocol. Kumotan does not store post text there, only a link to the original post.</li>
+                        <li>AI features (word explanations and sentence grading) call Google's service with the API key you set. The key is stored only on your device.</li>
+                    </ul>
+                    <p>See the <a href="./privacy-policy.html">privacy policy</a> for details.</p>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="wrap">
+            <ul>
+                <li><a href="./privacy-policy.html"><span data-lang-inline="ja">プライバシーポリシー</span><span data-lang-inline="en" hidden>Privacy Policy</span></a></li>
+                <li><a href="./terms-of-service.html"><span data-lang-inline="ja">利用規約</span><span data-lang-inline="en" hidden>Terms of Service</span></a></li>
+                <li><a href="https://bsky.app/profile/kumotanapp.bsky.social">Bluesky @kumotanapp.bsky.social</a></li>
+                <li><a href="https://github.com/RieTamura/kumotan-pages/issues"><span data-lang-inline="ja">お問い合わせ</span><span data-lang-inline="en" hidden>Contact</span></a></li>
+            </ul>
+            <p><span data-lang-inline="ja">Bluesky のログイン（AT Protocol OAuth）用に、</span><span data-lang-inline="en" hidden>For Bluesky sign-in (AT Protocol OAuth), this site also hosts the </span><a href="./oauth-client-metadata.json"><span data-lang-inline="ja">クライアントメタデータ</span><span data-lang-inline="en" hidden>client metadata</span></a><span data-lang-inline="ja">も配信しています。</span><span data-lang-inline="en" hidden>.</span></p>
+            <p>© くもたん (Kumotan)</p>
+        </div>
+    </footer>
+
+    <script>
+        (function () {
+            var KEY = 'kumotan-lang'; // 規約・ポリシーのページと共通
+            function apply(lang) {
+                document.documentElement.lang = lang;
+                document.querySelectorAll('[data-lang-block]').forEach(function (el) {
+                    el.classList.toggle('is-active', el.getAttribute('data-lang-block') === lang);
+                });
+                document.querySelectorAll('[data-lang-inline]').forEach(function (el) {
+                    el.hidden = el.getAttribute('data-lang-inline') !== lang;
+                });
+                document.querySelectorAll('.lang-tab').forEach(function (b) {
+                    b.setAttribute('aria-pressed', String(b.getAttribute('data-lang') === lang));
+                });
+            }
+            function save(lang) {
+                try { localStorage.setItem(KEY, lang); } catch (e) { /* 保存できなくても表示は切り替える */ }
+            }
+            function initial() {
+                var hash = location.hash.replace('#', '');
+                if (hash === 'ja' || hash === 'en') return hash;
+                try {
+                    var saved = localStorage.getItem(KEY);
+                    if (saved === 'ja' || saved === 'en') return saved;
+                } catch (e) { /* 読めなければブラウザの言語で決める */ }
+                return (navigator.language || '').toLowerCase().indexOf('ja') === 0 ? 'ja' : 'en';
+            }
+            document.querySelectorAll('.lang-tab').forEach(function (b) {
+                b.addEventListener('click', function () {
+                    var lang = b.getAttribute('data-lang');
+                    apply(lang);
+                    save(lang);
+                });
+            });
+            apply(initial());
+        })();
+    </script>
 </body>
 </html>
