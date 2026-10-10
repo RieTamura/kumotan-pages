@@ -3,8 +3,8 @@
   "client_name": "くもたん (Kumotan)",
   "client_uri": "https://rietamura.github.io/kumotan-pages/",
   "logo_uri": "https://rietamura.github.io/kumotan-pages/icon.png",
-  "tos_uri": "https://rietamura.github.io/kumotan-pages/",
-  "policy_uri": "https://rietamura.github.io/kumotan-pages/",
+  "tos_uri": "https://rietamura.github.io/kumotan-pages/terms-of-service.html",
+  "policy_uri": "https://rietamura.github.io/kumotan-pages/privacy-policy.html",
   "redirect_uris": [
     "io.github.rietamura:/oauth/callback"
   ],
