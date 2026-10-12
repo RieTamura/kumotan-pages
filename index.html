@@ -207,6 +207,22 @@
         .privacy li::before { content: ""; position: absolute; left: 18px; top: 22px; width: 10px; height: 10px; border-radius: 50%; background: var(--mint); }
         .privacy p { text-align: center; }
 
+        /* 使い方（できることと同じカードに、操作の場所を書く） */
+        .howto .feature h3 { margin-top: 0; }
+        .howto .where { display: inline-block; margin-top: 10px; padding: 2px 10px; border-radius: 999px; background: var(--primarySoft); color: var(--ink2); font-size: 13px; font-weight: 600; }
+
+        /* よくある質問 */
+        .faq { max-width: 760px; margin: 0 auto; }
+        .faq details { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; margin-bottom: 10px; }
+        .faq summary { position: relative; padding: 16px 48px 16px 18px; font-weight: 700; cursor: pointer; list-style: none; }
+        .faq summary::-webkit-details-marker { display: none; }
+        .faq summary::after { content: "+"; position: absolute; right: 18px; top: 50%; transform: translateY(-50%); color: var(--primaryStrong); font-size: 20px; font-weight: 400; }
+        .faq details[open] summary::after { content: "−"; }
+        .faq summary:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border-radius: 14px; }
+        .faq .answer { padding: 0 18px 16px; color: var(--ink2); }
+        .faq .answer p { margin: 0 0 8px; }
+        .faq .answer p:last-child { margin-bottom: 0; }
+
         footer { padding: 36px 0 52px; color: var(--ink3); font-size: 14px; }
         footer ul { list-style: none; padding: 0; margin: 0 0 14px; display: flex; flex-wrap: wrap; gap: 8px 22px; justify-content: center; }
         footer p { text-align: center; margin: 4px 0; }
@@ -240,7 +256,9 @@
             <nav class="site-nav" aria-label="ページ内の見出し">
                 <a href="#features-ja" data-section="features"><span data-lang-inline="ja">できること</span><span data-lang-inline="en" hidden>Features</span></a>
                 <a href="#start-ja" data-section="start"><span data-lang-inline="ja">はじめかた</span><span data-lang-inline="en" hidden>Getting started</span></a>
+                <a href="#howto-ja" data-section="howto"><span data-lang-inline="ja">使い方</span><span data-lang-inline="en" hidden>How to use</span></a>
                 <a href="#data-ja" data-section="data"><span data-lang-inline="ja">データの扱い</span><span data-lang-inline="en" hidden>Your data</span></a>
+                <a href="#faq-ja" data-section="faq"><span data-lang-inline="ja">よくある質問</span><span data-lang-inline="en" hidden>FAQ</span></a>
             </nav>
             <div class="lang-tabs" role="group" aria-label="Language">
                 <button type="button" class="lang-tab" data-lang="ja" aria-pressed="true">日本語</button>
@@ -359,7 +377,46 @@
                 </div>
             </section>
 
-            <section id="data-ja" class="alt">
+            <section id="howto-ja" class="alt">
+                <div class="wrap">
+                    <h2>使い方</h2>
+                    <p class="sub">iPhone 版の主な操作と、その場所です</p>
+                    <div class="features howto">
+                        <div class="feature">
+                            <h3>単語を調べて登録する</h3>
+                            <p>投稿の英単語をタップすると、意味が表示されます。「単語帳に追加」で登録できます。登録済みの単語は、タイムラインで緑色になります。</p>
+                            <span class="where">ホーム</span>
+                        </div>
+                        <div class="feature">
+                            <h3>AI に解説してもらう</h3>
+                            <p>Google AI Studio の API キーを登録すると、単語の解説、英作文の採点、投稿の校正に AI を使えます。</p>
+                            <span class="where">設定 › API・翻訳</span>
+                        </div>
+                        <div class="feature">
+                            <h3>発音を聞く</h3>
+                            <p>単語の画面のスピーカーのアイコンで、単語や例文を読み上げます。</p>
+                            <span class="where">単語の画面</span>
+                        </div>
+                        <div class="feature">
+                            <h3>クイズで復習する</h3>
+                            <p>モードと単語の種類を選んで始めます。英作文のモードは、AI が採点します。</p>
+                            <span class="where">クイズ</span>
+                        </div>
+                        <div class="feature">
+                            <h3>学習の記録を見る</h3>
+                            <p>学習した日のカレンダーと、クイズの統計を見られます。</p>
+                            <span class="where">進捗</span>
+                        </div>
+                        <div class="feature">
+                            <h3>単語帳を書き出す・復元する</h3>
+                            <p>単語帳を JSON ファイルに書き出せます。機種を変えたときは、PDS から単語帳を復元できます。</p>
+                            <span class="where">設定 › データ管理</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="data-ja">
                 <div class="wrap privacy">
                     <h2>データの扱い</h2>
                     <p class="sub">データの保存先と、外部に送るものについて</p>
@@ -369,6 +426,50 @@
                         <li>AI の機能（単語の解説や英作文の採点）は、あなたが設定した API キーで Google のサービスを呼び出します。キーは端末の中にだけ保存されます。</li>
                     </ul>
                     <p>詳しくは<a href="./privacy-policy.html">プライバシーポリシー</a>をご覧ください。</p>
+                </div>
+            </section>
+
+            <section id="faq-ja" class="alt">
+                <div class="wrap faq">
+                    <h2>よくある質問</h2>
+                    <p class="sub">わからないことがあれば、まずこちらをご覧ください</p>
+                    <details>
+                        <summary>Bluesky のパスワードをくもたんに渡しますか？</summary>
+                        <div class="answer"><p>渡しません。ログインは Bluesky の画面で行い、くもたんはパスワードを受け取りません。</p></div>
+                    </details>
+                    <details>
+                        <summary>登録した単語は、ほかの人に見えますか？</summary>
+                        <div class="answer"><p>見えます。単語帳はあなたの PDS に保存され、PDS のデータは AT Protocol の仕組み上、誰でも読めます。投稿の本文は保存せず、元の投稿へのリンクだけを残します。</p></div>
+                    </details>
+                    <details>
+                        <summary>機種を変えたら、データはどうなりますか？</summary>
+                        <div class="answer">
+                            <p>単語帳は、新しい iPhone の「設定 › データ管理 › PDSからデータを復元」で元に戻せます。</p>
+                            <p>クイズの記録と学習の記録は iPhone の中にだけ保存されているので、新しい iPhone には移りません。</p>
+                        </div>
+                    </details>
+                    <details>
+                        <summary>Web 版はありますか？</summary>
+                        <div class="answer"><p>準備中です。公開の時期は決まっていません。</p></div>
+                    </details>
+                    <details>
+                        <summary>Web 版で、iPhone 版のデータは使えますか？</summary>
+                        <div class="answer">
+                            <p>単語帳は使えます。Web 版は PDS から単語帳を読むので、iPhone 版で登録した単語がそのまま出ます。ただし、PDS への保存が終わっていない単語は出ません。</p>
+                            <p>クイズの記録と学習の記録は、iPhone の中にだけ保存されているので、Web 版には引き継ぎません。Web 版では、記録が新しく始まります。</p>
+                        </div>
+                    </details>
+                    <details>
+                        <summary>Web 版では、学習の記録はどこに保存されますか？</summary>
+                        <div class="answer">
+                            <p>お使いのブラウザの中に保存する予定です。記録はブラウザや端末ごとに別々になり、ブラウザのデータを消すと記録も消えます。</p>
+                            <p>パソコンとスマホなど、端末をまたいで記録を揃える機能は、要望があれば、使うかどうかを選べる形で検討します。</p>
+                        </div>
+                    </details>
+                    <details>
+                        <summary>質問や要望はどこに送ればよいですか？</summary>
+                        <div class="answer"><p><a href="https://github.com/RieTamura/kumotan-pages/issues">GitHub の Issues</a> か、Bluesky の <a href="https://bsky.app/profile/kumotanapp.bsky.social">@kumotanapp.bsky.social</a> へお寄せください。</p></div>
+                    </details>
                 </div>
             </section>
         </div>
@@ -426,7 +527,46 @@
                 </div>
             </section>
 
-            <section id="data-en" class="alt">
+            <section id="howto-en" class="alt">
+                <div class="wrap">
+                    <h2>How to use</h2>
+                    <p class="sub">The main actions in the iPhone app, and where to find them</p>
+                    <div class="features howto">
+                        <div class="feature">
+                            <h3>Look up and save a word</h3>
+                            <p>Tap an English word in a post to see its meaning, then tap “Add to Words”. Saved words turn green on your timeline.</p>
+                            <span class="where">Home</span>
+                        </div>
+                        <div class="feature">
+                            <h3>Get explanations from AI</h3>
+                            <p>Add a Google AI Studio API key to use AI for word explanations, sentence grading and proofreading your posts.</p>
+                            <span class="where">Settings › API &amp; Translation</span>
+                        </div>
+                        <div class="feature">
+                            <h3>Hear the pronunciation</h3>
+                            <p>Tap the speaker icon on a word to hear the word and its examples read aloud.</p>
+                            <span class="where">Word details</span>
+                        </div>
+                        <div class="feature">
+                            <h3>Review with quizzes</h3>
+                            <p>Choose a mode and the kind of words, then start. In the sentence mode, AI grades what you write.</p>
+                            <span class="where">Quiz</span>
+                        </div>
+                        <div class="feature">
+                            <h3>See your progress</h3>
+                            <p>See a calendar of the days you studied and your quiz stats.</p>
+                            <span class="where">Progress</span>
+                        </div>
+                        <div class="feature">
+                            <h3>Export or restore your word list</h3>
+                            <p>Export your word list as a JSON file. On a new phone, restore it from your PDS.</p>
+                            <span class="where">Settings › Data Management</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="data-en">
                 <div class="wrap privacy">
                     <h2>Your data</h2>
                     <p class="sub">Where your data is stored, and what is sent elsewhere</p>
@@ -436,6 +576,50 @@
                         <li>AI features (word explanations and sentence grading) call Google's service with the API key you set. The key is stored only on your device.</li>
                     </ul>
                     <p>See the <a href="./privacy-policy.html">privacy policy</a> for details.</p>
+                </div>
+            </section>
+
+            <section id="faq-en" class="alt">
+                <div class="wrap faq">
+                    <h2>FAQ</h2>
+                    <p class="sub">If something is unclear, check here first</p>
+                    <details>
+                        <summary>Do I give Kumotan my Bluesky password?</summary>
+                        <div class="answer"><p>No. You sign in on Bluesky's own page, and Kumotan never receives your password.</p></div>
+                    </details>
+                    <details>
+                        <summary>Can other people see the words I save?</summary>
+                        <div class="answer"><p>Yes. Your word list is stored in your PDS, and data in a PDS is public by design of the AT Protocol. Kumotan does not store post text there, only a link to the original post.</p></div>
+                    </details>
+                    <details>
+                        <summary>What happens to my data when I change phones?</summary>
+                        <div class="answer">
+                            <p>You can get your word list back on the new iPhone with Settings › Data Management › Restore from PDS.</p>
+                            <p>Your quiz history and study records are kept only on the iPhone, so they do not move to the new one.</p>
+                        </div>
+                    </details>
+                    <details>
+                        <summary>Is there a web version?</summary>
+                        <div class="answer"><p>It is in preparation. There is no release date yet.</p></div>
+                    </details>
+                    <details>
+                        <summary>Can I use my iPhone data in the web version?</summary>
+                        <div class="answer">
+                            <p>Your word list, yes. The web version reads your word list from your PDS, so the words you saved on the iPhone appear as they are. Words that have not finished saving to your PDS do not appear.</p>
+                            <p>Your quiz history and study records are kept only on the iPhone, so they are not carried over. The web version starts a new record.</p>
+                        </div>
+                    </details>
+                    <details>
+                        <summary>Where does the web version keep my study records?</summary>
+                        <div class="answer">
+                            <p>The plan is to keep them in your browser. Each browser or device has its own records, and clearing your browser data also clears them.</p>
+                            <p>If people ask for it, we will consider a way to sync records across devices, such as a computer and a phone, as an option you can turn on or off.</p>
+                        </div>
+                    </details>
+                    <details>
+                        <summary>Where can I send questions or requests?</summary>
+                        <div class="answer"><p>Please use <a href="https://github.com/RieTamura/kumotan-pages/issues">GitHub Issues</a> or reach <a href="https://bsky.app/profile/kumotanapp.bsky.social">@kumotanapp.bsky.social</a> on Bluesky.</p></div>
+                    </details>
                 </div>
             </section>
         </div>
