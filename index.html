@@ -138,17 +138,11 @@
         .s-head { display: flex; align-items: center; gap: 6px; padding: 18px 16px 8px; font-weight: 800; font-size: 15px; }
         /* アプリの CloudMascot（src/components/CloudMascot.tsx）と同じ形。雲はダークモードでも白 */
         .s-head .mascot { width: 28px; height: 20px; flex: none; }
-        .s-tabs { display: flex; gap: 16px; padding: 0 16px; border-bottom: 1px solid var(--line); font-size: 12px; color: var(--ink3); }
-        .s-tabs span { padding: 8px 0; }
-        .s-tabs .on { color: var(--ink); font-weight: 700; box-shadow: inset 0 -2px 0 var(--primary); }
         .post { margin: 12px; padding: 12px; border-radius: 14px; background: var(--surface); border: 1px solid var(--line); }
         .post-h { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
         .avatar { width: 28px; height: 28px; border-radius: 50%; background: var(--peachSoft); color: var(--peachInk); display: grid; place-items: center; font-weight: 700; font-size: 12px; }
         .post-h b { font-size: 12.5px; }
         .post-h small { color: var(--ink3); font-size: 11px; }
-        .w { border-bottom: 1.5px dotted var(--ink3); }
-        .w.saved { border-bottom-color: var(--saved); }
-        .w.active { background: var(--primarySoft); border-radius: 4px; border-bottom: 0; padding: 0 2px; box-shadow: inset 0 0 0 1.5px var(--primary); }
         .post-a { display: flex; gap: 18px; margin-top: 8px; color: var(--ink3); font-size: 11px; }
         .post-a span { display: inline-flex; align-items: center; gap: 4px; }
         .post-a svg { width: 13px; height: 13px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
@@ -159,13 +153,7 @@
         .grabber { width: 36px; height: 4px; border-radius: 2px; background: var(--ink4); margin: 0 auto 10px; }
         .s-word { display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
         .s-word b { font-size: 20px; }
-        .s-word .ipa { color: var(--ink3); font-size: 12px; }
-        .chip { display: inline-block; padding: 1px 9px; border-radius: 999px; font-size: 11px; font-weight: 600; }
-        .chip.lav { background: var(--lavSoft); color: var(--lavInk); }
-        .chip.saved { background: var(--mintSoft); color: var(--savedInk); }
         .s-label { margin: 10px 0 2px; font-size: 11px; color: var(--ink3); }
-        .s-mean { font-size: 15px; font-weight: 700; }
-        .s-src { font-size: 10.5px; color: var(--ink3); }
         .s-btn { margin-top: 12px; display: flex; gap: 8px; }
         .s-btn span { flex: 1; text-align: center; padding: 9px 0; border-radius: 999px; font-weight: 700; font-size: 12.5px; }
         .s-btn .add { background: var(--primaryStrong); color: var(--onPrimary); }
@@ -308,31 +296,25 @@
                 <div class="phone">
                     <div class="screen">
                         <div class="s-head"><svg class="mascot" viewBox="0 0 100 72" aria-hidden="true"><path d="M22 56C12 56 4 48 4 38c0-9 7-17 16-18 2-9 10-16 20-16 10 0 18 7 20 16 1 0 2 0 3 0 10 0 17 8 17 17s-7 17-17 17H22z" fill="#FFFFFF" stroke="#AFD1ED" stroke-width="3.5"/><circle cx="38" cy="38" r="3" fill="#1A2436"/><circle cx="62" cy="38" r="3" fill="#1A2436"/><path d="M42 46 Q50 52 58 46" fill="none" stroke="#1A2436" stroke-width="2.6" stroke-linecap="round"/><circle cx="30" cy="44" r="2.5" fill="#F7A9B0" opacity="0.7"/><circle cx="70" cy="44" r="2.5" fill="#F7A9B0" opacity="0.7"/></svg>くもたん</div>
-                        <div class="s-tabs">
-                            <span class="on"><span data-lang-inline="ja">フォロー中</span><span data-lang-inline="en" hidden>Following</span></span>
-                            <span><span data-lang-inline="ja">フィード</span><span data-lang-inline="en" hidden>Feeds</span></span>
-                            <span><span data-lang-inline="ja">マイ</span><span data-lang-inline="en" hidden>Me</span></span>
-                        </div>
                         <div class="post">
                             <div class="post-h"><span class="avatar">S</span><b>Sora</b><small>@sora.example · 12m</small></div>
-                            京都の紅葉が <span class="w active">gorgeous</span> でした。空気も <span class="w saved">crisp</span> で、<span class="w">walking</span> するだけで幸せ。
+                            京都の紅葉が <span class="ww sel">gorgeous</span> でした。空気も <span class="ww reg">crisp</span> で、walking するだけで幸せ。
                             <div class="post-a"><span><svg viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z"/></svg>3</span><span><svg viewBox="0 0 24 24"><path d="M7 7h11l-3-3"/><path d="M17 17H6l3 3"/></svg>2</span><span><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.5-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.5-7 10-7 10z"/></svg>24</span></div>
                         </div>
                         <div class="post">
                             <div class="post-h"><span class="avatar" style="background:var(--mintSoft);color:var(--mintInk)">K</span><b>Kai</b><small>@kai.example · 1h</small></div>
-                            新しい <span class="w">cafe</span> で本を読みました。
+                            新しい cafe で本を読みました。
                         </div>
                         <div class="sheet">
                             <div class="grabber"></div>
-                            <div class="s-word"><b>gorgeous</b><span class="ipa">/ˈɡɔːrdʒəs/</span><span class="chip lav"><span data-lang-inline="ja">形容詞</span><span data-lang-inline="en" hidden>adjective</span></span></div>
+                            <div class="s-word"><b>gorgeous</b></div>
                             <div class="s-label"><span data-lang-inline="ja">日本語訳</span><span data-lang-inline="en" hidden>Japanese</span></div>
-                            <div class="s-mean">とても美しい、華やかな</div>
-                            <div class="s-src"><span data-lang-inline="ja">出典: 辞書</span><span data-lang-inline="en" hidden>Source: dictionary</span></div>
+                            <div class="cands"><span class="cand on">豪華な</span><span class="cand">とても美しい</span></div>
                             <div class="s-btn"><span class="add"><span data-lang-inline="ja">単語帳に追加</span><span data-lang-inline="en" hidden>Add to word list</span></span><span class="close"><span data-lang-inline="ja">閉じる</span><span data-lang-inline="en" hidden>Close</span></span></div>
                         </div>
                     </div>
                 </div>
-                <p class="mock-caption"><span data-lang-inline="ja">点線の単語を選ぶと、意味が表示されます（緑の点線は登録済み）</span><span data-lang-inline="en" hidden>Pick a dotted word to see its meaning (green means already saved)</span></p>
+                <p class="mock-caption"><span data-lang-inline="ja">英単語を押すと、意味が表示されます（緑の点線は登録済みの単語）</span><span data-lang-inline="en" hidden>Press an English word to see its meaning (green dotted words are already saved)</span></p>
             </div>
         </div>
     </header>
