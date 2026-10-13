@@ -138,17 +138,11 @@
         .s-head { display: flex; align-items: center; gap: 6px; padding: 18px 16px 8px; font-weight: 800; font-size: 15px; }
         /* アプリの CloudMascot（src/components/CloudMascot.tsx）と同じ形。雲はダークモードでも白 */
         .s-head .mascot { width: 28px; height: 20px; flex: none; }
-        .s-tabs { display: flex; gap: 16px; padding: 0 16px; border-bottom: 1px solid var(--line); font-size: 12px; color: var(--ink3); }
-        .s-tabs span { padding: 8px 0; }
-        .s-tabs .on { color: var(--ink); font-weight: 700; box-shadow: inset 0 -2px 0 var(--primary); }
         .post { margin: 12px; padding: 12px; border-radius: 14px; background: var(--surface); border: 1px solid var(--line); }
         .post-h { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
         .avatar { width: 28px; height: 28px; border-radius: 50%; background: var(--peachSoft); color: var(--peachInk); display: grid; place-items: center; font-weight: 700; font-size: 12px; }
         .post-h b { font-size: 12.5px; }
         .post-h small { color: var(--ink3); font-size: 11px; }
-        .w { border-bottom: 1.5px dotted var(--ink3); }
-        .w.saved { border-bottom-color: var(--saved); }
-        .w.active { background: var(--primarySoft); border-radius: 4px; border-bottom: 0; padding: 0 2px; box-shadow: inset 0 0 0 1.5px var(--primary); }
         .post-a { display: flex; gap: 18px; margin-top: 8px; color: var(--ink3); font-size: 11px; }
         .post-a span { display: inline-flex; align-items: center; gap: 4px; }
         .post-a svg { width: 13px; height: 13px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
@@ -159,13 +153,7 @@
         .grabber { width: 36px; height: 4px; border-radius: 2px; background: var(--ink4); margin: 0 auto 10px; }
         .s-word { display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
         .s-word b { font-size: 20px; }
-        .s-word .ipa { color: var(--ink3); font-size: 12px; }
-        .chip { display: inline-block; padding: 1px 9px; border-radius: 999px; font-size: 11px; font-weight: 600; }
-        .chip.lav { background: var(--lavSoft); color: var(--lavInk); }
-        .chip.saved { background: var(--mintSoft); color: var(--savedInk); }
         .s-label { margin: 10px 0 2px; font-size: 11px; color: var(--ink3); }
-        .s-mean { font-size: 15px; font-weight: 700; }
-        .s-src { font-size: 10.5px; color: var(--ink3); }
         .s-btn { margin-top: 12px; display: flex; gap: 8px; }
         .s-btn span { flex: 1; text-align: center; padding: 9px 0; border-radius: 999px; font-weight: 700; font-size: 12.5px; }
         .s-btn .add { background: var(--primaryStrong); color: var(--onPrimary); }
@@ -199,7 +187,27 @@
             display: flex; align-items: center; justify-content: center; font-weight: 800;
         }
         .steps strong { display: block; }
-        .steps span { color: var(--ink2); font-size: 15px; }
+        .steps li > span { display: block; color: var(--ink2); font-size: 15px; }
+
+        /* 手順の見本（Web 版の画面を HTML で描く。ログイン後の画面は他人の投稿が写るので撮らない） */
+        .shot { margin-top: 12px; max-width: 340px; border-radius: 18px; overflow: hidden; background: var(--bg); border: 1px solid var(--line); box-shadow: 0 10px 24px rgba(26, 36, 54, 0.10); color: var(--ink); font-size: 13px; line-height: 1.6; }
+        .shot .s-head { padding: 12px 16px 6px; }
+        .shot-body { padding: 4px 16px 16px; }
+        .shot-desc { margin: 0 0 12px; color: var(--ink2); font-size: 12px; }
+        .shot-label { display: block; font-size: 11px; font-weight: 700; color: var(--ink2); margin-bottom: 4px; }
+        .shot-input { padding: 8px 12px; border-radius: 10px; background: var(--surface); border: 1px solid var(--line); color: var(--ink); font-size: 12.5px; }
+        .shot-input.hint { color: var(--ink3); }
+        .shot-btn { margin-top: 12px; padding: 9px 0; border-radius: 999px; text-align: center; font-weight: 700; font-size: 12.5px; background: var(--primaryStrong); color: var(--onPrimary); }
+        .shot-note { margin: 10px 0 0; font-size: 11px; color: var(--ink3); text-align: center; }
+        .shot .post { margin: 4px 12px 14px; }
+        .ww { border-radius: 4px; padding: 0 2px; }
+        .ww.sel { background: var(--accentSoft); }
+        .ww.reg { color: var(--savedInk); font-weight: 600; text-decoration: underline dotted var(--saved); text-decoration-thickness: 1.5px; text-underline-offset: 3px; }
+        .shot .sheet { position: static; border-radius: 0; box-shadow: none; border-top: 1px solid var(--line); }
+        .cands { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px; }
+        .cand { padding: 2px 10px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); font-size: 11.5px; color: var(--ink2); }
+        .cand.on { border-color: var(--primary); background: var(--primarySoft); color: var(--ink); font-weight: 700; }
+        .shot .s-btn .add { flex: none; width: 100%; }
 
         .privacy { max-width: 700px; margin: 0 auto; }
         .privacy ul { list-style: none; padding: 0; margin: 0 0 18px; }
@@ -288,31 +296,25 @@
                 <div class="phone">
                     <div class="screen">
                         <div class="s-head"><svg class="mascot" viewBox="0 0 100 72" aria-hidden="true"><path d="M22 56C12 56 4 48 4 38c0-9 7-17 16-18 2-9 10-16 20-16 10 0 18 7 20 16 1 0 2 0 3 0 10 0 17 8 17 17s-7 17-17 17H22z" fill="#FFFFFF" stroke="#AFD1ED" stroke-width="3.5"/><circle cx="38" cy="38" r="3" fill="#1A2436"/><circle cx="62" cy="38" r="3" fill="#1A2436"/><path d="M42 46 Q50 52 58 46" fill="none" stroke="#1A2436" stroke-width="2.6" stroke-linecap="round"/><circle cx="30" cy="44" r="2.5" fill="#F7A9B0" opacity="0.7"/><circle cx="70" cy="44" r="2.5" fill="#F7A9B0" opacity="0.7"/></svg>くもたん</div>
-                        <div class="s-tabs">
-                            <span class="on"><span data-lang-inline="ja">フォロー中</span><span data-lang-inline="en" hidden>Following</span></span>
-                            <span><span data-lang-inline="ja">フィード</span><span data-lang-inline="en" hidden>Feeds</span></span>
-                            <span><span data-lang-inline="ja">マイ</span><span data-lang-inline="en" hidden>Me</span></span>
-                        </div>
                         <div class="post">
                             <div class="post-h"><span class="avatar">S</span><b>Sora</b><small>@sora.example · 12m</small></div>
-                            京都の紅葉が <span class="w active">gorgeous</span> でした。空気も <span class="w saved">crisp</span> で、<span class="w">walking</span> するだけで幸せ。
+                            京都の紅葉が <span class="ww sel">gorgeous</span> でした。空気も <span class="ww reg">crisp</span> で、walking するだけで幸せ。
                             <div class="post-a"><span><svg viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z"/></svg>3</span><span><svg viewBox="0 0 24 24"><path d="M7 7h11l-3-3"/><path d="M17 17H6l3 3"/></svg>2</span><span><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.5-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.5-7 10-7 10z"/></svg>24</span></div>
                         </div>
                         <div class="post">
                             <div class="post-h"><span class="avatar" style="background:var(--mintSoft);color:var(--mintInk)">K</span><b>Kai</b><small>@kai.example · 1h</small></div>
-                            新しい <span class="w">cafe</span> で本を読みました。
+                            新しい cafe で本を読みました。
                         </div>
                         <div class="sheet">
                             <div class="grabber"></div>
-                            <div class="s-word"><b>gorgeous</b><span class="ipa">/ˈɡɔːrdʒəs/</span><span class="chip lav"><span data-lang-inline="ja">形容詞</span><span data-lang-inline="en" hidden>adjective</span></span></div>
+                            <div class="s-word"><b>gorgeous</b></div>
                             <div class="s-label"><span data-lang-inline="ja">日本語訳</span><span data-lang-inline="en" hidden>Japanese</span></div>
-                            <div class="s-mean">とても美しい、華やかな</div>
-                            <div class="s-src"><span data-lang-inline="ja">出典: 辞書</span><span data-lang-inline="en" hidden>Source: dictionary</span></div>
+                            <div class="cands"><span class="cand on">豪華な</span><span class="cand">とても美しい</span></div>
                             <div class="s-btn"><span class="add"><span data-lang-inline="ja">単語帳に追加</span><span data-lang-inline="en" hidden>Add to word list</span></span><span class="close"><span data-lang-inline="ja">閉じる</span><span data-lang-inline="en" hidden>Close</span></span></div>
                         </div>
                     </div>
                 </div>
-                <p class="mock-caption"><span data-lang-inline="ja">点線の単語を選ぶと、意味が表示されます（緑の点線は登録済み）</span><span data-lang-inline="en" hidden>Pick a dotted word to see its meaning (green means already saved)</span></p>
+                <p class="mock-caption"><span data-lang-inline="ja">英単語を押すと、意味が表示されます（緑の点線は登録済みの単語）</span><span data-lang-inline="en" hidden>Press an English word to see its meaning (green dotted words are already saved)</span></p>
             </div>
         </div>
     </header>
@@ -328,32 +330,32 @@
                         <div class="feature">
                             <div class="icon i-blue"><svg viewBox="0 0 24 24"><path d="M4 20h4l10-10-4-4L4 16v4z"/><path d="M13 7l4 4"/></svg></div>
                             <h3>投稿から単語を登録</h3>
-                            <p>タイムラインの投稿で気になった英単語や熟語を選ぶと、意味が表示されます。そのまま単語帳に追加できます。</p>
+                            <p>タイムラインの投稿で気になった英単語を選ぶと、意味が表示されます。そのまま単語帳に追加できます。</p>
                         </div>
                         <div class="feature">
                             <div class="icon i-lav"><svg viewBox="0 0 24 24"><path d="M4 5h6a2 2 0 0 1 2 2v13a2 2 0 0 0-2-2H4z"/><path d="M20 5h-6a2 2 0 0 0-2 2v13a2 2 0 0 1 2-2h6z"/></svg></div>
                             <h3>辞書と AI の解説</h3>
-                            <p>オフライン辞書で、意味をすぐに確かめられます。Google AI Studio の API キーを設定すると、AI が意味や使い方を解説します。</p>
+                            <p>内蔵の英和辞書で、意味をすぐに確かめられます。AI が意味や使い方を解説したり、投稿を校正したりする機能は、今は運営者が許可したアカウントだけが使えます。</p>
                         </div>
                         <div class="feature">
                             <div class="icon i-peach"><svg viewBox="0 0 24 24"><path d="M5 10v4h3l5 4V6L8 10H5z"/><path d="M16 9a4 4 0 0 1 0 6"/><path d="M18.5 6.5a7.5 7.5 0 0 1 0 11"/></svg></div>
                             <h3>発音を聞く</h3>
-                            <p>単語や投稿の英文を音声で読み上げるので、耳でも覚えられます。</p>
+                            <p>単語や投稿の英文をブラウザの読み上げ機能で読み上げるので、耳でも覚えられます。</p>
                         </div>
                         <div class="feature">
                             <div class="icon i-mint"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M8.5 12.5l2.5 2.5 4.5-5"/></svg></div>
                             <h3>クイズで復習</h3>
-                            <p>登録した単語を、4 択・単語の入力・英作文の 3 つのモードで復習できます。英作文は AI が採点します。</p>
+                            <p>登録した単語を、4 択のクイズで復習できます。正解率の低い単語は、進捗の画面に「要復習の単語」として出ます。</p>
                         </div>
                         <div class="feature">
                             <div class="icon i-yellow"><svg viewBox="0 0 24 24"><path d="M5 19V11"/><path d="M12 19V5"/><path d="M19 19v-6"/></svg></div>
                             <h3>学習の記録</h3>
-                            <p>学習した日がカレンダーと統計でひと目で分かります。結果は Bluesky でシェアできます。</p>
+                            <p>連続して学習した日数と統計で、どれだけ続けたかがひと目で分かります。結果は Bluesky でシェアできます。</p>
                         </div>
                         <div class="feature">
                             <div class="icon i-pink"><svg viewBox="0 0 24 24"><path d="M7 18a4 4 0 0 1-.6-7.96A5.5 5.5 0 0 1 17 9a3.5 3.5 0 0 1 .5 6.97V16"/><path d="M7 18h10.5"/></svg></div>
                             <h3>単語帳はあなたのもの</h3>
-                            <p>単語帳は、あなたの Bluesky のデータ置き場（PDS）にも保存されます。機種を変えても、単語帳を復元できます。</p>
+                            <p>単語帳は、あなたの Bluesky のデータ置き場（PDS）に保存されます。別のブラウザや端末でも、同じ単語帳を使えます。</p>
                         </div>
                     </div>
                 </div>
@@ -364,9 +366,40 @@
                     <h2>はじめかた</h2>
                     <p class="sub">Bluesky のアカウントがあれば、すぐに始められます</p>
                     <ol class="steps">
-                        <li><strong>Bluesky でログイン</strong><span>パスワードはくもたんに渡さず、Bluesky の画面でログインします。</span></li>
-                        <li><strong>タイムラインを読む</strong><span>いつものフォローやフィードの投稿を、くもたんの中で読めます。</span></li>
-                        <li><strong>気になった単語を登録</strong><span>意味を確かめて単語帳に追加します。あとはクイズで復習しましょう。</span></li>
+                        <li>
+                            <strong>Bluesky でログイン</strong><span>Bluesky のハンドル（例: yourname.bsky.social）を入れて「Blueskyでログイン」を押します。Bluesky の画面に移るので、パスワードはそこで入れます。くもたんにはパスワードを渡しません。</span>
+                            <div class="shot" aria-hidden="true">
+                            <div class="s-head"><svg class="mascot" viewBox="0 0 100 72" aria-hidden="true"><path d="M22 56C12 56 4 48 4 38c0-9 7-17 16-18 2-9 10-16 20-16 10 0 18 7 20 16 1 0 2 0 3 0 10 0 17 8 17 17s-7 17-17 17H22z" fill="#FFFFFF" stroke="#AFD1ED" stroke-width="3.5"/><circle cx="38" cy="38" r="3" fill="#1A2436"/><circle cx="62" cy="38" r="3" fill="#1A2436"/><path d="M42 46 Q50 52 58 46" fill="none" stroke="#1A2436" stroke-width="2.6" stroke-linecap="round"/><circle cx="30" cy="44" r="2.5" fill="#F7A9B0" opacity="0.7"/><circle cx="70" cy="44" r="2.5" fill="#F7A9B0" opacity="0.7"/></svg>くもたん</div>
+                            <div class="shot-body">
+                                <p class="shot-desc">Blueskyの投稿を読みながら、英単語をタップして保存。あなただけの単語帳を作ろう。</p>
+                                <span class="shot-label">Blueskyのハンドル</span>
+                                <div class="shot-input">yourname.bsky.social</div>
+                                <div class="shot-btn">Blueskyでログイン</div>
+                                <p class="shot-note">このあと Bluesky の画面でパスワードを入れます</p>
+                            </div>
+                            </div>
+                        </li>
+                        <li>
+                            <strong>タイムラインを読む</strong><span>フォローしている人の投稿が並びます。気になった英単語は、押すと選べます。緑の点線が付いた単語は、もう単語帳にある単語です。</span>
+                            <div class="shot" aria-hidden="true">
+                            <div class="s-head"><svg class="mascot" viewBox="0 0 100 72" aria-hidden="true"><path d="M22 56C12 56 4 48 4 38c0-9 7-17 16-18 2-9 10-16 20-16 10 0 18 7 20 16 1 0 2 0 3 0 10 0 17 8 17 17s-7 17-17 17H22z" fill="#FFFFFF" stroke="#AFD1ED" stroke-width="3.5"/><circle cx="38" cy="38" r="3" fill="#1A2436"/><circle cx="62" cy="38" r="3" fill="#1A2436"/><path d="M42 46 Q50 52 58 46" fill="none" stroke="#1A2436" stroke-width="2.6" stroke-linecap="round"/><circle cx="30" cy="44" r="2.5" fill="#F7A9B0" opacity="0.7"/><circle cx="70" cy="44" r="2.5" fill="#F7A9B0" opacity="0.7"/></svg>くもたん</div>
+                            <div class="post">
+                                <div class="post-h"><span class="avatar">S</span><b>Sora</b><small>@sora.example · 12m</small></div>
+                                The view from the summit was <span class="ww reg">breathtaking</span>. Totally <span class="ww sel">worth</span> the climb.
+                            </div>
+                            </div>
+                        </li>
+                        <li>
+                            <strong>気になった単語を登録</strong><span>単語を選ぶと、辞書の訳が出ます。訳は候補から選ぶか、自分で書き直します。最後に「単語帳に追加」を押します。あとはクイズで復習しましょう。</span>
+                            <div class="shot" aria-hidden="true">
+                            <div class="sheet">
+                                <div class="s-word"><b>worth</b></div>
+                                <div class="s-label">日本語訳</div>
+                                <div class="cands"><span class="cand on">価値がある</span><span class="cand">値打ちがある</span><span class="cand">財産を持つ</span></div>
+                                <div class="s-btn"><span class="add">単語帳に追加</span></div>
+                            </div>
+                            </div>
+                        </li>
                     </ol>
                 </div>
             </section>
@@ -376,9 +409,9 @@
                     <h2>データの扱い</h2>
                     <p class="sub">データの保存先と、外部に送るものについて</p>
                     <ul>
-                        <li>単語帳や学習の記録を、運営者のサーバーで預かることはありません。データは端末と、あなた自身の PDS に保存されます。</li>
+                        <li>単語帳や学習の記録を、運営者のサーバーで預かることはありません。単語帳はあなた自身の PDS に、学習の記録はお使いのブラウザの中に保存されます。</li>
                         <li>PDS に保存したデータは、AT Protocol の仕組み上、誰でも読める公開データです。投稿の本文は保存せず、元の投稿へのリンクだけを残します。</li>
-                        <li>AI の機能（単語の解説や英作文の採点）は、あなたが設定した API キーで Google のサービスを呼び出します。キーは端末の中にだけ保存されます。</li>
+                        <li>AI の機能（単語の解説と投稿の校正）を使うと、単語や投稿の下書きが運営者のサーバー（Cloudflare）を経由して Google のサービスに送られます。今は運営者が許可したアカウントだけが使えます。</li>
                     </ul>
                     <p>詳しくは<a href="./privacy-policy.html">プライバシーポリシー</a>をご覧ください。</p>
                 </div>
@@ -397,16 +430,9 @@
                         <div class="answer"><p>見えます。単語帳はあなたの PDS に保存され、PDS のデータは AT Protocol の仕組み上、誰でも読めます。投稿の本文は保存せず、元の投稿へのリンクだけを残します。</p></div>
                     </details>
                     <details>
-                        <summary>iPhone 版はもう入手できませんか？</summary>
-                        <div class="answer">
-                            <p>2026年10月13日に App Store での配信を終了しました。今後は Web 版に移ります。</p>
-                            <p>すでに入れているアプリでも、新しくログインすることはできなくなりました。ログインしたままの状態も、いずれ切れます。単語帳は PDS に残っているので、Web 版が公開されたら、そこで読めます。</p>
-                        </div>
-                    </details>
-                    <details>
                         <summary>機種を変えたら、データはどうなりますか？</summary>
                         <div class="answer">
-                            <p>単語帳は PDS に保存されているので、なくなりません。iPhone 版にはもうログインできないので、新しい機種では、公開後の Web 版で単語帳を読んでください。</p>
+                            <p>単語帳は PDS に保存されているので、なくなりません。iPhone 版にはもうログインできません。新しい機種では、公開後の Web 版で単語帳を読んでください。</p>
                             <p>クイズの記録と学習の記録は iPhone の中にだけ保存されているので、新しい iPhone には移りません。</p>
                         </div>
                     </details>
@@ -446,32 +472,32 @@
                         <div class="feature">
                             <div class="icon i-blue"><svg viewBox="0 0 24 24"><path d="M4 20h4l10-10-4-4L4 16v4z"/><path d="M13 7l4 4"/></svg></div>
                             <h3>Save words from posts</h3>
-                            <p>Pick a word or phrase in a post on your timeline, check its meaning, and add it to your word list.</p>
+                            <p>Pick a word in a post on your timeline, check its meaning, and add it to your word list.</p>
                         </div>
                         <div class="feature">
                             <div class="icon i-lav"><svg viewBox="0 0 24 24"><path d="M4 5h6a2 2 0 0 1 2 2v13a2 2 0 0 0-2-2H4z"/><path d="M20 5h-6a2 2 0 0 0-2 2v13a2 2 0 0 1 2-2h6z"/></svg></div>
                             <h3>Dictionary and AI explanations</h3>
-                            <p>See meanings right away with the offline dictionary. Add a Google AI Studio API key and AI explains meaning and usage.</p>
+                            <p>See meanings right away with the built-in English-Japanese dictionary. AI explanations of meaning and usage, and proofreading of your posts, are currently available only to accounts the operator has allowed.</p>
                         </div>
                         <div class="feature">
                             <div class="icon i-peach"><svg viewBox="0 0 24 24"><path d="M5 10v4h3l5 4V6L8 10H5z"/><path d="M16 9a4 4 0 0 1 0 6"/><path d="M18.5 6.5a7.5 7.5 0 0 1 0 11"/></svg></div>
                             <h3>Hear the pronunciation</h3>
-                            <p>Have words and post text read aloud so you learn them by ear, too.</p>
+                            <p>Have words and post text read aloud by your browser so you learn them by ear, too.</p>
                         </div>
                         <div class="feature">
                             <div class="icon i-mint"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M8.5 12.5l2.5 2.5 4.5-5"/></svg></div>
                             <h3>Review with quizzes</h3>
-                            <p>Review your saved words in three modes: multiple choice, typing the word, and writing a sentence that AI grades.</p>
+                            <p>Review your saved words with multiple-choice quizzes. Words you often miss are marked for review.</p>
                         </div>
                         <div class="feature">
                             <div class="icon i-yellow"><svg viewBox="0 0 24 24"><path d="M5 19V11"/><path d="M12 19V5"/><path d="M19 19v-6"/></svg></div>
                             <h3>Track your progress</h3>
-                            <p>A calendar and stats show the days you kept at it. Share your results on Bluesky.</p>
+                            <p>Your study streak and stats show how far you have kept at it. Share your results on Bluesky.</p>
                         </div>
                         <div class="feature">
                             <div class="icon i-pink"><svg viewBox="0 0 24 24"><path d="M7 18a4 4 0 0 1-.6-7.96A5.5 5.5 0 0 1 17 9a3.5 3.5 0 0 1 .5 6.97V16"/><path d="M7 18h10.5"/></svg></div>
                             <h3>Your word list is yours</h3>
-                            <p>Your word list is also stored in your own Bluesky data store (PDS), so you can get it back on a new phone.</p>
+                            <p>Your word list is stored in your own Bluesky data store (PDS), so you can use the same list in another browser or on another device.</p>
                         </div>
                     </div>
                 </div>
@@ -482,9 +508,40 @@
                     <h2>Getting started</h2>
                     <p class="sub">All you need is a Bluesky account</p>
                     <ol class="steps">
-                        <li><strong>Sign in with Bluesky</strong><span>You sign in on Bluesky's own page. Kumotan never sees your password.</span></li>
-                        <li><strong>Read your timeline</strong><span>Your usual follows and feeds, right inside Kumotan.</span></li>
-                        <li><strong>Save the words you notice</strong><span>Check the meaning, add it to your list, then review with quizzes.</span></li>
+                        <li>
+                            <strong>Sign in with Bluesky</strong><span>Enter your Bluesky handle (e.g. yourname.bsky.social) and press "Sign in with Bluesky". You move to Bluesky's own page and enter your password there. Kumotan never sees your password.</span>
+                            <div class="shot" aria-hidden="true">
+                            <div class="s-head"><svg class="mascot" viewBox="0 0 100 72" aria-hidden="true"><path d="M22 56C12 56 4 48 4 38c0-9 7-17 16-18 2-9 10-16 20-16 10 0 18 7 20 16 1 0 2 0 3 0 10 0 17 8 17 17s-7 17-17 17H22z" fill="#FFFFFF" stroke="#AFD1ED" stroke-width="3.5"/><circle cx="38" cy="38" r="3" fill="#1A2436"/><circle cx="62" cy="38" r="3" fill="#1A2436"/><path d="M42 46 Q50 52 58 46" fill="none" stroke="#1A2436" stroke-width="2.6" stroke-linecap="round"/><circle cx="30" cy="44" r="2.5" fill="#F7A9B0" opacity="0.7"/><circle cx="70" cy="44" r="2.5" fill="#F7A9B0" opacity="0.7"/></svg>Kumotan</div>
+                            <div class="shot-body">
+                                <p class="shot-desc">Read Bluesky posts, tap English words to save them, and build your own vocabulary list.</p>
+                                <span class="shot-label">Bluesky handle</span>
+                                <div class="shot-input">yourname.bsky.social</div>
+                                <div class="shot-btn">Sign in with Bluesky</div>
+                                <p class="shot-note">Next, enter your password on Bluesky's page</p>
+                            </div>
+                            </div>
+                        </li>
+                        <li>
+                            <strong>Read your timeline</strong><span>Posts from the people you follow appear here. Pick any English word you notice. Words with a green dotted underline are already in your word list.</span>
+                            <div class="shot" aria-hidden="true">
+                            <div class="s-head"><svg class="mascot" viewBox="0 0 100 72" aria-hidden="true"><path d="M22 56C12 56 4 48 4 38c0-9 7-17 16-18 2-9 10-16 20-16 10 0 18 7 20 16 1 0 2 0 3 0 10 0 17 8 17 17s-7 17-17 17H22z" fill="#FFFFFF" stroke="#AFD1ED" stroke-width="3.5"/><circle cx="38" cy="38" r="3" fill="#1A2436"/><circle cx="62" cy="38" r="3" fill="#1A2436"/><path d="M42 46 Q50 52 58 46" fill="none" stroke="#1A2436" stroke-width="2.6" stroke-linecap="round"/><circle cx="30" cy="44" r="2.5" fill="#F7A9B0" opacity="0.7"/><circle cx="70" cy="44" r="2.5" fill="#F7A9B0" opacity="0.7"/></svg>Kumotan</div>
+                            <div class="post">
+                                <div class="post-h"><span class="avatar">S</span><b>Sora</b><small>@sora.example · 12m</small></div>
+                                The view from the summit was <span class="ww reg">breathtaking</span>. Totally <span class="ww sel">worth</span> the climb.
+                            </div>
+                            </div>
+                        </li>
+                        <li>
+                            <strong>Save the words you notice</strong><span>Pick a word to see its meaning from the dictionary. Choose one of the suggested meanings or write your own, then press "Add to word list". Review them later with quizzes.</span>
+                            <div class="shot" aria-hidden="true">
+                            <div class="sheet">
+                                <div class="s-word"><b>worth</b></div>
+                                <div class="s-label">Japanese meaning</div>
+                                <div class="cands"><span class="cand on">価値がある</span><span class="cand">値打ちがある</span><span class="cand">財産を持つ</span></div>
+                                <div class="s-btn"><span class="add">Add to word list</span></div>
+                            </div>
+                            </div>
+                        </li>
                     </ol>
                 </div>
             </section>
@@ -494,9 +551,9 @@
                     <h2>Your data</h2>
                     <p class="sub">Where your data is stored, and what is sent elsewhere</p>
                     <ul>
-                        <li>Your word list and study records are never kept on our servers. They stay on your device and in your own PDS.</li>
+                        <li>Your word list and study records are never kept on our servers. Your word list is stored in your own PDS, and your study records stay in your browser.</li>
                         <li>Data in a PDS is public by design of the AT Protocol. Kumotan does not store post text there, only a link to the original post.</li>
-                        <li>AI features (word explanations and sentence grading) call Google's service with the API key you set. The key is stored only on your device.</li>
+                        <li>When you use AI features (word explanations and post proofreading), the word or post draft is sent to Google's service via the operator's server (Cloudflare). They are currently available only to accounts the operator has allowed.</li>
                     </ul>
                     <p>See the <a href="./privacy-policy.html">privacy policy</a> for details.</p>
                 </div>
@@ -513,13 +570,6 @@
                     <details>
                         <summary>Can other people see the words I save?</summary>
                         <div class="answer"><p>Yes. Your word list is stored in your PDS, and data in a PDS is public by design of the AT Protocol. Kumotan does not store post text there, only a link to the original post.</p></div>
-                    </details>
-                    <details>
-                        <summary>Can I still get the iPhone app?</summary>
-                        <div class="answer">
-                            <p>No. The iPhone app was removed from the App Store on October 13, 2026. Kumotan is moving to the web version.</p>
-                            <p>Even if you already have the app, you can no longer sign in to it, and an existing sign-in will eventually expire. Your word list stays in your PDS, so you can read it in the web version once it is released.</p>
-                        </div>
                     </details>
                     <details>
                         <summary>What happens to my data when I change phones?</summary>
