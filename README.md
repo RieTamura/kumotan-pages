@@ -18,4 +18,4 @@ iPhone 版の OAuth Client Metadata（`oauth-client-metadata.json`）は、独�
 
 くもたんは、Bluesky のタイムラインから英単語を登録して、自分だけの単語帳を作る英語学習アプリです。iPhone 版は 2026年10月13日に App Store での配信を終了し、Web 版に移ります。
 
-- お問い合わせ: [GitHub Issues](https://github.com/RieTamura/kumotan-pages/issues)
+- お問い合わせ: [contact@kumotan.app](mailto:contact@kumotan.app)（Cloudflare Email Routing で転送）/ [GitHub Issues](https://github.com/RieTamura/kumotan-pages/issues) / [Bluesky @kumotanapp.bsky.social](https://bsky.app/profile/kumotanapp.bsky.social)
