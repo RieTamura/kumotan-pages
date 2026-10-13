@@ -60,10 +60,10 @@ a:hover { text-decoration: underline; }
 <p>2. 運営者は本アプリに関し、本規約のほか、ご利用にあたってのルール等、各種の規定（以下「個別規定」といいます）を定めることがあります。これら個別規定はその名称のいかんに関わらず、本規約の一部を構成するものとします。</p>
 
 <h2>第2条（サービスの定義）</h2>
-<p>1. 本アプリは、AT Protocol（Bluesky等）のタイムラインを閲覧しながら、英語の単語・熟語を日本語で学習するための語彙学習支援ツールです。</p>
+<p>1. 本アプリは、AT Protocol（Bluesky等）のタイムラインを閲覧しながら、英語の単語・熟語を日本語で学習するための語彙学習支援ツールです。ウェブブラウザで利用します。</p>
 <p>2. 本アプリは、以下の主な機能を提供します。</p>
-<ul><li>Blueskyタイムラインの表示</li><li>投稿内の英単語の辞書検索・翻訳</li><li>単語帳への登録・管理</li><li>クイズモードによる語彙学習</li><li>学習進捗の記録・表示</li><li>学習進捗のBlueskyへのシェア</li><li>音声読み上げ機能（英単語・定義の発音）</li><li>学習リマインダーの通知</li></ul>
-<p>AI辞書・翻訳機能は、ユーザー自身が取得したGoogle AI StudioのAPIキー（Gemma4）を使用します。APIキーの取得・管理はユーザーの責任において行うものとします。</p>
+<ul><li>Blueskyタイムラインの表示（いいね・リポストを含みます）</li><li>投稿（画像やリンクカードの添付、AIによる校正を含みます）</li><li>投稿内の英単語の辞書検索とAIによる解説</li><li>単語帳への登録・管理</li><li>クイズによる語彙学習</li><li>学習進捗の記録・表示とBlueskyへのシェア</li><li>音声読み上げ（投稿の本文・英単語）</li></ul>
+<p>AIによる解説と校正は、運営者が許可したアカウントだけが利用できます。</p>
 
 <h2>第3条（利用登録）</h2>
 <p>1. 本アプリの利用には、Blueskyアカウントによるログインが必要です。ユーザーは、AT Protocol OAuth認証を通じてBlueskyアカウントでログインすることにより、本アプリの利用を開始するものとします。</p>
@@ -72,14 +72,12 @@ a:hover { text-decoration: underline; }
 <h2>第4条（アカウントの管理）</h2>
 <p>1. ユーザーは、自己の責任において、本アプリの利用に使用するBlueskyアカウントを適切に管理するものとします。</p>
 <p>2. ユーザーのBlueskyアカウントが第三者によって不正に使用されたことによって生じた損害について、運営者は一切の責任を負わないものとします。</p>
-<p>3. ユーザーが本アプリに設定したGemma APIキーの管理は、ユーザーの責任において行うものとします。APIキーの漏洩・不正使用等によって生じた損害について、運営者は一切の責任を負わないものとします。</p>
 
 <h2>第5条（データの保存と管理）</h2>
-<p>1. 本アプリにおけるユーザーデータ（登録した単語、学習統計等）は、ユーザーの端末内でローカル保存されます。運営者のサーバーへ送信・保存されることはありません。</p>
-<p>2. 本アプリは、AT Protocolの仕組みに基づき、登録した単語データおよび学習進捗をユーザー自身のPDS（Personal Data Server）に同期する機能を提供します。PDSに保存されたデータは、ユーザー自身が所有・管理するものであり、運営者がこれを管理・閲覧することはありません。</p>
-<p>3. PDSへのデータ同期は、端末変更やアプリ再インストール時のデータ復元を目的としています。PDS側の障害やデータ消失について、運営者は一切の責任を負わないものとします。</p>
-<p>4. 端末の故障、アプリの削除、その他の事由によりローカルデータが失われた場合、運営者はデータの復旧について一切の責任を負わないものとします。</p>
-<p>5. ユーザーは、必要に応じて本アプリのデータエクスポート機能を利用し、自己の責任においてデータのバックアップを行うものとします。</p>
+<p>1. 登録した単語は、AT Protocolの仕組みに基づき、ユーザー自身のPDS（Personal Data Server）に保存されます。PDSに保存されたデータは、ユーザー自身が所有・管理するものであり、運営者がこれを管理することはありません。PDSのデータは、AT Protocolの仕組み上、公開され、誰でも読むことができます。</p>
+<p>2. 学習の記録（クイズの結果）や設定は、ユーザーのブラウザの中に保存され、運営者のサーバーへ送信・保存されることはありません。これらはブラウザや端末ごとに別々に保存され、ほかのブラウザや端末には引き継がれません。</p>
+<p>3. PDS側の障害やデータ消失について、運営者は一切の責任を負わないものとします。</p>
+<p>4. ブラウザのデータの削除、端末の故障その他の事由によりブラウザの中のデータが失われた場合、運営者はデータの復旧について一切の責任を負わないものとします。</p>
 
 <h2>第6条（知的財産権）</h2>
 <p>1. 本アプリに関連する全ての知的財産権（著作権、商標権、意匠権等）は、運営者または正当な権利を有する第三者に帰属します。</p>
@@ -93,7 +91,7 @@ a:hover { text-decoration: underline; }
 <p>4. 運営者のサービスの運営を妨害するおそれのある行為</p>
 <p>5. 他のユーザーに関する個人情報等を収集または蓄積する行為</p>
 <p>6. 不正アクセスをし、またはこれを試みる行為</p>
-<p>7. 本アプリのリバースエンジニアリング、逆コンパイル、逆アセンブル等の行為（オープンソースライセンスに基づく範囲を除く）</p>
+<p>7. 本アプリのリバースエンジニアリング、逆コンパイル、逆アセンブル等の行為</p>
 <p>8. 本アプリを利用した営利目的の活動（運営者が別途許可した場合を除く）</p>
 <p>9. 反社会的勢力に対して直接または間接に利益を供与する行為</p>
 <p>10. 他のユーザーに対する誹謗中傷、嫌がらせ、脅迫、ストーキングその他の迷惑行為</p>
@@ -104,25 +102,24 @@ a:hover { text-decoration: underline; }
 
 <h2>第8条（外部サービスの利用）</h2>
 <p>1. 本アプリは、以下の外部サービスおよびデータを利用して機能を提供します。</p>
-<ul><li>Bluesky / AT Protocol（タイムライン取得、投稿機能）</li><li>cardyb API（Bluesky公式。リンクカード付き投稿作成時のリンクプレビュー取得）</li><li>Google AI Studio — Gemma4 API（AI辞書・翻訳・校正機能。ユーザーが自身のAPIキーを設定した場合）</li><li>JMdict辞書データ（日英・英日辞書機能、Electronic Dictionary Research and Development Group提供、CC BY-SA 4.0ライセンス）</li><li>Google Apps Script（運営者管理。フィードバック送信機能）</li></ul>
-<p>2. AI辞書機能について: ユーザーが設定画面でGemma APIキーを設定した場合、本アプリで検索した単語がGoogle AI Studio（Gemma4）APIに直接送信され、定義・翻訳・例文・コロケーション・ニュアンスが取得されます。このデータは辞書検索の目的にのみ使用され、運営者が保存することはありません。GoogleのAPI利用規約では、APIを通じて送信されたデータはデフォルトではモデルの学習に使用されないと定められています。</p>
+<ul><li>Bluesky / AT Protocol（タイムラインの取得、投稿機能）</li><li>cardyb API（Bluesky公式。リンクカード付きの投稿を作るときのリンクプレビューの取得）</li><li>Cloudflare（本アプリの配信、AI機能の中継）</li><li>Google AI Studio — Gemma API（AIによる解説・校正。運営者が許可したアカウントのみ）</li><li>EJDict（英和辞書データ。kujirahand氏が公開、パブリックドメイン（CC0））</li></ul>
+<p>2. AI機能について: 解説を求めた英単語と、校正を求めた投稿の下書きは、運営者のサーバー（Cloudflare）を経由してGoogle AI Studio（Gemma）のAPIに送信されます。運営者は送信内容を保存しません。Gemini APIの無料枠では、送信された内容がGoogleの製品の改善やモデルの学習に使われることがあります（詳しくはプライバシーポリシー第5条）。</p>
 <p>各外部サービスの利用規約が別途適用されます。ユーザーは各外部サービスの利用規約を遵守する責任を負うものとします。外部サービスの仕様変更・障害・終了等により本アプリの一部機能が利用できなくなった場合、運営者は一切の責任を負わないものとします。</p>
 
 <h2>第9条（ユーザー投稿コンテンツとコンテンツポリシー）</h2>
-<p>1. 本アプリには、学習進捗をBlueskyに投稿する機能があります。ユーザーは、当該機能の利用にあたり、投稿内容がBluesky上で公開されることを理解し、自己の責任において利用するものとします。</p>
+<p>1. 本アプリには、Blueskyに投稿する機能（学習進捗のシェアを含みます）があります。ユーザーは、投稿内容がBluesky上で公開されることを理解し、自己の責任において利用するものとします。</p>
 <p>2. ユーザーが本アプリを通じてBlueskyに投稿した内容について、運営者は一切の責任を負わないものとします。</p>
-<p>3. 本アプリは、Blueskyのコンテンツラベルに基づき、センシティブなコンテンツに対して警告表示を行います。</p>
+<p>3. 本アプリは、ユーザーのBlueskyのモデレーション設定（コンテンツラベル、ミュートワード等）に従い、該当する投稿をぼかして警告を表示します。</p>
 <p>4. 【不適切なコンテンツ・迷惑行為の禁止】運営者は、不適切なコンテンツおよび他のユーザーに対する迷惑行為を一切許容しません（no tolerance）。第7条各号に該当する投稿・行為は禁止されます。</p>
-<p>5. 【通報】ユーザーは、本アプリのタイムラインに表示される投稿の通報アイコン、またはユーザープロフィールの「通報」から、不適切な投稿および迷惑行為を行うユーザーを通報することができます。通報された投稿は、送信と同時にユーザーの端末上で非表示となります。</p>
-<p>6. 【対応】運営者は、通報を受けた場合、24時間以内に内容を確認し、不適切と判断したコンテンツの削除およびコンテンツを投稿したユーザーの排除（アプリの利用制限）を含む必要な措置を講じます。本アプリはBlueskyのクライアントであるため、通報はBluesky（AT Protocol）のモデレーションサービスにも同時に送信され、ネットワーク全体での対応が行われます。</p>
-<p>7. 【ブロック】ユーザーは、ユーザープロフィールから任意のユーザーをブロックすることができます。ブロックしたユーザーの投稿は本アプリに表示されなくなります。</p>
+<p>5. 【通報・ブロック】本アプリには、投稿の通報やユーザーのブロックの機能はありません。不適切な投稿や迷惑行為は、Blueskyの公式アプリ等からBlueskyに通報してください。Blueskyで行ったブロックやミュートは、本アプリにも反映されます。</p>
+<p>6. 【対応】運営者は、第7条各号に該当する行為を知った場合、第11条に基づき必要な措置を講じます。</p>
 
 <h2>第10条（本アプリの提供の停止等）</h2>
 <p>運営者は、以下のいずれかの事由があると判断した場合、ユーザーへの事前通知なく本アプリの全部または一部の提供を停止または中断することができるものとします。</p>
 <p>1. 本アプリにかかるシステムの保守点検または更新を行う場合</p>
 <p>2. 地震、落雷、火災、停電または天災などの不可抗力により、本アプリの提供が困難となった場合</p>
 <p>3. コンピュータまたは通信回線等が事故により停止した場合</p>
-<p>4. 外部サービス（Bluesky、Google AI Studio、Cloudflare Workers等）の障害・仕様変更等により、本アプリの提供が困難となった場合</p>
+<p>4. 外部サービス（Bluesky、Cloudflare、Google AI Studio等）の障害・仕様変更等により、本アプリの提供が困難となった場合</p>
 <p>5. その他、運営者が本アプリの提供が困難と判断した場合</p>
 
 <h2>第11条（利用制限）</h2>
@@ -134,7 +131,7 @@ a:hover { text-decoration: underline; }
 <p>1. 運営者は、本アプリに事実上または法律上の瑕疵がないことを保証しておりません。ここでいう瑕疵には、安全性、信頼性、正確性、完全性、有効性、特定目的への適合性、セキュリティに関する欠陥、エラーやバグ、権利侵害などを含みます。</p>
 <p>2. 運営者は、本アプリの利用によりユーザーに生じた、直接的または間接的な損害について、一切の責任を負いません。</p>
 <p>3. 本アプリが提供する辞書検索結果、翻訳結果、テキスト解析結果等の正確性、完全性について、運営者は一切の保証をしません。</p>
-<p>4. 本アプリはオープンソースソフトウェアとして提供されており、現状有姿（AS IS）で提供されます。</p>
+<p>4. 本アプリは現状有姿（AS IS）で提供されます。</p>
 
 <h2>第13条（サービス内容の変更等）</h2>
 <p>運営者は、ユーザーに通知することなく、本アプリの内容を変更しまたは本アプリの提供を中止することができるものとし、これによってユーザーに生じた損害について一切の責任を負いません。</p>
@@ -166,10 +163,10 @@ a:hover { text-decoration: underline; }
 <p>2. The Operator may establish various rules and regulations (hereinafter &quot;Individual Provisions&quot;) regarding the use of this App, in addition to these Terms. Such Individual Provisions shall constitute a part of these Terms regardless of their title.</p>
 
 <h2>Article 2 (Definition of Service)</h2>
-<p>1. This App is a vocabulary learning support tool for learning English words and phrases in Japanese while browsing AT Protocol (Bluesky, etc.) timelines.</p>
+<p>1. This App is a vocabulary learning tool for studying English words and phrases in Japanese while browsing timelines on the AT Protocol (Bluesky, etc.). It is used in a web browser.</p>
 <p>2. This App provides the following main features:</p>
-<ul><li>Display of Bluesky timeline</li><li>Dictionary search and translation of English words in posts</li><li>Registration and management of vocabulary</li><li>Quiz mode for vocabulary practice</li><li>Recording and display of learning progress</li><li>Sharing learning progress on Bluesky</li><li>Text-to-speech feature (pronunciation of English words and definitions)</li><li>Learning reminder notifications</li></ul>
-<p>The AI-powered dictionary and translation features use Google AI Studio (Gemma4) via the User's own API key. Users are responsible for obtaining and managing their Gemma API key.</p>
+<ul><li>Display of the Bluesky timeline (including likes and reposts)</li><li>Posting (including attaching images and link cards, and proofreading by AI)</li><li>Dictionary lookup and AI explanations of English words in posts</li><li>Saving words to and managing a word list</li><li>Vocabulary learning through quizzes</li><li>Recording and displaying learning progress, and sharing it on Bluesky</li><li>Text-to-speech (post text and English words)</li></ul>
+<p>AI explanations and proofreading are available only to accounts the Operator has allowed.</p>
 
 <h2>Article 3 (Registration)</h2>
 <p>1. Use of this App requires login with a Bluesky account. Users shall begin using this App by logging in with their Bluesky account through AT Protocol OAuth authentication.</p>
@@ -178,14 +175,12 @@ a:hover { text-decoration: underline; }
 <h2>Article 4 (Account Management)</h2>
 <p>1. Users shall properly manage the Bluesky account used for this App at their own responsibility.</p>
 <p>2. The Operator shall not be liable for any damages arising from unauthorized use of a User's Bluesky account by a third party.</p>
-<p>3. Users are responsible for managing the Gemma API key set in this App. The Operator shall not be liable for any damages arising from leakage or unauthorized use of API keys.</p>
 
 <h2>Article 5 (Data Storage and Management)</h2>
-<p>1. User data in this App (registered words, learning statistics, etc.) is stored locally on the User's device. User data is not transmitted to or stored on the Operator's servers.</p>
-<p>2. This App provides a function to sync registered vocabulary data and learning progress to the User's own PDS (Personal Data Server) based on the AT Protocol framework. Data stored on PDS is owned and managed by the User, and the Operator does not manage or access it.</p>
-<p>3. Data synchronization to PDS is intended for data restoration when changing devices or reinstalling the App. The Operator shall not be liable for any PDS-side failures or data loss.</p>
-<p>4. The Operator shall not be liable for data recovery if local data is lost due to device failure, app deletion, or other reasons.</p>
-<p>5. Users shall back up their data at their own responsibility using the data export function of this App as needed.</p>
+<p>1. Saved words are stored in the User's own PDS (Personal Data Server) based on the AT Protocol. Data stored in the PDS is owned and managed by the User, and the Operator does not manage it. Data in a PDS is public by design of the AT Protocol and can be read by anyone.</p>
+<p>2. Learning records (quiz results) and settings are stored in the User's browser and are never sent to or stored on the Operator's servers. They are kept separately for each browser and device and do not carry over to other browsers or devices.</p>
+<p>3. The Operator shall not be liable for any failures or data loss on the PDS side.</p>
+<p>4. The Operator shall not be liable for recovering data in the browser that is lost because browser data is cleared, a device fails, or for any other reason.</p>
 
 <h2>Article 6 (Intellectual Property Rights)</h2>
 <p>1. All intellectual property rights (copyrights, trademark rights, design rights, etc.) related to this App belong to the Operator or third parties with legitimate rights.</p>
@@ -199,7 +194,7 @@ a:hover { text-decoration: underline; }
 <p>4. Actions that may interfere with the operation of the Operator's services</p>
 <p>5. Collecting or accumulating personal information of other users</p>
 <p>6. Unauthorized access or attempts thereof</p>
-<p>7. Reverse engineering, decompilation, or disassembly of this App (except within the scope of open source licenses)</p>
+<p>7. Reverse engineering, decompilation, or disassembly of this App</p>
 <p>8. Commercial activities using this App (unless separately permitted by the Operator)</p>
 <p>9. Directly or indirectly providing benefits to antisocial forces</p>
 <p>10. Defamation, harassment, threats, stalking, or any other abusive behavior toward other users</p>
@@ -210,25 +205,24 @@ a:hover { text-decoration: underline; }
 
 <h2>Article 8 (Use of External Services)</h2>
 <p>1. This App uses the following external services and data to provide its features:</p>
-<ul><li>Bluesky / AT Protocol (timeline retrieval, posting)</li><li>cardyb API (Official Bluesky link preview API for link card creation)</li><li>Google AI Studio — Gemma4 API (AI-powered dictionary, translation, proofreading; requires User's own API key)</li><li>JMdict dictionary data (Japanese-English dictionary, provided by Electronic Dictionary Research and Development Group, CC BY-SA 4.0 license)</li><li>Google Apps Script (Operator-managed, feedback submission)</li></ul>
-<p>2. AI Dictionary Feature: When the User sets their Gemma API key in Settings, words looked up in this App are sent directly to the Google AI Studio (Gemma4) API to retrieve definitions, translations, example sentences, collocations, and nuance. This data is processed solely for dictionary lookup and is not stored by the Operator. Google's API terms of service state that data submitted via the API is not used for model training by default.</p>
-<p>The terms of service of each external service apply separately. Users are responsible for complying with the terms of service of each external service. The Operator shall not be liable if some features become unavailable due to specification changes, failures, or termination of external services.</p>
+<ul><li>Bluesky / AT Protocol (timeline retrieval, posting)</li><li>cardyb API (official Bluesky service; fetches link previews when creating posts with link cards)</li><li>Cloudflare (delivery of this App, relaying AI features)</li><li>Google AI Studio — Gemma API (AI explanations and proofreading; only for accounts the Operator has allowed)</li><li>EJDict (English-Japanese dictionary data, published by kujirahand, public domain (CC0))</li></ul>
+<p>2. About AI features: English words you ask to have explained and post drafts you ask to have proofread are sent to the Google AI Studio (Gemma) API via the Operator's server (Cloudflare). The Operator does not store what is sent. Under the free tier of the Gemini API, content sent may be used by Google to improve its products and train its models (see Article 5 of the Privacy Policy for details).</p>
+<p>The terms of service of each external service apply separately. Users are responsible for complying with them. The Operator shall not be liable if some features of this App become unavailable due to specification changes, failures, or termination of external services.</p>
 
 <h2>Article 9 (User-Generated Content and Content Policy)</h2>
-<p>1. This App includes a feature to post learning progress to Bluesky. Users shall understand that posted content will be publicly available on Bluesky and use this feature at their own responsibility.</p>
-<p>2. The Operator shall not be liable for any content posted to Bluesky through this App.</p>
-<p>3. This App displays warnings for sensitive content based on Bluesky's content labels.</p>
-<p>4. [No tolerance] The Operator has zero tolerance for objectionable content and for abusive behavior toward other users. Any post or conduct described in Article 7 is prohibited.</p>
-<p>5. [Reporting] Users can report objectionable posts using the flag icon on any post in the timeline, and can report abusive users from the user profile. A reported post is hidden on the user's device as soon as the report is sent.</p>
-<p>6. [Enforcement] The Operator reviews every report within 24 hours and takes the necessary measures, including removing content deemed objectionable and ejecting the user who provided it (restricting their use of the App). As this App is a Bluesky client, reports are also forwarded to the moderation service of Bluesky (AT Protocol) so that action can be taken network-wide.</p>
-<p>7. [Blocking] Users can block any user from that user's profile. Posts from blocked users no longer appear in this App.</p>
+<p>1. This App has features for posting to Bluesky (including sharing learning progress). Users shall understand that posted content becomes public on Bluesky and use these features at their own responsibility.</p>
+<p>2. The Operator shall not be liable for any content Users post to Bluesky through this App.</p>
+<p>3. This App follows the User's Bluesky moderation settings (content labels, muted words, etc.) and blurs matching posts with a warning.</p>
+<p>4. [Prohibition of Objectionable Content and Abusive Behavior] The Operator has no tolerance for objectionable content or abusive behavior toward other users. Posts and actions that fall under any item of Article 7 are prohibited.</p>
+<p>5. [Reporting and Blocking] This App has no features for reporting posts or blocking users. Please report objectionable posts or abusive behavior to Bluesky through the official Bluesky app or similar. Blocks and mutes you set on Bluesky also apply in this App.</p>
+<p>6. [Response] If the Operator becomes aware of any action that falls under an item of Article 7, the Operator will take necessary measures under Article 11.</p>
 
 <h2>Article 10 (Suspension of Service)</h2>
 <p>The Operator may suspend or interrupt all or part of this App without prior notice to Users if any of the following reasons apply:</p>
 <p>1. When performing maintenance or updates to the systems of this App</p>
 <p>2. When provision of this App becomes difficult due to force majeure such as earthquakes, lightning, fire, power outages, or natural disasters</p>
 <p>3. When computers or communication lines are stopped due to accidents</p>
-<p>4. When provision of this App becomes difficult due to failures or specification changes of external services (Bluesky, Google AI Studio, Cloudflare Workers, etc.)</p>
+<p>4. When provision of this App becomes difficult due to failures or specification changes of external services (Bluesky, Cloudflare, Google AI Studio, etc.)</p>
 <p>5. When the Operator determines that provision of this App is otherwise difficult</p>
 
 <h2>Article 11 (Usage Restrictions)</h2>
@@ -240,7 +234,7 @@ a:hover { text-decoration: underline; }
 <p>1. The Operator does not warrant that this App is free from defects in fact or law. Such defects include defects related to safety, reliability, accuracy, completeness, effectiveness, fitness for a particular purpose, security, errors, bugs, and infringement of rights.</p>
 <p>2. The Operator shall not be liable for any direct or indirect damages incurred by Users from the use of this App.</p>
 <p>3. The Operator makes no guarantees regarding the accuracy or completeness of dictionary search results, translation results, text analysis results, etc. provided by this App.</p>
-<p>4. This App is provided as open source software and is provided &quot;AS IS&quot;.</p>
+<p>4. This App is provided &quot;AS IS&quot;.</p>
 
 <h2>Article 13 (Changes to Service Content)</h2>
 <p>The Operator may change or discontinue the content of this App without notice to Users and shall not be liable for any damages incurred by Users as a result.</p>

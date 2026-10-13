@@ -58,99 +58,84 @@ a:hover { text-decoration: underline; }
 <h2>第1条（個人情報の定義）</h2>
 <p>「個人情報」とは、個人情報保護法にいう「個人情報」を指すものとし、生存する個人に関する情報であって、当該情報に含まれる氏名、生年月日、住所、電話番号、連絡先その他の記述等により特定の個人を識別できる情報（個人識別符号となるものを含む）を指します。</p>
 
-<h2>第2条（収集する情報）</h2>
+<h2>第2条（取得する情報）</h2>
 <p>本アプリは、以下の情報を取得する場合があります。</p>
 <h3>【1. Blueskyアカウント情報】</h3>
-<p>Bluesky OAuth認証を通じて以下の情報を取得します。</p>
+<p>Bluesky（AT Protocol）のOAuth認証を通じて以下の情報を取得します。</p>
 <ul><li>ユーザーのDID（分散型識別子）</li><li>ハンドル名（ユーザー名）</li><li>表示名、アバター画像、プロフィール情報</li></ul>
-<h3>【2. 端末内に保存されるデータ】</h3>
-<p>以下のデータはユーザーの端末内に保存され、運営者のサーバーに送信されることはありません（単語データは【3】のとおり、ユーザー自身のPDSにも同期されます）。</p>
-<ul><li>登録した単語データ（英単語、日本語訳、定義、登録元の投稿情報）</li><li>学習統計データ（日別の学習数、クイズ履歴等）</li><li>アプリ設定（テーマ、言語、チュートリアル完了状態等）</li><li>Google AI StudioのAPIキー（AI機能に使います。端末の暗号化ストレージに保存します）</li></ul>
-<h3>【3. PDSに同期されるデータ】</h3>
-<p>AT Protocolの仕組みに基づき、以下のデータがユーザー自身のPDS（Personal Data Server）に同期されます。</p>
-<ul><li>登録した単語データ（英単語、日本語訳、定義、既読状態、登録元の投稿URL等）</li></ul>
-<p>PDSに保存されたデータは、AT Protocolの仕組み上、公開され、誰でも読むことができます。そのため、登録元の投稿の本文は同期しません。</p>
+<h3>【2. ブラウザの中に保存されるデータ】</h3>
+<p>以下のデータはユーザーのブラウザの中（IndexedDB・localStorage）に保存され、運営者のサーバーに送信されることはありません。</p>
+<ul><li>ログインの状態（認証トークン）</li><li>単語帳の控え（PDSの単語データの写しです。ログアウトすると削除されます）</li><li>学習の記録（クイズの結果です。アカウントごとに分けて保存し、ログアウトしても削除されません）</li><li>投稿の下書き</li><li>設定（表示言語、効果音等）</li></ul>
+<h3>【3. PDSに保存されるデータ】</h3>
+<p>AT Protocolの仕組みに基づき、以下のデータがユーザー自身のPDS（Personal Data Server）に保存されます。</p>
+<ul><li>登録した単語データ（英単語、日本語訳、定義、AIによる解説、既読状態、登録元の投稿のURL等）</li></ul>
+<p>PDSに保存されたデータは、AT Protocolの仕組み上、公開され、誰でも読むことができます。そのため、登録元の投稿の本文は保存しません。</p>
 <h3>【4. 外部サービスに送信されるデータ】</h3>
 <p>本アプリの機能を提供するため、以下のデータが外部サービスに送信されます。</p>
-<ul><li>Bluesky / AT Protocol: タイムライン取得リクエスト、投稿内容（投稿・進捗シェア時）、画像データ（投稿添付時）、ログイン時のアカウント情報の照会（plc.directoryを含みます）</li><li>Blueskyのモデレーションサービス: 通報した投稿またはアカウントと、通報の理由（通報したときのみ）</li><li>cardyb API（Bluesky公式）: 投稿に含まれるURL（リンクカード付き投稿を作成する際のみ）</li><li>Google AI Studio — Gemma API: 解説を求めた英単語、英作文モードで書いた英文と出題の例文、校正を求めた投稿の下書き（ユーザーがAPIキーを設定した場合のみ）</li><li>Appleの音声認識: クイズの音声入力を使ったときの音声（音声入力を使った場合のみ）</li><li>Google Apps Script（運営者管理）: フィードバック内容（フィードバック機能利用時のみ）</li><li>GitHub: アプリと辞書の更新の確認、および辞書データのダウンロードのためのリクエスト（ユーザーを特定する情報は送信しません）</li></ul>
-<h3>【5. フィードバック情報】</h3>
-<p>ユーザーがアプリ内のフィードバック機能を利用した場合、以下の情報がGoogle Apps Script経由で運営者に送信されます。</p>
-<ul><li>フィードバックの種類（バグ報告、機能要望、辞書修正等）</li><li>フィードバックの内容（件名、説明、コメント）</li><li>関連する単語情報や投稿URL（該当する場合）</li><li>不具合報告の場合は、アプリの動作ログ、アプリのバージョン、OSの種類とバージョン</li></ul>
-<p>送信された内容は、運営者の非公開のGitHubリポジトリにIssueとして記録されます。</p>
+<ul><li>Bluesky / AT Protocol: タイムライン取得リクエスト、投稿内容（投稿・進捗シェア時）、画像データ（投稿添付時）、いいね・リポスト、ログイン時のアカウント情報の照会（plc.directoryを含みます）</li><li>cardyb API（Bluesky公式）: 投稿に含まれるURL（リンクカード付きの投稿を作る際のみ）</li><li>Cloudflare（本アプリの配信元）: 本アプリを開いたときの通信（IPアドレス、ブラウザの種類等）、AI機能を使ったときの依頼内容とBlueskyが発行するアカウントの証明（DIDを含みます）</li><li>Google AI Studio — Gemma API: 解説を求めた英単語、校正を求めた投稿の下書き（運営者が許可したアカウントのみ）</li><li>ブラウザの音声合成機能: 読み上げる文章（読み上げを使った場合のみ）</li></ul>
 
 <h2>第3条（情報の利用目的）</h2>
 <p>運営者が情報を利用する目的は、以下のとおりです。</p>
 <p>1. 本アプリの提供・運営のため</p>
 <p>2. ユーザー認証およびBlueskyアカウントとの連携のため</p>
-<p>3. 単語データの保存・復元機能を提供するため</p>
-<p>4. 辞書検索、翻訳、テキスト解析等の学習支援機能を提供するため</p>
-<p>5. ユーザーからのフィードバックに対応し、本アプリを改善するため</p>
-<p>6. 本アプリの不具合の修正および機能改善のため</p>
-<p>7. 学習リマインダーの通知のため</p>
+<p>3. 単語帳の保存・同期の機能を提供するため</p>
+<p>4. 辞書検索、AIによる解説、投稿の校正、読み上げ等の学習支援機能を提供するため</p>
+<p>5. AI機能の不正利用を防ぐため（利用できるアカウントの確認と、IPアドレスごとの利用回数の制限）</p>
+<p>6. ユーザーからのお問い合わせに対応し、本アプリを改善するため</p>
+<p>7. 本アプリの不具合の修正および機能改善のため</p>
 
 <h2>第4条（個人情報の第三者提供）</h2>
 <p>1. 運営者は、次に掲げる場合を除いて、あらかじめユーザーの同意を得ることなく、第三者に個人情報を提供することはありません。</p>
 <ul><li>人の生命、身体または財産の保護のために必要がある場合であって、本人の同意を得ることが困難であるとき</li><li>公衆衛生の向上または児童の健全な育成の推進のために特に必要がある場合であって、本人の同意を得ることが困難であるとき</li><li>国の機関もしくは地方公共団体またはその委託を受けた者が法令の定める事務を遂行することに対して協力する必要がある場合であって、本人の同意を得ることにより当該事務の遂行に支障を及ぼすおそれがあるとき</li><li>その他法令で認められる場合</li></ul>
-<p>2. 本アプリは、ユーザーがAPIキーを設定した場合に、第2条【4】に記載した内容をGoogle AI Studio（Gemma）に送信します。これはユーザーが自ら設定したAPIキーに基づく送信であり、運営者による第三者提供には該当しません。</p>
+<p>2. 本アプリのAI機能（単語の解説・投稿の校正）は、運営者が許可したアカウントだけが利用できます。利用した場合、第2条【4】に記載した内容が、運営者のサーバー（Cloudflare）を経由して、運営者のAPIキーでGoogle AI Studio（Gemma）に送信されます。運営者が許可していないアカウントの情報が送信されることはありません。</p>
 
 <h2>第5条（外部送信規律への対応）</h2>
 <p>電気通信事業法第27条の12（外部送信規律）に基づき、本アプリが利用者の情報を外部に送信する場合の詳細を以下のとおり開示します。</p>
 <h3>【Bluesky / AT Protocol（bsky.social）】</h3>
-<p>送信情報: タイムラインリクエスト、投稿内容、画像データ</p>
+<p>送信情報: タイムラインリクエスト、投稿内容、画像データ、いいね・リポスト</p>
 <p>運営者の目的: タイムライン表示・投稿機能の提供</p>
 <p>送信先の目的: AT Protocolネットワークのサービス提供</p>
 <h3>【ユーザー自身のPDS】</h3>
 <p>送信情報: 単語データ（投稿の本文は含みません）</p>
-<p>運営者の目的: クロスデバイス同期・復元機能の提供</p>
+<p>運営者の目的: 単語帳の保存と、ブラウザや端末をまたいだ利用</p>
 <p>送信先の目的: ユーザー自身のデータ管理</p>
 <p>備考: PDSのデータは、AT Protocolの仕組み上、公開されます。</p>
 <h3>【cardyb API（bsky.app）】</h3>
 <p>送信情報: 投稿に含まれるURL</p>
 <p>運営者の目的: リンクプレビュー（OGPカード）の取得</p>
 <p>送信先の目的: URLのメタデータ抽出サービス提供</p>
-<h3>【Blueskyのモデレーションサービス】</h3>
-<p>送信情報: 通報した投稿またはアカウント、通報の理由</p>
-<p>運営者の目的: 不適切な投稿の通報機能の提供</p>
-<p>送信先の目的: Blueskyのモデレーション</p>
+<h3>【Cloudflare（Cloudflare, Inc.）】</h3>
+<p>送信情報: 本アプリを開いたときの通信（IPアドレス、ブラウザの種類等）、AI機能を使ったときの依頼内容とアカウントの証明</p>
+<p>運営者の目的: 本アプリの配信、AI機能の中継と不正利用の防止</p>
+<p>送信先の目的: ウェブサイトの配信・実行環境の提供</p>
 <h3>【Google AI Studio — Gemma API（Google LLC）】</h3>
-<p>送信情報: 解説を求めた英単語、英作文モードで書いた英文と出題の例文、校正を求めた投稿の下書き（ユーザーがAPIキーを設定した場合のみ）</p>
-<p>運営者の目的: AI機能（単語の解説・英作文の採点・投稿の校正）の提供</p>
+<p>送信情報: 解説を求めた英単語、校正を求めた投稿の下書き（運営者が許可したアカウントのみ）</p>
+<p>運営者の目的: AI機能（単語の解説・投稿の校正）の提供</p>
 <p>送信先の目的: AIテキスト生成サービスの提供</p>
 <p>備考: Gemini APIの追加利用規約（2026年4月28日更新）では、無料枠で送信された内容と生成された応答は、Googleの製品の改善やモデルの学習に使われ、人が読むこともあると定められています。有料枠では、製品の改善には使われません。個人情報や機密情報は送信しないでください。</p>
-<h3>【Appleの音声認識（Apple Inc.）】</h3>
-<p>送信情報: クイズの音声入力を使ったときの音声</p>
-<p>運営者の目的: クイズに音声で回答する機能の提供</p>
-<p>送信先の目的: 音声認識サービスの提供</p>
-<p>備考: 音声は端末内またはAppleのサーバーで文字に変換されます。</p>
-<h3>【Google Apps Script（運営者管理）】</h3>
-<p>送信情報: フィードバック内容</p>
-<p>運営者の目的: フィードバック収集・サービス改善</p>
-<p>送信先の目的: GitHub Issueへの転送</p>
-<h3>【GitHub（GitHub Pages・GitHub API）】</h3>
-<p>送信情報: なし（更新の確認とダウンロードのリクエストのみ）</p>
-<p>運営者の目的: アプリと辞書の更新の確認、辞書データ（JMdict等）の取得</p>
-<p>送信先の目的: ソフトウェアの配布・静的ファイルのホスティング</p>
-<p>※ Google AI Studio（Gemma API）への送信は、ユーザーが自身のAPIキーを設定した場合にのみ発生します。運営者はこのAPIキーにアクセスできません。</p>
-<p>※ 本アプリはアクセス解析・広告・トラッキングSDKを使用していません。</p>
+<h3>【ブラウザの音声合成機能】</h3>
+<p>送信情報: 読み上げる文章</p>
+<p>運営者の目的: 読み上げ機能の提供</p>
+<p>送信先の目的: 音声合成</p>
+<p>備考: 文章を端末の中で処理するか、ブラウザの提供元のサーバーに送って処理するかは、ブラウザと選ばれた声によって異なります。</p>
+<p>※ 本アプリはアクセス解析・広告・トラッキングのツールを使用していません。</p>
 
 <h2>第6条（安全管理措置）</h2>
 <p>運営者は、個人情報の漏えい、滅失またはき損の防止その他の個人情報の安全管理のために、以下の措置を講じています。</p>
-<ul><li>認証トークンおよびAPIキーは、端末の暗号化ストレージ（Expo SecureStore）に保存します</li><li>Bluesky認証にはOAuth（PKCE + DPoP）を採用し、ユーザーのパスワードを取得・保存しません</li><li>外部サービスとの通信はHTTPSによる暗号化通信を使用します</li></ul>
+<ul><li>Bluesky認証にはOAuth（PKCE + DPoP）を採用し、ユーザーのパスワードを取得・保存しません</li><li>認証トークンはユーザーのブラウザの中に保存し、運営者のサーバーには送りません</li><li>AI機能では、Blueskyが発行するアカウントの証明を確かめ、運営者が許可したアカウント以外の依頼を断ります</li><li>AIのAPIキーは運営者のサーバー（Cloudflare）にだけ置き、ブラウザには渡しません</li><li>外部サービスとの通信はHTTPSによる暗号化通信を使用します</li></ul>
 
 <h2>第7条（アナリティクス・トラッキング）</h2>
 <p>本アプリは、アクセス解析ツール、広告配信SDK、トラッキングツール等を使用しておりません。ユーザーの行動データを収集・分析する機能は搭載していません。</p>
 
-<h2>第8条（端末のアクセス権限）</h2>
-<p>本アプリは、以下の端末機能へのアクセス許可を求める場合があります。</p>
-<ul><li>写真ライブラリ: 学習進捗の画像を保存・シェアするため、投稿に画像を添付するため</li><li>カメラ: 投稿に添付する写真を撮影するため</li><li>マイク: 発音練習で自分の声を録音して聞き比べるため、およびクイズに音声で回答するため（発音練習の録音は端末内で再生するだけで、外部には送信しません）</li><li>音声認識: クイズに音声で回答するため</li><li>通知: Blueskyのソーシャルアクション通知（いいね・返信・メンション等）および学習リマインダーを受信するため</li></ul>
-<p>これらの権限は、ユーザーが該当する機能を利用する際にのみ求められ、許可しなくても本アプリの基本機能は利用できます。</p>
+<h2>第8条（ブラウザの権限）</h2>
+<p>本アプリは、カメラ、マイク、位置情報、通知等のブラウザの権限を求めません。投稿に画像を添付するときは、ユーザーが選んだファイルだけを読み込みます。</p>
 
 <h2>第9条（データの削除）</h2>
-<p>1. ユーザーは、本アプリの設定画面から「すべてのデータを削除」を実行することにより、端末内に保存されたすべての学習データを削除できます。</p>
-<p>2. ログアウトを行うことにより、端末内に保存された認証情報は削除されます。</p>
-<p>3. PDSに同期されたデータの削除については、ユーザー自身のPDS管理に委ねられます。</p>
-<p>4. 本アプリをアンインストールすることにより、端末内のすべてのデータが削除されます。</p>
-<p>5. 削除されたデータは復元できません。ユーザーは、削除前に必要に応じてデータエクスポート機能を利用し、バックアップを行ってください。</p>
+<p>1. 登録した単語は、単語帳の画面から1件ずつ削除できます。削除すると、PDSからも削除されます。</p>
+<p>2. ログアウトすると、ブラウザの中の認証情報と単語帳の控えが削除されます。学習の記録は削除されません。</p>
+<p>3. ブラウザでこのサイトのデータを削除すると、ブラウザの中に保存されたすべてのデータ（学習の記録を含みます）が削除されます。</p>
+<p>4. 本アプリから削除しなかったPDSのデータの扱いは、ユーザー自身のPDSの管理に委ねられます。</p>
+<p>5. 削除されたデータは復元できません。</p>
 
 <h2>第10条（未成年者の利用）</h2>
 <p>本アプリは、特に未成年者を対象としたサービスではありませんが、未成年者が利用する場合は、保護者の同意のもとで利用することを推奨します。</p>
@@ -180,96 +165,81 @@ a:hover { text-decoration: underline; }
 <h2>Article 2 (Information We Collect)</h2>
 <p>This App may collect the following information:</p>
 <h3>[1. Bluesky Account Information]</h3>
-<p>The following information is obtained through Bluesky OAuth authentication:</p>
+<p>The following information is obtained through Bluesky (AT Protocol) OAuth authentication:</p>
 <ul><li>User's DID (Decentralized Identifier)</li><li>Handle (username)</li><li>Display name, avatar image, profile information</li></ul>
-<h3>[2. Data Stored on Device]</h3>
-<p>The following data is stored on the User's device and is not sent to the Operator's servers (word data is also synced to the User's own PDS, as described in [3]):</p>
-<ul><li>Registered word data (English words, Japanese translations, definitions, source post information)</li><li>Learning statistics data (daily learning counts, quiz history, etc.)</li><li>App settings (theme, language, tutorial completion status, etc.)</li><li>Google AI Studio API key (used for AI features; stored in the device's encrypted storage)</li></ul>
-<h3>[3. Data Synced to PDS]</h3>
-<p>Based on the AT Protocol framework, the following data is synced to the User's own PDS (Personal Data Server):</p>
-<ul><li>Registered word data (English words, Japanese translations, definitions, read status, source post URLs, etc.)</li></ul>
-<p>Data stored in a PDS is public by design of the AT Protocol and can be read by anyone. For this reason, the text of the source post is not synced.</p>
+<h3>[2. Data Stored in the Browser]</h3>
+<p>The following data is stored in the User's browser (IndexedDB and localStorage) and is never sent to the Operator's servers:</p>
+<ul><li>Sign-in state (authentication tokens)</li><li>A copy of the word list (a copy of the word data in the PDS; deleted when you sign out)</li><li>Learning records (quiz results; kept separately for each account and not deleted when you sign out)</li><li>Post drafts</li><li>Settings (display language, sound effects, etc.)</li></ul>
+<h3>[3. Data Stored in the PDS]</h3>
+<p>Based on the AT Protocol, the following data is stored in the User's own PDS (Personal Data Server):</p>
+<ul><li>Saved word data (English words, Japanese translations, definitions, AI explanations, read status, URL of the source post, etc.)</li></ul>
+<p>Data stored in a PDS is public by design of the AT Protocol and can be read by anyone. For this reason, the text of the source post is not stored.</p>
 <h3>[4. Data Sent to External Services]</h3>
-<p>To provide this App's features, the following data is sent to external services:</p>
-<ul><li>Bluesky / AT Protocol: Timeline retrieval requests, post content (when posting or sharing progress), image data (when attaching to posts), account lookups at sign-in (including plc.directory)</li><li>Bluesky's moderation service: The reported post or account and the reason (only when reporting)</li><li>cardyb API (Official Bluesky): URLs in posts (only when creating posts with link cards)</li><li>Google AI Studio — Gemma API: English words the User asks to have explained, sentences the User writes in the sentence-writing quiz together with the example sentence, and post drafts the User asks to proofread (only when the User has set their API key)</li><li>Apple's speech recognition: The User's voice when using voice input in quizzes (only when voice input is used)</li><li>Google Apps Script (Operator-managed): Feedback content (only when using the feedback feature)</li><li>GitHub: Requests to check for app and dictionary updates and to download dictionary data (no information identifying the User is sent)</li></ul>
-<h3>[5. Feedback Information]</h3>
-<p>When Users use the in-app feedback feature, the following information is sent to the Operator via Google Apps Script:</p>
-<ul><li>Feedback type (bug report, feature request, dictionary correction, etc.)</li><li>Feedback content (subject, description, comments)</li><li>Related word information or post URLs (if applicable)</li><li>For bug reports: the App's activity log, the App version, and the OS name and version</li></ul>
-<p>Submitted feedback is recorded as an issue in the Operator's private GitHub repository.</p>
+<p>To provide the App's features, the following data is sent to external services:</p>
+<ul><li>Bluesky / AT Protocol: Timeline requests, post content (when posting or sharing progress), image data (when attaching images), likes and reposts, account lookups at sign-in (including plc.directory)</li><li>cardyb API (official Bluesky service): URLs in posts (only when creating posts with link cards)</li><li>Cloudflare (host of this App): Connections made when opening this App (IP address, browser type, etc.), and when AI features are used, the request and the account proof issued by Bluesky (including the DID)</li><li>Google AI Studio — Gemma API: English words you ask to have explained, post drafts you ask to have proofread (only for accounts the Operator has allowed)</li><li>The browser's speech synthesis: Text to be read aloud (only when text-to-speech is used)</li></ul>
 
 <h2>Article 3 (Purpose of Information Use)</h2>
-<p>The purposes for which the Operator uses information are as follows:</p>
+<p>The Operator uses information for the following purposes:</p>
 <p>1. To provide and operate this App</p>
-<p>2. For user authentication and linking with Bluesky accounts</p>
-<p>3. To provide word data storage and restoration functions</p>
-<p>4. To provide learning support functions such as dictionary search, translation, and text analysis</p>
-<p>5. To respond to user feedback and improve this App</p>
-<p>6. To fix bugs and improve features of this App</p>
-<p>7. To send learning reminder notifications</p>
+<p>2. For user authentication and integration with Bluesky accounts</p>
+<p>3. To provide saving and syncing of the word list</p>
+<p>4. To provide learning support features such as dictionary lookup, AI explanations, post proofreading, and text-to-speech</p>
+<p>5. To prevent misuse of AI features (checking which accounts may use them, and limiting the number of uses per IP address)</p>
+<p>6. To respond to inquiries from users and improve this App</p>
+<p>7. To fix bugs and improve features of this App</p>
 
 <h2>Article 4 (Provision of Personal Information to Third Parties)</h2>
 <p>1. The Operator will not provide personal information to third parties without prior consent of the User, except in the following cases:</p>
 <ul><li>When necessary to protect the life, body, or property of a person and it is difficult to obtain the consent of the person</li><li>When particularly necessary to improve public health or promote the sound development of children and it is difficult to obtain consent</li><li>When it is necessary to cooperate with a national organ or local government body in executing affairs prescribed by law and obtaining consent may impede such execution</li><li>Other cases permitted by law</li></ul>
-<p>2. When the User has set their API key, this App sends the data listed in Article 2 [4] to Google AI Studio (Gemma). This transmission is based on the API key set by the User and does not constitute third-party provision by the Operator.</p>
+<p>2. The AI features of this App (word explanations and post proofreading) are available only to accounts the Operator has allowed. When they are used, the content described in Article 2 [4] is sent via the Operator's server (Cloudflare) to Google AI Studio (Gemma) using the Operator's API key. Information from accounts the Operator has not allowed is never sent.</p>
 
 <h2>Article 5 (External Transmission Disclosure)</h2>
-<p>Pursuant to Article 27-12 of the Telecommunications Business Act (external transmission regulations), the Operator discloses the following details regarding cases where this App transmits user information externally.</p>
+<p>In accordance with Article 27-12 of the Telecommunications Business Act (External Transmission Rules), we disclose the following details regarding external transmission of user information:</p>
 <h3>[Bluesky / AT Protocol (bsky.social)]</h3>
-<p>Information sent: Timeline requests, post content, image data</p>
+<p>Information sent: Timeline requests, post content, image data, likes and reposts</p>
 <p>Operator's purpose: Providing timeline display and posting features</p>
 <p>Recipient's purpose: Providing AT Protocol network services</p>
-<h3>[User's own PDS]</h3>
+<h3>[User's Own PDS]</h3>
 <p>Information sent: Word data (not including post text)</p>
-<p>Operator's purpose: Providing cross-device sync and restoration</p>
+<p>Operator's purpose: Storing the word list and using it across browsers and devices</p>
 <p>Recipient's purpose: User's own data management</p>
 <p>Note: Data in a PDS is public by design of the AT Protocol.</p>
 <h3>[cardyb API (bsky.app)]</h3>
-<p>Information sent: URLs contained in posts</p>
+<p>Information sent: URLs included in posts</p>
 <p>Operator's purpose: Fetching link previews (OGP cards)</p>
-<p>Recipient's purpose: URL metadata extraction service</p>
-<h3>[Bluesky's moderation service]</h3>
-<p>Information sent: The reported post or account, and the reason</p>
-<p>Operator's purpose: Providing the feature to report inappropriate posts</p>
-<p>Recipient's purpose: Bluesky moderation</p>
+<p>Recipient's purpose: Providing URL metadata extraction services</p>
+<h3>[Cloudflare (Cloudflare, Inc.)]</h3>
+<p>Information sent: Connections made when opening this App (IP address, browser type, etc.), and when AI features are used, the request and the account proof</p>
+<p>Operator's purpose: Delivering this App, relaying AI features and preventing their misuse</p>
+<p>Recipient's purpose: Providing website delivery and runtime services</p>
 <h3>[Google AI Studio — Gemma API (Google LLC)]</h3>
-<p>Information sent: English words the User asks to have explained, sentences written in the sentence-writing quiz with the example sentence, and post drafts sent for proofreading (only when the User has set their API key)</p>
-<p>Operator's purpose: Providing AI features (word explanations, sentence grading, post proofreading)</p>
-<p>Recipient's purpose: AI text generation service</p>
-<p>Note: Under the Gemini API Additional Terms of Service (updated April 28, 2026), content submitted through the unpaid tier and the generated responses are used to improve Google products and train models, and may be read by human reviewers. Content submitted through the paid tier is not used to improve products. Do not submit personal or confidential information.</p>
-<h3>[Apple's speech recognition (Apple Inc.)]</h3>
-<p>Information sent: The User's voice when using voice input in quizzes</p>
-<p>Operator's purpose: Providing voice answers in quizzes</p>
-<p>Recipient's purpose: Speech recognition service</p>
-<p>Note: Voice is converted to text on the device or on Apple's servers.</p>
-<h3>[Google Apps Script (Operator-managed)]</h3>
-<p>Information sent: Feedback content</p>
-<p>Operator's purpose: Feedback collection and service improvement</p>
-<p>Recipient's purpose: Forwarding to GitHub Issues</p>
-<h3>[GitHub (GitHub Pages, GitHub API)]</h3>
-<p>Information sent: None (update checks and download requests only)</p>
-<p>Operator's purpose: Checking for app and dictionary updates, fetching dictionary data (JMdict, etc.)</p>
-<p>Recipient's purpose: Software distribution and static file hosting</p>
-<p>* Transmission to Google AI Studio (Gemma API) occurs only when the User has set their own API key. The Operator cannot access this key.</p>
-<p>* This App does not use analytics, advertising, or tracking SDKs.</p>
+<p>Information sent: English words you ask to have explained, post drafts you ask to have proofread (only for accounts the Operator has allowed)</p>
+<p>Operator's purpose: Providing AI features (word explanations and post proofreading)</p>
+<p>Recipient's purpose: Providing AI text generation services</p>
+<p>Note: The Gemini API Additional Terms of Service (updated April 28, 2026) state that content submitted and responses generated under the free tier are used to improve Google's products and train its models, and may be read by humans. Under the paid tier, they are not used to improve products. Do not send personal or confidential information.</p>
+<h3>[The Browser's Speech Synthesis]</h3>
+<p>Information sent: Text to be read aloud</p>
+<p>Operator's purpose: Providing text-to-speech</p>
+<p>Recipient's purpose: Speech synthesis</p>
+<p>Note: Whether the text is processed on the device or sent to the browser vendor's servers depends on the browser and the selected voice.</p>
+<p>* This App does not use analytics, advertising, or tracking tools.</p>
 
 <h2>Article 6 (Security Measures)</h2>
-<p>The Operator takes the following measures for the security management of personal information to prevent leakage, loss, or damage:</p>
-<ul><li>Authentication tokens and API keys are stored in the device's encrypted storage (Expo SecureStore)</li><li>Bluesky authentication uses OAuth (PKCE + DPoP) and does not obtain or store user passwords</li><li>Communication with external services uses HTTPS encrypted communication</li></ul>
+<p>The Operator takes the following measures to prevent leakage, loss, or damage of personal information and for other security management:</p>
+<ul><li>OAuth (PKCE + DPoP) is used for Bluesky authentication, and the User's password is never obtained or stored</li><li>Authentication tokens are stored in the User's browser and are not sent to the Operator's servers</li><li>For AI features, the account proof issued by Bluesky is verified, and requests from accounts the Operator has not allowed are refused</li><li>The AI API key is kept only on the Operator's server (Cloudflare) and is never given to the browser</li><li>Communication with external services uses HTTPS encryption</li></ul>
 
 <h2>Article 7 (Analytics and Tracking)</h2>
 <p>This App does not use analytics tools, advertising SDKs, or tracking tools. No features for collecting or analyzing user behavioral data are included.</p>
 
-<h2>Article 8 (Device Access Permissions)</h2>
-<p>This App may request access permissions to the following device features:</p>
-<ul><li>Photo Library: To save and share learning progress images, and to attach images to posts</li><li>Camera: To take photos for attaching to posts</li><li>Microphone: To record the User's own voice for pronunciation practice and to answer quizzes by voice (pronunciation recordings are only played back on the device and never sent anywhere)</li><li>Speech recognition: To answer quizzes by voice</li><li>Notifications: To receive Bluesky social action notifications (likes, replies, mentions, etc.) and learning reminders</li></ul>
-<p>These permissions are only requested when the User uses the corresponding features, and the basic features of this App can be used without granting them.</p>
+<h2>Article 8 (Browser Permissions)</h2>
+<p>This App does not ask for browser permissions such as camera, microphone, location, or notifications. When attaching images to a post, it reads only the files the User selects.</p>
 
 <h2>Article 9 (Data Deletion)</h2>
-<p>1. Users can delete all learning data stored on the device by executing &quot;Delete All Data&quot; from the Settings screen of this App.</p>
-<p>2. Logging out will delete authentication information stored on the device.</p>
-<p>3. Deletion of data synced to PDS is left to the User's own PDS management.</p>
-<p>4. Uninstalling this App will delete all data on the device.</p>
-<p>5. Deleted data cannot be recovered. Users should use the data export function to create backups before deletion as needed.</p>
+<p>1. Saved words can be deleted one at a time from the word list screen. Deleting a word also deletes it from the PDS.</p>
+<p>2. Signing out deletes the authentication information and the copy of the word list in the browser. Learning records are not deleted.</p>
+<p>3. Deleting this site's data in the browser deletes all data stored in the browser, including learning records.</p>
+<p>4. PDS data not deleted through this App is left to the management of the User's own PDS.</p>
+<p>5. Deleted data cannot be restored.</p>
 
 <h2>Article 10 (Use by Minors)</h2>
 <p>This App is not specifically targeted at minors, but it is recommended that minors use it with parental consent.</p>
