@@ -2,20 +2,20 @@
 
 くもたん (Kumotan) の公開ページをホストするリポジトリです。
 
-GitHub Pages で配信されます: <https://rietamura.github.io/kumotan-pages/>
+GitHub Pages で配信されます: <https://kumotan.app/>（独自ドメイン。DNS は Cloudflare。旧アドレス `rietamura.github.io/kumotan-pages` は GitHub が新しいアドレスへ転送します）
 
 ## ページ一覧
 
 | ページ | URL |
 | ------ | --- |
-| トップ（紹介ページ・日本語／英語） | <https://rietamura.github.io/kumotan-pages/> |
-| プライバシーポリシー | <https://rietamura.github.io/kumotan-pages/privacy-policy.html> |
-| 利用規約 | <https://rietamura.github.io/kumotan-pages/terms-of-service.html> |
-| OAuth Client Metadata (JSON) | <https://rietamura.github.io/kumotan-pages/oauth-client-metadata.json> |
+| トップ（紹介ページ・日本語／英語） | <https://kumotan.app/> |
+| プライバシーポリシー | <https://kumotan.app/privacy-policy.html> |
+| 利用規約 | <https://kumotan.app/terms-of-service.html> |
+
+iPhone 版の OAuth Client Metadata（`oauth-client-metadata.json`）は、独自ドメインに移ったときに削除しました。client_id が旧アドレスそのものなので、転送されると使えなくなるためです。Web 版のメタデータは Web 版（<https://app.kumotan.app/oauth-client-metadata.json>）が配ります。
 
 ## About
 
-くもたんは、Bluesky のタイムラインから英単語を登録して、自分だけの単語帳を作る英語学習アプリです。iPhone 版を公開中で、Web 版を準備しています。
+くもたんは、Bluesky のタイムラインから英単語を登録して、自分だけの単語帳を作る英語学習アプリです。iPhone 版は 2026年10月13日に App Store での配信を終了し、Web 版に移ります。
 
-- App Store: <https://apps.apple.com/jp/app/id6757349745>
 - お問い合わせ: [GitHub Issues](https://github.com/RieTamura/kumotan-pages/issues)
