@@ -199,7 +199,27 @@
             display: flex; align-items: center; justify-content: center; font-weight: 800;
         }
         .steps strong { display: block; }
-        .steps span { color: var(--ink2); font-size: 15px; }
+        .steps li > span { display: block; color: var(--ink2); font-size: 15px; }
+
+        /* 手順の見本（Web 版の画面を HTML で描く。ログイン後の画面は他人の投稿が写るので撮らない） */
+        .shot { margin-top: 12px; max-width: 340px; border-radius: 18px; overflow: hidden; background: var(--bg); border: 1px solid var(--line); box-shadow: 0 10px 24px rgba(26, 36, 54, 0.10); color: var(--ink); font-size: 13px; line-height: 1.6; }
+        .shot .s-head { padding: 12px 16px 6px; }
+        .shot-body { padding: 4px 16px 16px; }
+        .shot-desc { margin: 0 0 12px; color: var(--ink2); font-size: 12px; }
+        .shot-label { display: block; font-size: 11px; font-weight: 700; color: var(--ink2); margin-bottom: 4px; }
+        .shot-input { padding: 8px 12px; border-radius: 10px; background: var(--surface); border: 1px solid var(--line); color: var(--ink); font-size: 12.5px; }
+        .shot-input.hint { color: var(--ink3); }
+        .shot-btn { margin-top: 12px; padding: 9px 0; border-radius: 999px; text-align: center; font-weight: 700; font-size: 12.5px; background: var(--primaryStrong); color: var(--onPrimary); }
+        .shot-note { margin: 10px 0 0; font-size: 11px; color: var(--ink3); text-align: center; }
+        .shot .post { margin: 4px 12px 14px; }
+        .ww { border-radius: 4px; padding: 0 2px; }
+        .ww.sel { background: var(--accentSoft); }
+        .ww.reg { color: var(--savedInk); font-weight: 600; text-decoration: underline dotted var(--saved); text-decoration-thickness: 1.5px; text-underline-offset: 3px; }
+        .shot .sheet { position: static; border-radius: 0; box-shadow: none; border-top: 1px solid var(--line); }
+        .cands { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px; }
+        .cand { padding: 2px 10px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); font-size: 11.5px; color: var(--ink2); }
+        .cand.on { border-color: var(--primary); background: var(--primarySoft); color: var(--ink); font-weight: 700; }
+        .shot .s-btn .add { flex: none; width: 100%; }
 
         .privacy { max-width: 700px; margin: 0 auto; }
         .privacy ul { list-style: none; padding: 0; margin: 0 0 18px; }
@@ -364,9 +384,40 @@
                     <h2>はじめかた</h2>
                     <p class="sub">Bluesky のアカウントがあれば、すぐに始められます</p>
                     <ol class="steps">
-                        <li><strong>Bluesky でログイン</strong><span>パスワードはくもたんに渡さず、Bluesky の画面でログインします。</span></li>
-                        <li><strong>タイムラインを読む</strong><span>いつものフォローやフィードの投稿を、くもたんの中で読めます。</span></li>
-                        <li><strong>気になった単語を登録</strong><span>意味を確かめて単語帳に追加します。あとはクイズで復習しましょう。</span></li>
+                        <li>
+                            <strong>Bluesky でログイン</strong><span>Bluesky のハンドル（例: yourname.bsky.social）を入れて「Blueskyでログイン」を押します。Bluesky の画面に移るので、パスワードはそこで入れます。くもたんにはパスワードを渡しません。</span>
+                            <div class="shot" aria-hidden="true">
+                            <div class="s-head"><svg class="mascot" viewBox="0 0 100 72" aria-hidden="true"><path d="M22 56C12 56 4 48 4 38c0-9 7-17 16-18 2-9 10-16 20-16 10 0 18 7 20 16 1 0 2 0 3 0 10 0 17 8 17 17s-7 17-17 17H22z" fill="#FFFFFF" stroke="#AFD1ED" stroke-width="3.5"/><circle cx="38" cy="38" r="3" fill="#1A2436"/><circle cx="62" cy="38" r="3" fill="#1A2436"/><path d="M42 46 Q50 52 58 46" fill="none" stroke="#1A2436" stroke-width="2.6" stroke-linecap="round"/><circle cx="30" cy="44" r="2.5" fill="#F7A9B0" opacity="0.7"/><circle cx="70" cy="44" r="2.5" fill="#F7A9B0" opacity="0.7"/></svg>くもたん</div>
+                            <div class="shot-body">
+                                <p class="shot-desc">Blueskyの投稿を読みながら、英単語をタップして保存。あなただけの単語帳を作ろう。</p>
+                                <span class="shot-label">Blueskyのハンドル</span>
+                                <div class="shot-input">yourname.bsky.social</div>
+                                <div class="shot-btn">Blueskyでログイン</div>
+                                <p class="shot-note">このあと Bluesky の画面でパスワードを入れます</p>
+                            </div>
+                            </div>
+                        </li>
+                        <li>
+                            <strong>タイムラインを読む</strong><span>フォローしている人の投稿が並びます。気になった英単語は、そのまま選べます。緑の点線が付いた単語は、もう単語帳にある単語です。</span>
+                            <div class="shot" aria-hidden="true">
+                            <div class="s-head"><svg class="mascot" viewBox="0 0 100 72" aria-hidden="true"><path d="M22 56C12 56 4 48 4 38c0-9 7-17 16-18 2-9 10-16 20-16 10 0 18 7 20 16 1 0 2 0 3 0 10 0 17 8 17 17s-7 17-17 17H22z" fill="#FFFFFF" stroke="#AFD1ED" stroke-width="3.5"/><circle cx="38" cy="38" r="3" fill="#1A2436"/><circle cx="62" cy="38" r="3" fill="#1A2436"/><path d="M42 46 Q50 52 58 46" fill="none" stroke="#1A2436" stroke-width="2.6" stroke-linecap="round"/><circle cx="30" cy="44" r="2.5" fill="#F7A9B0" opacity="0.7"/><circle cx="70" cy="44" r="2.5" fill="#F7A9B0" opacity="0.7"/></svg>くもたん</div>
+                            <div class="post">
+                                <div class="post-h"><span class="avatar">S</span><b>Sora</b><small>@sora.example · 12m</small></div>
+                                The view from the summit was <span class="ww reg">breathtaking</span>. Totally <span class="ww sel">worth</span> the climb.
+                            </div>
+                            </div>
+                        </li>
+                        <li>
+                            <strong>気になった単語を登録</strong><span>単語を選ぶと、辞書の訳が出ます。訳の候補から選ぶか、自分で書き直して「単語帳に追加」を押します。あとはクイズで復習しましょう。</span>
+                            <div class="shot" aria-hidden="true">
+                            <div class="sheet">
+                                <div class="s-word"><b>worth</b></div>
+                                <div class="s-label">日本語訳</div>
+                                <div class="cands"><span class="cand on">価値がある</span><span class="cand">値打ちがある</span><span class="cand">財産を持つ</span></div>
+                                <div class="s-btn"><span class="add">単語帳に追加</span></div>
+                            </div>
+                            </div>
+                        </li>
                     </ol>
                 </div>
             </section>
@@ -395,13 +446,6 @@
                     <details>
                         <summary>登録した単語は、ほかの人に見えますか？</summary>
                         <div class="answer"><p>見えます。単語帳はあなたの PDS に保存され、PDS のデータは AT Protocol の仕組み上、誰でも読めます。投稿の本文は保存せず、元の投稿へのリンクだけを残します。</p></div>
-                    </details>
-                    <details>
-                        <summary>iPhone 版はもう入手できませんか？</summary>
-                        <div class="answer">
-                            <p>2026年10月13日に App Store での配信を終了しました。今後は Web 版に移ります。</p>
-                            <p>すでに入れているアプリでも、新しくログインすることはできなくなりました。ログインしたままの状態も、いずれ切れます。単語帳は PDS に残っているので、Web 版が公開されたら、そこで読めます。</p>
-                        </div>
                     </details>
                     <details>
                         <summary>機種を変えたら、データはどうなりますか？</summary>
@@ -482,9 +526,40 @@
                     <h2>Getting started</h2>
                     <p class="sub">All you need is a Bluesky account</p>
                     <ol class="steps">
-                        <li><strong>Sign in with Bluesky</strong><span>You sign in on Bluesky's own page. Kumotan never sees your password.</span></li>
-                        <li><strong>Read your timeline</strong><span>Your usual follows and feeds, right inside Kumotan.</span></li>
-                        <li><strong>Save the words you notice</strong><span>Check the meaning, add it to your list, then review with quizzes.</span></li>
+                        <li>
+                            <strong>Sign in with Bluesky</strong><span>Enter your Bluesky handle (e.g. yourname.bsky.social) and press "Sign in with Bluesky". You move to Bluesky's own page and enter your password there. Kumotan never sees your password.</span>
+                            <div class="shot" aria-hidden="true">
+                            <div class="s-head"><svg class="mascot" viewBox="0 0 100 72" aria-hidden="true"><path d="M22 56C12 56 4 48 4 38c0-9 7-17 16-18 2-9 10-16 20-16 10 0 18 7 20 16 1 0 2 0 3 0 10 0 17 8 17 17s-7 17-17 17H22z" fill="#FFFFFF" stroke="#AFD1ED" stroke-width="3.5"/><circle cx="38" cy="38" r="3" fill="#1A2436"/><circle cx="62" cy="38" r="3" fill="#1A2436"/><path d="M42 46 Q50 52 58 46" fill="none" stroke="#1A2436" stroke-width="2.6" stroke-linecap="round"/><circle cx="30" cy="44" r="2.5" fill="#F7A9B0" opacity="0.7"/><circle cx="70" cy="44" r="2.5" fill="#F7A9B0" opacity="0.7"/></svg>Kumotan</div>
+                            <div class="shot-body">
+                                <p class="shot-desc">Read Bluesky posts, tap English words to save them, and build your own vocabulary list.</p>
+                                <span class="shot-label">Bluesky handle</span>
+                                <div class="shot-input">yourname.bsky.social</div>
+                                <div class="shot-btn">Sign in with Bluesky</div>
+                                <p class="shot-note">Next, enter your password on Bluesky's page</p>
+                            </div>
+                            </div>
+                        </li>
+                        <li>
+                            <strong>Read your timeline</strong><span>Posts from the people you follow appear here. Pick any English word you notice. Words with a green dotted underline are already in your word list.</span>
+                            <div class="shot" aria-hidden="true">
+                            <div class="s-head"><svg class="mascot" viewBox="0 0 100 72" aria-hidden="true"><path d="M22 56C12 56 4 48 4 38c0-9 7-17 16-18 2-9 10-16 20-16 10 0 18 7 20 16 1 0 2 0 3 0 10 0 17 8 17 17s-7 17-17 17H22z" fill="#FFFFFF" stroke="#AFD1ED" stroke-width="3.5"/><circle cx="38" cy="38" r="3" fill="#1A2436"/><circle cx="62" cy="38" r="3" fill="#1A2436"/><path d="M42 46 Q50 52 58 46" fill="none" stroke="#1A2436" stroke-width="2.6" stroke-linecap="round"/><circle cx="30" cy="44" r="2.5" fill="#F7A9B0" opacity="0.7"/><circle cx="70" cy="44" r="2.5" fill="#F7A9B0" opacity="0.7"/></svg>Kumotan</div>
+                            <div class="post">
+                                <div class="post-h"><span class="avatar">S</span><b>Sora</b><small>@sora.example · 12m</small></div>
+                                The view from the summit was <span class="ww reg">breathtaking</span>. Totally <span class="ww sel">worth</span> the climb.
+                            </div>
+                            </div>
+                        </li>
+                        <li>
+                            <strong>Save the words you notice</strong><span>Pick a word to see its meaning from the dictionary. Choose one of the suggested meanings or write your own, then press "Add to word list". Review them later with quizzes.</span>
+                            <div class="shot" aria-hidden="true">
+                            <div class="sheet">
+                                <div class="s-word"><b>worth</b></div>
+                                <div class="s-label">Japanese meaning</div>
+                                <div class="cands"><span class="cand on">価値がある</span><span class="cand">値打ちがある</span><span class="cand">財産を持つ</span></div>
+                                <div class="s-btn"><span class="add">Add to word list</span></div>
+                            </div>
+                            </div>
+                        </li>
                     </ol>
                 </div>
             </section>
@@ -513,13 +588,6 @@
                     <details>
                         <summary>Can other people see the words I save?</summary>
                         <div class="answer"><p>Yes. Your word list is stored in your PDS, and data in a PDS is public by design of the AT Protocol. Kumotan does not store post text there, only a link to the original post.</p></div>
-                    </details>
-                    <details>
-                        <summary>Can I still get the iPhone app?</summary>
-                        <div class="answer">
-                            <p>No. The iPhone app was removed from the App Store on October 13, 2026. Kumotan is moving to the web version.</p>
-                            <p>Even if you already have the app, you can no longer sign in to it, and an existing sign-in will eventually expire. Your word list stays in your PDS, so you can read it in the web version once it is released.</p>
-                        </div>
                     </details>
                     <details>
                         <summary>What happens to my data when I change phones?</summary>
