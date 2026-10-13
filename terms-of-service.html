@@ -62,7 +62,7 @@ a:hover { text-decoration: underline; }
 <h2>第2条（サービスの定義）</h2>
 <p>1. 本アプリは、AT Protocol（Bluesky等）のタイムラインを閲覧しながら、英語の単語・熟語を日本語で学習するための語彙学習支援ツールです。</p>
 <p>2. 本アプリは、以下の主な機能を提供します。</p>
-<ul><li>Blueskyタイムラインの表示</li><li>投稿内の英単語の辞書検索・翻訳</li><li>単語帳への登録・管理</li><li>クイズモードによる語彙学習</li><li>学習進捗の記録・表示</li><li>学習進捗のBlueskyへのシェア</li><li>音声読み上げ機能（英単語・定義の発音）</li><li>プッシュ通知（Blueskyのソーシャルアクション通知・学習リマインダー）</li></ul>
+<ul><li>Blueskyタイムラインの表示</li><li>投稿内の英単語の辞書検索・翻訳</li><li>単語帳への登録・管理</li><li>クイズモードによる語彙学習</li><li>学習進捗の記録・表示</li><li>学習進捗のBlueskyへのシェア</li><li>音声読み上げ機能（英単語・定義の発音）</li><li>学習リマインダーの通知</li></ul>
 <p>AI辞書・翻訳機能は、ユーザー自身が取得したGoogle AI StudioのAPIキー（Gemma4）を使用します。APIキーの取得・管理はユーザーの責任において行うものとします。</p>
 
 <h2>第3条（利用登録）</h2>
@@ -104,7 +104,7 @@ a:hover { text-decoration: underline; }
 
 <h2>第8条（外部サービスの利用）</h2>
 <p>1. 本アプリは、以下の外部サービスおよびデータを利用して機能を提供します。</p>
-<ul><li>Bluesky / AT Protocol（タイムライン取得、投稿機能）</li><li>cardyb API（Bluesky公式。リンクカード付き投稿作成時のリンクプレビュー取得）</li><li>Google AI Studio — Gemma4 API（AI辞書・翻訳・校正機能。ユーザーが自身のAPIキーを設定した場合）</li><li>JMdict辞書データ（日英・英日辞書機能、Electronic Dictionary Research and Development Group提供、CC BY-SA 4.0ライセンス）</li><li>Google Apps Script（運営者管理。フィードバック送信機能）</li><li>Railway（運営者管理サーバー。プッシュ通知配信機能）</li><li>Expo Push Notification Service（プッシュ通知のデバイス配信）</li></ul>
+<ul><li>Bluesky / AT Protocol（タイムライン取得、投稿機能）</li><li>cardyb API（Bluesky公式。リンクカード付き投稿作成時のリンクプレビュー取得）</li><li>Google AI Studio — Gemma4 API（AI辞書・翻訳・校正機能。ユーザーが自身のAPIキーを設定した場合）</li><li>JMdict辞書データ（日英・英日辞書機能、Electronic Dictionary Research and Development Group提供、CC BY-SA 4.0ライセンス）</li><li>Google Apps Script（運営者管理。フィードバック送信機能）</li></ul>
 <p>2. AI辞書機能について: ユーザーが設定画面でGemma APIキーを設定した場合、本アプリで検索した単語がGoogle AI Studio（Gemma4）APIに直接送信され、定義・翻訳・例文・コロケーション・ニュアンスが取得されます。このデータは辞書検索の目的にのみ使用され、運営者が保存することはありません。GoogleのAPI利用規約では、APIを通じて送信されたデータはデフォルトではモデルの学習に使用されないと定められています。</p>
 <p>各外部サービスの利用規約が別途適用されます。ユーザーは各外部サービスの利用規約を遵守する責任を負うものとします。外部サービスの仕様変更・障害・終了等により本アプリの一部機能が利用できなくなった場合、運営者は一切の責任を負わないものとします。</p>
 
@@ -153,7 +153,7 @@ a:hover { text-decoration: underline; }
 <div class="footer">
 <p>運営者: RieTamura</p>
 <p>お問い合わせ: <a href="https://github.com/RieTamura/kumotan-pages/issues">GitHub Issues</a> / <a href="https://bsky.app/profile/kumotanapp.bsky.social">Bluesky @kumotanapp.bsky.social</a></p>
-<p>最終更新日: 2026年8月21日</p>
+<p>最終更新日: 2026年10月13日</p>
 </div>
 </div>
 
@@ -168,7 +168,7 @@ a:hover { text-decoration: underline; }
 <h2>Article 2 (Definition of Service)</h2>
 <p>1. This App is a vocabulary learning support tool for learning English words and phrases in Japanese while browsing AT Protocol (Bluesky, etc.) timelines.</p>
 <p>2. This App provides the following main features:</p>
-<ul><li>Display of Bluesky timeline</li><li>Dictionary search and translation of English words in posts</li><li>Registration and management of vocabulary</li><li>Quiz mode for vocabulary practice</li><li>Recording and display of learning progress</li><li>Sharing learning progress on Bluesky</li><li>Text-to-speech feature (pronunciation of English words and definitions)</li><li>Push notifications (Bluesky social action notifications and learning reminders)</li></ul>
+<ul><li>Display of Bluesky timeline</li><li>Dictionary search and translation of English words in posts</li><li>Registration and management of vocabulary</li><li>Quiz mode for vocabulary practice</li><li>Recording and display of learning progress</li><li>Sharing learning progress on Bluesky</li><li>Text-to-speech feature (pronunciation of English words and definitions)</li><li>Learning reminder notifications</li></ul>
 <p>The AI-powered dictionary and translation features use Google AI Studio (Gemma4) via the User's own API key. Users are responsible for obtaining and managing their Gemma API key.</p>
 
 <h2>Article 3 (Registration)</h2>
@@ -210,7 +210,7 @@ a:hover { text-decoration: underline; }
 
 <h2>Article 8 (Use of External Services)</h2>
 <p>1. This App uses the following external services and data to provide its features:</p>
-<ul><li>Bluesky / AT Protocol (timeline retrieval, posting)</li><li>cardyb API (Official Bluesky link preview API for link card creation)</li><li>Google AI Studio — Gemma4 API (AI-powered dictionary, translation, proofreading; requires User's own API key)</li><li>JMdict dictionary data (Japanese-English dictionary, provided by Electronic Dictionary Research and Development Group, CC BY-SA 4.0 license)</li><li>Google Apps Script (Operator-managed, feedback submission)</li><li>Railway (Operator-managed server, push notification delivery)</li><li>Expo Push Notification Service (device-level push notification delivery)</li></ul>
+<ul><li>Bluesky / AT Protocol (timeline retrieval, posting)</li><li>cardyb API (Official Bluesky link preview API for link card creation)</li><li>Google AI Studio — Gemma4 API (AI-powered dictionary, translation, proofreading; requires User's own API key)</li><li>JMdict dictionary data (Japanese-English dictionary, provided by Electronic Dictionary Research and Development Group, CC BY-SA 4.0 license)</li><li>Google Apps Script (Operator-managed, feedback submission)</li></ul>
 <p>2. AI Dictionary Feature: When the User sets their Gemma API key in Settings, words looked up in this App are sent directly to the Google AI Studio (Gemma4) API to retrieve definitions, translations, example sentences, collocations, and nuance. This data is processed solely for dictionary lookup and is not stored by the Operator. Google's API terms of service state that data submitted via the API is not used for model training by default.</p>
 <p>The terms of service of each external service apply separately. Users are responsible for complying with the terms of service of each external service. The Operator shall not be liable if some features become unavailable due to specification changes, failures, or termination of external services.</p>
 
@@ -259,7 +259,7 @@ a:hover { text-decoration: underline; }
 <div class="footer">
 <p>Operator: RieTamura</p>
 <p>Contact: <a href="https://github.com/RieTamura/kumotan-pages/issues">GitHub Issues</a> / <a href="https://bsky.app/profile/kumotanapp.bsky.social">Bluesky @kumotanapp.bsky.social</a></p>
-<p>Last updated: August 21, 2026</p>
+<p>Last updated: October 13, 2026</p>
 </div>
 </div>
 </div>
