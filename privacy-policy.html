@@ -72,12 +72,8 @@ a:hover { text-decoration: underline; }
 <p>PDSに保存されたデータは、AT Protocolの仕組み上、公開され、誰でも読むことができます。そのため、登録元の投稿の本文は同期しません。</p>
 <h3>【4. 外部サービスに送信されるデータ】</h3>
 <p>本アプリの機能を提供するため、以下のデータが外部サービスに送信されます。</p>
-<ul><li>Bluesky / AT Protocol: タイムライン取得リクエスト、投稿内容（投稿・進捗シェア時）、画像データ（投稿添付時）、ログイン時のアカウント情報の照会（plc.directoryを含みます）</li><li>Blueskyのモデレーションサービス: 通報した投稿またはアカウントと、通報の理由（通報したときのみ）</li><li>cardyb API（Bluesky公式）: 投稿に含まれるURL（リンクカード付き投稿を作成する際のみ）</li><li>Google AI Studio — Gemma API: 解説を求めた英単語、英作文モードで書いた英文と出題の例文、校正を求めた投稿の下書き（ユーザーがAPIキーを設定した場合のみ）</li><li>Appleの音声認識: クイズの音声入力を使ったときの音声（音声入力を使った場合のみ）</li><li>Railway（運営者管理サーバー）: Bluesky DID、Expo Push Token、通知設定（プッシュ通知を有効にした場合のみ）</li><li>Expo Push Notification Service: Expo Push Token、通知タイトル・本文（プッシュ通知送信時）</li><li>Google Apps Script（運営者管理）: フィードバック内容（フィードバック機能利用時のみ）</li><li>GitHub: アプリと辞書の更新の確認、および辞書データのダウンロードのためのリクエスト（ユーザーを特定する情報は送信しません）</li></ul>
-<h3>【5. プッシュ通知トークン】</h3>
-<p>ユーザーがプッシュ通知を有効にした場合、以下の情報が運営者管理サーバー（Railway）に送信・保存されます。</p>
-<ul><li>Expo Push Token（Expo Push Notificationサービスが発行する通知配信用トークン）</li><li>Bluesky DID（通知の宛先を特定するための公開識別子）</li><li>通知種別の設定（いいね・返信・メンション・リポスト・フォローの各ON/OFF）</li></ul>
-<p>これらの情報はプッシュ通知の送信目的にのみ使用します。プッシュ通知を無効にしたとき、またはログアウトしたときは、サーバーから削除します。アンインストールした場合は、通知の配信サービスがその端末に届けられないと報告した時点で削除します。</p>
-<h3>【6. フィードバック情報】</h3>
+<ul><li>Bluesky / AT Protocol: タイムライン取得リクエスト、投稿内容（投稿・進捗シェア時）、画像データ（投稿添付時）、ログイン時のアカウント情報の照会（plc.directoryを含みます）</li><li>Blueskyのモデレーションサービス: 通報した投稿またはアカウントと、通報の理由（通報したときのみ）</li><li>cardyb API（Bluesky公式）: 投稿に含まれるURL（リンクカード付き投稿を作成する際のみ）</li><li>Google AI Studio — Gemma API: 解説を求めた英単語、英作文モードで書いた英文と出題の例文、校正を求めた投稿の下書き（ユーザーがAPIキーを設定した場合のみ）</li><li>Appleの音声認識: クイズの音声入力を使ったときの音声（音声入力を使った場合のみ）</li><li>Google Apps Script（運営者管理）: フィードバック内容（フィードバック機能利用時のみ）</li><li>GitHub: アプリと辞書の更新の確認、および辞書データのダウンロードのためのリクエスト（ユーザーを特定する情報は送信しません）</li></ul>
+<h3>【5. フィードバック情報】</h3>
 <p>ユーザーがアプリ内のフィードバック機能を利用した場合、以下の情報がGoogle Apps Script経由で運営者に送信されます。</p>
 <ul><li>フィードバックの種類（バグ報告、機能要望、辞書修正等）</li><li>フィードバックの内容（件名、説明、コメント）</li><li>関連する単語情報や投稿URL（該当する場合）</li><li>不具合報告の場合は、アプリの動作ログ、アプリのバージョン、OSの種類とバージョン</li></ul>
 <p>送信された内容は、運営者の非公開のGitHubリポジトリにIssueとして記録されます。</p>
@@ -90,7 +86,7 @@ a:hover { text-decoration: underline; }
 <p>4. 辞書検索、翻訳、テキスト解析等の学習支援機能を提供するため</p>
 <p>5. ユーザーからのフィードバックに対応し、本アプリを改善するため</p>
 <p>6. 本アプリの不具合の修正および機能改善のため</p>
-<p>7. プッシュ通知（Blueskyのソーシャルアクション通知・学習リマインダー）の送信のため</p>
+<p>7. 学習リマインダーの通知のため</p>
 
 <h2>第4条（個人情報の第三者提供）</h2>
 <p>1. 運営者は、次に掲げる場合を除いて、あらかじめユーザーの同意を得ることなく、第三者に個人情報を提供することはありません。</p>
@@ -130,14 +126,6 @@ a:hover { text-decoration: underline; }
 <p>送信情報: フィードバック内容</p>
 <p>運営者の目的: フィードバック収集・サービス改善</p>
 <p>送信先の目的: GitHub Issueへの転送</p>
-<h3>【Railway（運営者管理サーバー）】</h3>
-<p>送信情報: Bluesky DID、Expo Push Token、通知設定</p>
-<p>運営者の目的: プッシュ通知の配信管理</p>
-<p>送信先の目的: プッシュ通知サーバーの運営</p>
-<h3>【Expo Push Notification Service】</h3>
-<p>送信情報: Expo Push Token、通知タイトル・本文</p>
-<p>運営者の目的: プッシュ通知のデバイス配信</p>
-<p>送信先の目的: Expo通知配信サービスの提供</p>
 <h3>【GitHub（GitHub Pages・GitHub API）】</h3>
 <p>送信情報: なし（更新の確認とダウンロードのリクエストのみ）</p>
 <p>運営者の目的: アプリと辞書の更新の確認、辞書データ（JMdict等）の取得</p>
@@ -178,7 +166,7 @@ a:hover { text-decoration: underline; }
 <div class="footer">
 <p>運営者: RieTamura</p>
 <p>お問い合わせ: <a href="https://github.com/RieTamura/kumotan-pages/issues">GitHub Issues</a> / <a href="https://bsky.app/profile/kumotanapp.bsky.social">Bluesky @kumotanapp.bsky.social</a></p>
-<p>最終更新日: 2026年10月10日</p>
+<p>最終更新日: 2026年10月13日</p>
 </div>
 </div>
 
@@ -203,12 +191,8 @@ a:hover { text-decoration: underline; }
 <p>Data stored in a PDS is public by design of the AT Protocol and can be read by anyone. For this reason, the text of the source post is not synced.</p>
 <h3>[4. Data Sent to External Services]</h3>
 <p>To provide this App's features, the following data is sent to external services:</p>
-<ul><li>Bluesky / AT Protocol: Timeline retrieval requests, post content (when posting or sharing progress), image data (when attaching to posts), account lookups at sign-in (including plc.directory)</li><li>Bluesky's moderation service: The reported post or account and the reason (only when reporting)</li><li>cardyb API (Official Bluesky): URLs in posts (only when creating posts with link cards)</li><li>Google AI Studio — Gemma API: English words the User asks to have explained, sentences the User writes in the sentence-writing quiz together with the example sentence, and post drafts the User asks to proofread (only when the User has set their API key)</li><li>Apple's speech recognition: The User's voice when using voice input in quizzes (only when voice input is used)</li><li>Railway (Operator-managed server): Bluesky DID, Expo Push Token, notification settings (only when push notifications are enabled)</li><li>Expo Push Notification Service: Expo Push Token, notification title and body (when sending push notifications)</li><li>Google Apps Script (Operator-managed): Feedback content (only when using the feedback feature)</li><li>GitHub: Requests to check for app and dictionary updates and to download dictionary data (no information identifying the User is sent)</li></ul>
-<h3>[5. Push Notification Tokens]</h3>
-<p>When Users enable push notifications, the following information is sent to and stored on the Operator's server (Railway):</p>
-<ul><li>Expo Push Token (a notification delivery token issued by the Expo Push Notification service)</li><li>Bluesky DID (a public identifier used to identify the notification recipient)</li><li>Notification type settings (ON/OFF for likes, replies, mentions, reposts, and follows)</li></ul>
-<p>This information is used solely for push notification delivery. It is deleted from the server when the User disables push notifications or logs out. If the User uninstalls the App, it is deleted once the delivery service reports that the device can no longer receive notifications.</p>
-<h3>[6. Feedback Information]</h3>
+<ul><li>Bluesky / AT Protocol: Timeline retrieval requests, post content (when posting or sharing progress), image data (when attaching to posts), account lookups at sign-in (including plc.directory)</li><li>Bluesky's moderation service: The reported post or account and the reason (only when reporting)</li><li>cardyb API (Official Bluesky): URLs in posts (only when creating posts with link cards)</li><li>Google AI Studio — Gemma API: English words the User asks to have explained, sentences the User writes in the sentence-writing quiz together with the example sentence, and post drafts the User asks to proofread (only when the User has set their API key)</li><li>Apple's speech recognition: The User's voice when using voice input in quizzes (only when voice input is used)</li><li>Google Apps Script (Operator-managed): Feedback content (only when using the feedback feature)</li><li>GitHub: Requests to check for app and dictionary updates and to download dictionary data (no information identifying the User is sent)</li></ul>
+<h3>[5. Feedback Information]</h3>
 <p>When Users use the in-app feedback feature, the following information is sent to the Operator via Google Apps Script:</p>
 <ul><li>Feedback type (bug report, feature request, dictionary correction, etc.)</li><li>Feedback content (subject, description, comments)</li><li>Related word information or post URLs (if applicable)</li><li>For bug reports: the App's activity log, the App version, and the OS name and version</li></ul>
 <p>Submitted feedback is recorded as an issue in the Operator's private GitHub repository.</p>
@@ -221,7 +205,7 @@ a:hover { text-decoration: underline; }
 <p>4. To provide learning support functions such as dictionary search, translation, and text analysis</p>
 <p>5. To respond to user feedback and improve this App</p>
 <p>6. To fix bugs and improve features of this App</p>
-<p>7. To send push notifications (Bluesky social action notifications and learning reminders)</p>
+<p>7. To send learning reminder notifications</p>
 
 <h2>Article 4 (Provision of Personal Information to Third Parties)</h2>
 <p>1. The Operator will not provide personal information to third parties without prior consent of the User, except in the following cases:</p>
@@ -261,14 +245,6 @@ a:hover { text-decoration: underline; }
 <p>Information sent: Feedback content</p>
 <p>Operator's purpose: Feedback collection and service improvement</p>
 <p>Recipient's purpose: Forwarding to GitHub Issues</p>
-<h3>[Railway (Operator-managed server)]</h3>
-<p>Information sent: Bluesky DID, Expo Push Token, notification settings</p>
-<p>Operator's purpose: Managing push notification delivery</p>
-<p>Recipient's purpose: Operating push notification server</p>
-<h3>[Expo Push Notification Service]</h3>
-<p>Information sent: Expo Push Token, notification title and body</p>
-<p>Operator's purpose: Delivering push notifications to devices</p>
-<p>Recipient's purpose: Expo notification delivery service</p>
 <h3>[GitHub (GitHub Pages, GitHub API)]</h3>
 <p>Information sent: None (update checks and download requests only)</p>
 <p>Operator's purpose: Checking for app and dictionary updates, fetching dictionary data (JMdict, etc.)</p>
@@ -309,7 +285,7 @@ a:hover { text-decoration: underline; }
 <div class="footer">
 <p>Operator: RieTamura</p>
 <p>Contact: <a href="https://github.com/RieTamura/kumotan-pages/issues">GitHub Issues</a> / <a href="https://bsky.app/profile/kumotanapp.bsky.social">Bluesky @kumotanapp.bsky.social</a></p>
-<p>Last updated: October 10, 2026</p>
+<p>Last updated: October 13, 2026</p>
 </div>
 </div>
 </div>
