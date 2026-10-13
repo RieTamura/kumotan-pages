@@ -328,32 +328,32 @@
                         <div class="feature">
                             <div class="icon i-blue"><svg viewBox="0 0 24 24"><path d="M4 20h4l10-10-4-4L4 16v4z"/><path d="M13 7l4 4"/></svg></div>
                             <h3>投稿から単語を登録</h3>
-                            <p>タイムラインの投稿で気になった英単語や熟語を選ぶと、意味が表示されます。そのまま単語帳に追加できます。</p>
+                            <p>タイムラインの投稿で気になった英単語を選ぶと、意味が表示されます。そのまま単語帳に追加できます。</p>
                         </div>
                         <div class="feature">
                             <div class="icon i-lav"><svg viewBox="0 0 24 24"><path d="M4 5h6a2 2 0 0 1 2 2v13a2 2 0 0 0-2-2H4z"/><path d="M20 5h-6a2 2 0 0 0-2 2v13a2 2 0 0 1 2-2h6z"/></svg></div>
                             <h3>辞書と AI の解説</h3>
-                            <p>オフライン辞書で、意味をすぐに確かめられます。Google AI Studio の API キーを設定すると、AI が意味や使い方を解説します。</p>
+                            <p>内蔵の英和辞書で、意味をすぐに確かめられます。AI による意味や使い方の解説と投稿の校正は、今は運営者が許可したアカウントだけが使えます。</p>
                         </div>
                         <div class="feature">
                             <div class="icon i-peach"><svg viewBox="0 0 24 24"><path d="M5 10v4h3l5 4V6L8 10H5z"/><path d="M16 9a4 4 0 0 1 0 6"/><path d="M18.5 6.5a7.5 7.5 0 0 1 0 11"/></svg></div>
                             <h3>発音を聞く</h3>
-                            <p>単語や投稿の英文を音声で読み上げるので、耳でも覚えられます。</p>
+                            <p>単語や投稿の英文をブラウザの読み上げ機能で読むので、耳でも覚えられます。</p>
                         </div>
                         <div class="feature">
                             <div class="icon i-mint"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M8.5 12.5l2.5 2.5 4.5-5"/></svg></div>
                             <h3>クイズで復習</h3>
-                            <p>登録した単語を、4 択・単語の入力・英作文の 3 つのモードで復習できます。英作文は AI が採点します。</p>
+                            <p>登録した単語を、4 択のクイズで復習できます。正解率の低い単語は、要復習として分かります。</p>
                         </div>
                         <div class="feature">
                             <div class="icon i-yellow"><svg viewBox="0 0 24 24"><path d="M5 19V11"/><path d="M12 19V5"/><path d="M19 19v-6"/></svg></div>
                             <h3>学習の記録</h3>
-                            <p>学習した日がカレンダーと統計でひと目で分かります。結果は Bluesky でシェアできます。</p>
+                            <p>連続して学習した日数と統計で、続けた分がひと目で分かります。結果は Bluesky でシェアできます。</p>
                         </div>
                         <div class="feature">
                             <div class="icon i-pink"><svg viewBox="0 0 24 24"><path d="M7 18a4 4 0 0 1-.6-7.96A5.5 5.5 0 0 1 17 9a3.5 3.5 0 0 1 .5 6.97V16"/><path d="M7 18h10.5"/></svg></div>
                             <h3>単語帳はあなたのもの</h3>
-                            <p>単語帳は、あなたの Bluesky のデータ置き場（PDS）にも保存されます。機種を変えても、単語帳を復元できます。</p>
+                            <p>単語帳は、あなたの Bluesky のデータ置き場（PDS）に保存されます。別のブラウザや端末でも、同じ単語帳を使えます。</p>
                         </div>
                     </div>
                 </div>
@@ -376,9 +376,9 @@
                     <h2>データの扱い</h2>
                     <p class="sub">データの保存先と、外部に送るものについて</p>
                     <ul>
-                        <li>単語帳や学習の記録を、運営者のサーバーで預かることはありません。データは端末と、あなた自身の PDS に保存されます。</li>
+                        <li>単語帳や学習の記録を、運営者のサーバーで預かることはありません。単語帳はあなた自身の PDS に、学習の記録はお使いのブラウザの中に保存されます。</li>
                         <li>PDS に保存したデータは、AT Protocol の仕組み上、誰でも読める公開データです。投稿の本文は保存せず、元の投稿へのリンクだけを残します。</li>
-                        <li>AI の機能（単語の解説や英作文の採点）は、あなたが設定した API キーで Google のサービスを呼び出します。キーは端末の中にだけ保存されます。</li>
+                        <li>AI の機能（単語の解説と投稿の校正）を使うと、単語や投稿の下書きが運営者のサーバー（Cloudflare）を経由して Google のサービスに送られます。今は運営者が許可したアカウントだけが使えます。</li>
                     </ul>
                     <p>詳しくは<a href="./privacy-policy.html">プライバシーポリシー</a>をご覧ください。</p>
                 </div>
@@ -446,32 +446,32 @@
                         <div class="feature">
                             <div class="icon i-blue"><svg viewBox="0 0 24 24"><path d="M4 20h4l10-10-4-4L4 16v4z"/><path d="M13 7l4 4"/></svg></div>
                             <h3>Save words from posts</h3>
-                            <p>Pick a word or phrase in a post on your timeline, check its meaning, and add it to your word list.</p>
+                            <p>Pick a word in a post on your timeline, check its meaning, and add it to your word list.</p>
                         </div>
                         <div class="feature">
                             <div class="icon i-lav"><svg viewBox="0 0 24 24"><path d="M4 5h6a2 2 0 0 1 2 2v13a2 2 0 0 0-2-2H4z"/><path d="M20 5h-6a2 2 0 0 0-2 2v13a2 2 0 0 1 2-2h6z"/></svg></div>
                             <h3>Dictionary and AI explanations</h3>
-                            <p>See meanings right away with the offline dictionary. Add a Google AI Studio API key and AI explains meaning and usage.</p>
+                            <p>See meanings right away with the built-in English-Japanese dictionary. AI explanations of meaning and usage, and proofreading of your posts, are currently available only to accounts the operator has allowed.</p>
                         </div>
                         <div class="feature">
                             <div class="icon i-peach"><svg viewBox="0 0 24 24"><path d="M5 10v4h3l5 4V6L8 10H5z"/><path d="M16 9a4 4 0 0 1 0 6"/><path d="M18.5 6.5a7.5 7.5 0 0 1 0 11"/></svg></div>
                             <h3>Hear the pronunciation</h3>
-                            <p>Have words and post text read aloud so you learn them by ear, too.</p>
+                            <p>Have words and post text read aloud by your browser so you learn them by ear, too.</p>
                         </div>
                         <div class="feature">
                             <div class="icon i-mint"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M8.5 12.5l2.5 2.5 4.5-5"/></svg></div>
                             <h3>Review with quizzes</h3>
-                            <p>Review your saved words in three modes: multiple choice, typing the word, and writing a sentence that AI grades.</p>
+                            <p>Review your saved words with multiple-choice quizzes. Words you often miss are marked for review.</p>
                         </div>
                         <div class="feature">
                             <div class="icon i-yellow"><svg viewBox="0 0 24 24"><path d="M5 19V11"/><path d="M12 19V5"/><path d="M19 19v-6"/></svg></div>
                             <h3>Track your progress</h3>
-                            <p>A calendar and stats show the days you kept at it. Share your results on Bluesky.</p>
+                            <p>Your study streak and stats show how far you have kept at it. Share your results on Bluesky.</p>
                         </div>
                         <div class="feature">
                             <div class="icon i-pink"><svg viewBox="0 0 24 24"><path d="M7 18a4 4 0 0 1-.6-7.96A5.5 5.5 0 0 1 17 9a3.5 3.5 0 0 1 .5 6.97V16"/><path d="M7 18h10.5"/></svg></div>
                             <h3>Your word list is yours</h3>
-                            <p>Your word list is also stored in your own Bluesky data store (PDS), so you can get it back on a new phone.</p>
+                            <p>Your word list is stored in your own Bluesky data store (PDS), so you can use the same list in another browser or on another device.</p>
                         </div>
                     </div>
                 </div>
@@ -494,9 +494,9 @@
                     <h2>Your data</h2>
                     <p class="sub">Where your data is stored, and what is sent elsewhere</p>
                     <ul>
-                        <li>Your word list and study records are never kept on our servers. They stay on your device and in your own PDS.</li>
+                        <li>Your word list and study records are never kept on our servers. Your word list is stored in your own PDS, and your study records stay in your browser.</li>
                         <li>Data in a PDS is public by design of the AT Protocol. Kumotan does not store post text there, only a link to the original post.</li>
-                        <li>AI features (word explanations and sentence grading) call Google's service with the API key you set. The key is stored only on your device.</li>
+                        <li>When you use AI features (word explanations and post proofreading), the word or post draft is sent to Google's service via the operator's server (Cloudflare). They are currently available only to accounts the operator has allowed.</li>
                     </ul>
                     <p>See the <a href="./privacy-policy.html">privacy policy</a> for details.</p>
                 </div>
