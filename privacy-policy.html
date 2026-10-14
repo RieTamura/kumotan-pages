@@ -72,7 +72,7 @@ a:hover { text-decoration: underline; }
 <p>PDSに保存されたデータは、AT Protocolの仕組み上、公開され、誰でも読むことができます。そのため、登録元の投稿の本文は保存しません。</p>
 <h3>【4. 外部サービスに送信されるデータ】</h3>
 <p>本アプリの機能を提供するため、以下のデータが外部サービスに送信されます。</p>
-<ul><li>Bluesky / AT Protocol: タイムライン取得リクエスト、投稿内容（投稿・進捗シェア時）、画像データ（投稿添付時）、いいね・リポスト、ログイン時のアカウント情報の照会（plc.directoryを含みます）</li><li>cardyb API（Bluesky公式）: 投稿に含まれるURL（リンクカード付きの投稿を作る際のみ）</li><li>Cloudflare（本アプリの配信元）: 本アプリを開いたときの通信（IPアドレス、ブラウザの種類等）、AI機能を使ったときの依頼内容とBlueskyが発行するアカウントの証明（DIDを含みます）</li><li>Google AI Studio — Gemma API: 解説を求めた英単語、校正を求めた投稿の下書き（運営者が許可したアカウントのみ）</li><li>ブラウザの音声合成機能: 読み上げる文章（読み上げを使った場合のみ）</li></ul>
+<ul><li>Bluesky / AT Protocol: タイムライン取得リクエスト、投稿内容（投稿・進捗シェア時）、画像データ（投稿添付時）、いいね・リポスト、ログイン時のアカウント情報の照会（plc.directoryを含みます）</li><li>cardyb API（Bluesky公式）: 投稿に含まれるURL（リンクカード付きの投稿を作る際のみ）</li><li>Cloudflare（本アプリの配信元）: 本アプリを開いたときの通信（IPアドレス、ブラウザの種類等）、AI機能を使ったときの依頼内容とBlueskyが発行するアカウントの証明（DIDを含みます）</li><li>Cloudflare Workers AI（Gemma）: 解説を求めた英単語、校正を求めた投稿の下書き（運営者が許可したアカウントのみ）</li><li>ブラウザの音声合成機能: 読み上げる文章（読み上げを使った場合のみ）</li></ul>
 
 <h2>第3条（情報の利用目的）</h2>
 <p>運営者が情報を利用する目的は、以下のとおりです。</p>
@@ -87,7 +87,7 @@ a:hover { text-decoration: underline; }
 <h2>第4条（個人情報の第三者提供）</h2>
 <p>1. 運営者は、次に掲げる場合を除いて、あらかじめユーザーの同意を得ることなく、第三者に個人情報を提供することはありません。</p>
 <ul><li>人の生命、身体または財産の保護のために必要がある場合であって、本人の同意を得ることが困難であるとき</li><li>公衆衛生の向上または児童の健全な育成の推進のために特に必要がある場合であって、本人の同意を得ることが困難であるとき</li><li>国の機関もしくは地方公共団体またはその委託を受けた者が法令の定める事務を遂行することに対して協力する必要がある場合であって、本人の同意を得ることにより当該事務の遂行に支障を及ぼすおそれがあるとき</li><li>その他法令で認められる場合</li></ul>
-<p>2. 本アプリのAI機能（単語の解説・投稿の校正）は、運営者が許可したアカウントだけが利用できます。利用した場合、第2条【4】に記載した内容が、運営者のサーバー（Cloudflare）を経由して、運営者のAPIキーでGoogle AI Studio（Gemma）に送信されます。運営者が許可していないアカウントの情報が送信されることはありません。</p>
+<p>2. 本アプリのAI機能（単語の解説・投稿の校正）は、運営者が許可したアカウントだけが利用できます。利用した場合、第2条【4】に記載した内容が、Cloudflare Workers AI（Gemma）に送信されます。運営者が許可していないアカウントの情報が送信されることはありません。</p>
 
 <h2>第5条（外部送信規律への対応）</h2>
 <p>電気通信事業法第27条の12（外部送信規律）に基づき、本アプリが利用者の情報を外部に送信する場合の詳細を以下のとおり開示します。</p>
@@ -108,11 +108,11 @@ a:hover { text-decoration: underline; }
 <p>送信情報: 本アプリを開いたときの通信（IPアドレス、ブラウザの種類等）、AI機能を使ったときの依頼内容とアカウントの証明</p>
 <p>運営者の目的: 本アプリの配信、AI機能の中継と不正利用の防止</p>
 <p>送信先の目的: ウェブサイトの配信・実行環境の提供</p>
-<h3>【Google AI Studio — Gemma API（Google LLC）】</h3>
+<h3>【Cloudflare Workers AI（Cloudflare, Inc.）】</h3>
 <p>送信情報: 解説を求めた英単語、校正を求めた投稿の下書き（運営者が許可したアカウントのみ）</p>
 <p>運営者の目的: AI機能（単語の解説・投稿の校正）の提供</p>
 <p>送信先の目的: AIテキスト生成サービスの提供</p>
-<p>備考: Gemini APIの追加利用規約（2026年4月28日更新）では、無料枠で送信された内容と生成された応答は、Googleの製品の改善やモデルの学習に使われ、人が読むこともあると定められています。有料枠では、製品の改善には使われません。個人情報や機密情報は送信しないでください。</p>
+<p>備考: Cloudflareは、Workers AIに送信された内容と生成された応答を、AIモデルの学習や、Cloudflareおよび第三者のサービスの改善に使わないとしています。AIのモデルはGoogleが公開しているGemmaで、Cloudflareのサーバーで動いており、Googleには送信されません。個人情報や機密情報は送信しないでください。</p>
 <h3>【ブラウザの音声合成機能】</h3>
 <p>送信情報: 読み上げる文章</p>
 <p>運営者の目的: 読み上げ機能の提供</p>
@@ -122,7 +122,7 @@ a:hover { text-decoration: underline; }
 
 <h2>第6条（安全管理措置）</h2>
 <p>運営者は、個人情報の漏えい、滅失またはき損の防止その他の個人情報の安全管理のために、以下の措置を講じています。</p>
-<ul><li>Bluesky認証にはOAuth（PKCE + DPoP）を採用し、ユーザーのパスワードを取得・保存しません</li><li>認証トークンはユーザーのブラウザの中に保存し、運営者のサーバーには送りません</li><li>AI機能では、Blueskyが発行するアカウントの証明を確かめ、運営者が許可したアカウント以外の依頼を断ります</li><li>AIのAPIキーは運営者のサーバー（Cloudflare）にだけ置き、ブラウザには渡しません</li><li>外部サービスとの通信はHTTPSによる暗号化通信を使用します</li></ul>
+<ul><li>Bluesky認証にはOAuth（PKCE + DPoP）を採用し、ユーザーのパスワードを取得・保存しません</li><li>認証トークンはユーザーのブラウザの中に保存し、運営者のサーバーには送りません</li><li>AI機能では、Blueskyが発行するアカウントの証明を確かめ、運営者が許可したアカウント以外の依頼を断ります</li><li>外部サービスとの通信はHTTPSによる暗号化通信を使用します</li></ul>
 
 <h2>第7条（アナリティクス・トラッキング）</h2>
 <p>本アプリは、アクセス解析ツール、広告配信SDK、トラッキングツール等を使用しておりません。ユーザーの行動データを収集・分析する機能は搭載していません。</p>
@@ -177,7 +177,7 @@ a:hover { text-decoration: underline; }
 <p>Data stored in a PDS is public by design of the AT Protocol and can be read by anyone. For this reason, the text of the source post is not stored.</p>
 <h3>[4. Data Sent to External Services]</h3>
 <p>To provide the App's features, the following data is sent to external services:</p>
-<ul><li>Bluesky / AT Protocol: Timeline requests, post content (when posting or sharing progress), image data (when attaching images), likes and reposts, account lookups at sign-in (including plc.directory)</li><li>cardyb API (official Bluesky service): URLs in posts (only when creating posts with link cards)</li><li>Cloudflare (host of this App): Connections made when opening this App (IP address, browser type, etc.), and when AI features are used, the request and the account proof issued by Bluesky (including the DID)</li><li>Google AI Studio — Gemma API: English words you ask to have explained, post drafts you ask to have proofread (only for accounts the Operator has allowed)</li><li>The browser's speech synthesis: Text to be read aloud (only when text-to-speech is used)</li></ul>
+<ul><li>Bluesky / AT Protocol: Timeline requests, post content (when posting or sharing progress), image data (when attaching images), likes and reposts, account lookups at sign-in (including plc.directory)</li><li>cardyb API (official Bluesky service): URLs in posts (only when creating posts with link cards)</li><li>Cloudflare (host of this App): Connections made when opening this App (IP address, browser type, etc.), and when AI features are used, the request and the account proof issued by Bluesky (including the DID)</li><li>Cloudflare Workers AI (Gemma): English words you ask to have explained, post drafts you ask to have proofread (only for accounts the Operator has allowed)</li><li>The browser's speech synthesis: Text to be read aloud (only when text-to-speech is used)</li></ul>
 
 <h2>Article 3 (Purpose of Information Use)</h2>
 <p>The Operator uses information for the following purposes:</p>
@@ -192,7 +192,7 @@ a:hover { text-decoration: underline; }
 <h2>Article 4 (Provision of Personal Information to Third Parties)</h2>
 <p>1. The Operator will not provide personal information to third parties without prior consent of the User, except in the following cases:</p>
 <ul><li>When necessary to protect the life, body, or property of a person and it is difficult to obtain the consent of the person</li><li>When particularly necessary to improve public health or promote the sound development of children and it is difficult to obtain consent</li><li>When it is necessary to cooperate with a national organ or local government body in executing affairs prescribed by law and obtaining consent may impede such execution</li><li>Other cases permitted by law</li></ul>
-<p>2. The AI features of this App (word explanations and post proofreading) are available only to accounts the Operator has allowed. When they are used, the content described in Article 2 [4] is sent via the Operator's server (Cloudflare) to Google AI Studio (Gemma) using the Operator's API key. Information from accounts the Operator has not allowed is never sent.</p>
+<p>2. The AI features of this App (word explanations and post proofreading) are available only to accounts the Operator has allowed. When they are used, the content described in Article 2 [4] is sent to Cloudflare Workers AI (Gemma). Information from accounts the Operator has not allowed is never sent.</p>
 
 <h2>Article 5 (External Transmission Disclosure)</h2>
 <p>In accordance with Article 27-12 of the Telecommunications Business Act (External Transmission Rules), we disclose the following details regarding external transmission of user information:</p>
@@ -213,11 +213,11 @@ a:hover { text-decoration: underline; }
 <p>Information sent: Connections made when opening this App (IP address, browser type, etc.), and when AI features are used, the request and the account proof</p>
 <p>Operator's purpose: Delivering this App, relaying AI features and preventing their misuse</p>
 <p>Recipient's purpose: Providing website delivery and runtime services</p>
-<h3>[Google AI Studio — Gemma API (Google LLC)]</h3>
+<h3>[Cloudflare Workers AI (Cloudflare, Inc.)]</h3>
 <p>Information sent: English words you ask to have explained, post drafts you ask to have proofread (only for accounts the Operator has allowed)</p>
 <p>Operator's purpose: Providing AI features (word explanations and post proofreading)</p>
 <p>Recipient's purpose: Providing AI text generation services</p>
-<p>Note: The Gemini API Additional Terms of Service (updated April 28, 2026) state that content submitted and responses generated under the free tier are used to improve Google's products and train its models, and may be read by humans. Under the paid tier, they are not used to improve products. Do not send personal or confidential information.</p>
+<p>Note: Cloudflare states that it does not use content sent to Workers AI or the responses generated to train AI models or to improve Cloudflare or third-party services. The AI model is Gemma, published by Google, and it runs on Cloudflare's servers; nothing is sent to Google. Do not send personal or confidential information.</p>
 <h3>[The Browser's Speech Synthesis]</h3>
 <p>Information sent: Text to be read aloud</p>
 <p>Operator's purpose: Providing text-to-speech</p>
@@ -227,7 +227,7 @@ a:hover { text-decoration: underline; }
 
 <h2>Article 6 (Security Measures)</h2>
 <p>The Operator takes the following measures to prevent leakage, loss, or damage of personal information and for other security management:</p>
-<ul><li>OAuth (PKCE + DPoP) is used for Bluesky authentication, and the User's password is never obtained or stored</li><li>Authentication tokens are stored in the User's browser and are not sent to the Operator's servers</li><li>For AI features, the account proof issued by Bluesky is verified, and requests from accounts the Operator has not allowed are refused</li><li>The AI API key is kept only on the Operator's server (Cloudflare) and is never given to the browser</li><li>Communication with external services uses HTTPS encryption</li></ul>
+<ul><li>OAuth (PKCE + DPoP) is used for Bluesky authentication, and the User's password is never obtained or stored</li><li>Authentication tokens are stored in the User's browser and are not sent to the Operator's servers</li><li>For AI features, the account proof issued by Bluesky is verified, and requests from accounts the Operator has not allowed are refused</li><li>Communication with external services uses HTTPS encryption</li></ul>
 
 <h2>Article 7 (Analytics and Tracking)</h2>
 <p>This App does not use analytics tools, advertising SDKs, or tracking tools. No features for collecting or analyzing user behavioral data are included.</p>

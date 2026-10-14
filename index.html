@@ -411,7 +411,7 @@
                     <ul>
                         <li>単語帳や学習の記録を、運営者のサーバーで預かることはありません。単語帳はあなた自身の PDS に、学習の記録はお使いのブラウザの中に保存されます。</li>
                         <li>PDS に保存したデータは、AT Protocol の仕組み上、誰でも読める公開データです。投稿の本文は保存せず、元の投稿へのリンクだけを残します。</li>
-                        <li>AI の機能（単語の解説と投稿の校正）を使うと、単語や投稿の下書きが運営者のサーバー（Cloudflare）を経由して Google のサービスに送られます。今は運営者が許可したアカウントだけが使えます。</li>
+                        <li>AI の機能（単語の解説と投稿の校正）を使うと、単語や投稿の下書きが Cloudflare の AI サービス（Workers AI）に送られます。Cloudflare は、送った内容を AI の学習に使わないとしています。今は運営者が許可したアカウントだけが使えます。</li>
                     </ul>
                     <p>詳しくは<a href="./privacy-policy.html">プライバシーポリシー</a>をご覧ください。</p>
                 </div>
@@ -553,7 +553,7 @@
                     <ul>
                         <li>Your word list and study records are never kept on our servers. Your word list is stored in your own PDS, and your study records stay in your browser.</li>
                         <li>Data in a PDS is public by design of the AT Protocol. Kumotan does not store post text there, only a link to the original post.</li>
-                        <li>When you use AI features (word explanations and post proofreading), the word or post draft is sent to Google's service via the operator's server (Cloudflare). They are currently available only to accounts the operator has allowed.</li>
+                        <li>When you use AI features (word explanations and post proofreading), the word or post draft is sent to Cloudflare's AI service (Workers AI). Cloudflare states that it does not use what you send to train AI. They are currently available only to accounts the operator has allowed.</li>
                     </ul>
                     <p>See the <a href="./privacy-policy.html">privacy policy</a> for details.</p>
                 </div>
