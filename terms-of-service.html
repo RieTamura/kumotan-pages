@@ -62,8 +62,8 @@ a:hover { text-decoration: underline; }
 <h2>第2条（サービスの定義）</h2>
 <p>1. 本アプリは、AT Protocol（Bluesky等）のタイムラインを閲覧しながら、英語の単語・熟語を日本語で学習するための語彙学習支援ツールです。ウェブブラウザで利用します。</p>
 <p>2. 本アプリは、以下の主な機能を提供します。</p>
-<ul><li>Blueskyタイムラインの表示（いいね・リポストを含みます）</li><li>投稿（画像やリンクカードの添付、AIによる校正を含みます）</li><li>投稿内の英単語の辞書検索とAIによる解説</li><li>単語帳への登録・管理</li><li>クイズによる語彙学習</li><li>学習進捗の記録・表示とBlueskyへのシェア</li><li>音声読み上げ（投稿の本文・英単語）</li></ul>
-<p>AIによる解説と校正は、作成から30日以上たち、投稿が10件以上あるBlueskyアカウントで、解説と校正を合わせて1日5回まで利用できます。回数は日本時間の午前9時に戻ります。すべてのユーザーを合わせた1日の回数にも上限があり、上限に達した日は、日本時間の午前9時まで利用できません。今日の残りの回数は、設定画面の「AI」で確認できます。</p>
+<ul><li>Blueskyタイムラインの表示（いいね・リポスト、投稿された動画とYouTubeの動画の再生を含みます）</li><li>運営からのお知らせ（くもたん公式アカウントの投稿）の表示</li><li>投稿（画像やリンクカードの添付、AIによる校正を含みます）</li><li>投稿内の英単語の辞書検索とAIによる解説</li><li>単語帳への登録・管理</li><li>クイズによる語彙学習</li><li>学習進捗の記録・表示とBlueskyへのシェア</li><li>音声読み上げ（投稿の本文・英単語）</li></ul>
+<p>AIによる解説と校正は、作成から30日以上たち、投稿が10件以上あるBlueskyアカウントで、解説と校正を合わせて1日5回まで利用できます。回数は日本時間の午前9時に戻ります。すべてのユーザーを合わせた1日の回数にも上限があり、上限に達した日は、日本時間の午前9時まで利用できません。使える条件と今日の残りの回数は、設定画面の「AI」で確認できます。</p>
 
 <h2>第3条（利用登録）</h2>
 <p>1. 本アプリの利用には、Blueskyアカウントによるログインが必要です。ユーザーは、AT Protocol OAuth認証を通じてBlueskyアカウントでログインすることにより、本アプリの利用を開始するものとします。</p>
@@ -102,7 +102,7 @@ a:hover { text-decoration: underline; }
 
 <h2>第8条（外部サービスの利用）</h2>
 <p>1. 本アプリは、以下の外部サービスおよびデータを利用して機能を提供します。</p>
-<ul><li>Bluesky / AT Protocol（タイムラインの取得、投稿機能）</li><li>cardyb API（Bluesky公式。リンクカード付きの投稿を作るときのリンクプレビューの取得）</li><li>Cloudflare（本アプリの配信、AI機能の中継と利用回数の記録）</li><li>Cloudflare Workers AI — Gemma（AIによる解説・校正。利用できる条件は第2条のとおりです）</li><li>EJDict（英和辞書データ。kujirahand氏が公開、パブリックドメイン（CC0））</li></ul>
+<ul><li>Bluesky / AT Protocol（タイムラインの取得、投稿機能）</li><li>cardyb API（Bluesky公式。リンクカード付きの投稿を作るときのリンクプレビューの取得）</li><li>Cloudflare（本アプリの配信、AI機能の中継と利用回数の記録）</li><li>Cloudflare Workers AI — Gemma（AIによる解説・校正。利用できる条件は第2条のとおりです）</li><li>EJDict（英和辞書データ。kujirahand氏が公開、パブリックドメイン（CC0））</li><li>YouTube（投稿に含まれるYouTubeの動画の再生。設定の「外部メディア」でオフにできます）</li></ul>
 <p>2. AI機能について: 解説を求めた英単語と、校正を求めた投稿の下書きは、Cloudflare Workers AI（Gemma）に送信されます。運営者は送信内容を保存しません。Cloudflareは、Workers AIに送信された内容をAIモデルの学習に使わないとしています（詳しくはプライバシーポリシー第5条）。</p>
 <p>各外部サービスの利用規約が別途適用されます。ユーザーは各外部サービスの利用規約を遵守する責任を負うものとします。外部サービスの仕様変更・障害・終了等により本アプリの一部機能が利用できなくなった場合、運営者は一切の責任を負わないものとします。</p>
 
@@ -165,8 +165,8 @@ a:hover { text-decoration: underline; }
 <h2>Article 2 (Definition of Service)</h2>
 <p>1. This App is a vocabulary learning tool for studying English words and phrases in Japanese while browsing timelines on the AT Protocol (Bluesky, etc.). It is used in a web browser.</p>
 <p>2. This App provides the following main features:</p>
-<ul><li>Display of the Bluesky timeline (including likes and reposts)</li><li>Posting (including attaching images and link cards, and proofreading by AI)</li><li>Dictionary lookup and AI explanations of English words in posts</li><li>Saving words to and managing a word list</li><li>Vocabulary learning through quizzes</li><li>Recording and displaying learning progress, and sharing it on Bluesky</li><li>Text-to-speech (post text and English words)</li></ul>
-<p>AI explanations and proofreading are available to Bluesky accounts that are at least 30 days old and have at least 10 posts, up to 5 times a day in total. The count resets at 00:00 UTC (9:00 a.m. Japan time). There is also a daily limit for all users combined; once it is reached, AI features are unavailable until 00:00 UTC. You can see how many uses you have left today under &quot;AI&quot; on the settings screen.</p>
+<ul><li>Display of the Bluesky timeline (including likes and reposts, and playing videos posted to Bluesky and YouTube videos)</li><li>Display of news from the operator (posts from the official Kumotan account)</li><li>Posting (including attaching images and link cards, and proofreading by AI)</li><li>Dictionary lookup and AI explanations of English words in posts</li><li>Saving words to and managing a word list</li><li>Vocabulary learning through quizzes</li><li>Recording and displaying learning progress, and sharing it on Bluesky</li><li>Text-to-speech (post text and English words)</li></ul>
+<p>AI explanations and proofreading are available to Bluesky accounts that are at least 30 days old and have at least 10 posts, up to 5 times a day in total. The count resets at 00:00 UTC (9:00 a.m. Japan time). There is also a daily limit for all users combined; once it is reached, AI features are unavailable until 00:00 UTC. You can see the conditions and how many uses you have left today under &quot;AI&quot; on the settings screen.</p>
 
 <h2>Article 3 (Registration)</h2>
 <p>1. Use of this App requires login with a Bluesky account. Users shall begin using this App by logging in with their Bluesky account through AT Protocol OAuth authentication.</p>
@@ -205,7 +205,7 @@ a:hover { text-decoration: underline; }
 
 <h2>Article 8 (Use of External Services)</h2>
 <p>1. This App uses the following external services and data to provide its features:</p>
-<ul><li>Bluesky / AT Protocol (timeline retrieval, posting)</li><li>cardyb API (official Bluesky service; fetches link previews when creating posts with link cards)</li><li>Cloudflare (delivery of this App, relaying AI features and recording how many times they are used)</li><li>Cloudflare Workers AI — Gemma (AI explanations and proofreading; see Article 2 for who can use them)</li><li>EJDict (English-Japanese dictionary data, published by kujirahand, public domain (CC0))</li></ul>
+<ul><li>Bluesky / AT Protocol (timeline retrieval, posting)</li><li>cardyb API (official Bluesky service; fetches link previews when creating posts with link cards)</li><li>Cloudflare (delivery of this App, relaying AI features and recording how many times they are used)</li><li>Cloudflare Workers AI — Gemma (AI explanations and proofreading; see Article 2 for who can use them)</li><li>EJDict (English-Japanese dictionary data, published by kujirahand, public domain (CC0))</li><li>YouTube (playing YouTube videos included in posts; can be turned off under &quot;External media&quot; in the settings)</li></ul>
 <p>2. About AI features: English words you ask to have explained and post drafts you ask to have proofread are sent to Cloudflare Workers AI (Gemma). The Operator does not store what is sent. Cloudflare states that it does not use content sent to Workers AI to train AI models (see Article 5 of the Privacy Policy for details).</p>
 <p>The terms of service of each external service apply separately. Users are responsible for complying with them. The Operator shall not be liable if some features of this App become unavailable due to specification changes, failures, or termination of external services.</p>
 
