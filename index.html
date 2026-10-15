@@ -179,14 +179,22 @@
         .feature p { margin: 0; color: var(--ink2); font-size: 15px; }
 
         .steps { counter-reset: step; list-style: none; padding: 0; margin: 0 auto; max-width: 640px; }
-        .steps li { counter-increment: step; position: relative; padding: 0 0 24px 54px; }
-        .steps li::before {
+        .steps > li { counter-increment: step; position: relative; padding: 0 0 24px 54px; }
+        .steps > li::before {
             content: counter(step); position: absolute; left: 0; top: 0;
             width: 36px; height: 36px; border-radius: 50%; background: var(--primarySoft); color: var(--primaryStrong);
             display: flex; align-items: center; justify-content: center; font-weight: 800;
         }
         .steps strong { display: block; }
-        .steps li > span { display: block; color: var(--ink2); font-size: 15px; }
+        .steps > li > span { display: block; color: var(--ink2); font-size: 15px; }
+
+        /* スマホのホーム画面に置く手順 */
+        .hs-grid { margin-top: 12px; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; }
+        .hs-card { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 16px 18px; }
+        .hs-card h4 { font-size: 15px; margin: 0 0 6px; }
+        .hs-card ol { margin: 0; padding-left: 1.3em; color: var(--ink2); font-size: 14px; }
+        .hs-card li + li { margin-top: 4px; }
+        .home-screen .hs-note { margin: 12px 0 0; color: var(--ink3); font-size: 13px; }
 
         /* 手順の見本（Web アプリの画面を HTML で描く。ログイン後の画面は他人の投稿が写るので撮らない） */
         .shot { margin-top: 12px; max-width: 340px; border-radius: 18px; overflow: hidden; background: var(--bg); border: 1px solid var(--line); box-shadow: 0 10px 24px rgba(26, 36, 54, 0.10); color: var(--ink); font-size: 13px; line-height: 1.6; }
@@ -365,6 +373,28 @@
                     <h2>はじめかた</h2>
                     <p class="sub">Bluesky のアカウントがあれば、すぐに始められます</p>
                     <ol class="steps">
+                        <li class="home-screen" id="home-screen-ja">
+                            <strong>スマホなら、ホーム画面に追加</strong><span>くもたんはスマホのブラウザで開くだけで使えます。App Store や Google Play から入れる必要はありません。ホーム画面に追加すると、アプリと同じようにアイコンから開けます。パソコンなら、この手順はとばしてください。</span>
+                            <div class="hs-grid">
+                                <div class="hs-card">
+                                    <h4>iPhone・iPad（Safari）</h4>
+                                    <ol>
+                                        <li>Safari で <a href="https://app.kumotan.app/">app.kumotan.app</a> を開きます。</li>
+                                        <li>共有ボタン（四角から上向きの矢印）を押します。見当たらないときは、画面の下の「…」を押すと出ます。</li>
+                                        <li>「ホーム画面に追加」を選び、「追加」を押します。一覧に無いときは、下へスクロールしてください。</li>
+                                    </ol>
+                                </div>
+                                <div class="hs-card">
+                                    <h4>Android（Chrome）</h4>
+                                    <ol>
+                                        <li>Chrome で <a href="https://app.kumotan.app/">app.kumotan.app</a> を開きます。</li>
+                                        <li>右上の「⋮」を押します。</li>
+                                        <li>「ホーム画面に追加」を選び、「追加」を押します。</li>
+                                    </ol>
+                                </div>
+                            </div>
+                            <p class="hs-note">iPhone の Safari は、しばらく開かなかったサイトのデータを消すことがあります。ホーム画面から開くと、ログインの状態や学習の記録が消されにくくなります。追加したあと最初に開いたときは、もう一度ログインを求められることがあります。学習の記録は、ホーム画面から開いたときとブラウザで開いたときで分かれることがあります。</p>
+                        </li>
                         <li>
                             <strong>Bluesky でログイン</strong><span>Bluesky のハンドル（例: yourname.bsky.social）を入れて「Blueskyでログイン」を押します。Bluesky の画面に移るので、パスワードはそこで入れます。くもたんにはパスワードを渡しません。</span>
                             <div class="shot" aria-hidden="true">
@@ -438,6 +468,10 @@
                     <details>
                         <summary>Web アプリはありますか？</summary>
                         <div class="answer"><p>あります。パソコンやスマホのブラウザで <a href="https://app.kumotan.app/">app.kumotan.app</a> を開き、Bluesky のアカウントでログインしてください。アプリを入れる必要はありません。</p></div>
+                    </details>
+                    <details>
+                        <summary>スマホで、アプリのように使えますか？</summary>
+                        <div class="answer"><p>使えます。<a href="https://app.kumotan.app/">app.kumotan.app</a> をホーム画面に追加すると、アイコンから開けます。手順は「はじめかた」の<a href="#home-screen-ja">ホーム画面に追加</a>をご覧ください。</p></div>
                     </details>
                     <details>
                         <summary>Web アプリで、iPhone アプリのデータは使えますか？</summary>
@@ -514,6 +548,28 @@
                     <h2>Getting started</h2>
                     <p class="sub">All you need is a Bluesky account</p>
                     <ol class="steps">
+                        <li class="home-screen" id="home-screen-en">
+                            <strong>On a phone, add it to your home screen</strong><span>Kumotan works just by opening it in your phone's browser. There is no need to install anything from the App Store or Google Play. Add it to your home screen to open it from an icon, just like an app. On a computer, skip this step.</span>
+                            <div class="hs-grid">
+                                <div class="hs-card">
+                                    <h4>iPhone and iPad (Safari)</h4>
+                                    <ol>
+                                        <li>Open <a href="https://app.kumotan.app/">app.kumotan.app</a> in Safari.</li>
+                                        <li>Tap the Share button (a square with an arrow pointing up). If you cannot find it, tap "…" at the bottom of the screen.</li>
+                                        <li>Choose "Add to Home Screen", then tap "Add". If it is not in the list, scroll down.</li>
+                                    </ol>
+                                </div>
+                                <div class="hs-card">
+                                    <h4>Android (Chrome)</h4>
+                                    <ol>
+                                        <li>Open <a href="https://app.kumotan.app/">app.kumotan.app</a> in Chrome.</li>
+                                        <li>Tap "⋮" at the top right.</li>
+                                        <li>Choose "Add to Home screen", then tap "Add".</li>
+                                    </ol>
+                                </div>
+                            </div>
+                            <p class="hs-note">Safari on iPhone may delete data for sites you have not opened for a while. Opening Kumotan from the home screen makes your sign-in and study records less likely to be deleted. The first time you open it from the home screen, you may be asked to sign in again. Study records may differ between the home screen and the browser.</p>
+                        </li>
                         <li>
                             <strong>Sign in with Bluesky</strong><span>Enter your Bluesky handle (e.g. yourname.bsky.social) and press "Sign in with Bluesky". You move to Bluesky's own page and enter your password there. Kumotan never sees your password.</span>
                             <div class="shot" aria-hidden="true">
@@ -587,6 +643,10 @@
                     <details>
                         <summary>Is there a web app?</summary>
                         <div class="answer"><p>Yes. Open <a href="https://app.kumotan.app/">app.kumotan.app</a> in a browser on your computer or phone and sign in with your Bluesky account. There is nothing to install.</p></div>
+                    </details>
+                    <details>
+                        <summary>Can I use it like an app on my phone?</summary>
+                        <div class="answer"><p>Yes. Add <a href="https://app.kumotan.app/">app.kumotan.app</a> to your home screen to open it from an icon. See <a href="#home-screen-en">add it to your home screen</a> under "Getting started" for the steps.</p></div>
                     </details>
                     <details>
                         <summary>Can I use my iPhone data in the web app?</summary>
