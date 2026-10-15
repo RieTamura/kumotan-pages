@@ -188,7 +188,7 @@
         .steps strong { display: block; }
         .steps li > span { display: block; color: var(--ink2); font-size: 15px; }
 
-        /* 手順の見本（Web 版の画面を HTML で描く。ログイン後の画面は他人の投稿が写るので撮らない） */
+        /* 手順の見本（Web アプリの画面を HTML で描く。ログイン後の画面は他人の投稿が写るので撮らない） */
         .shot { margin-top: 12px; max-width: 340px; border-radius: 18px; overflow: hidden; background: var(--bg); border: 1px solid var(--line); box-shadow: 0 10px 24px rgba(26, 36, 54, 0.10); color: var(--ink); font-size: 13px; line-height: 1.6; }
         .shot .s-head { padding: 12px 16px 6px; }
         .shot-body { padding: 4px 16px 16px; }
@@ -273,20 +273,20 @@
     <header class="hero">
         <div class="wrap hero-grid">
             <div class="hero-text is-active" data-lang-block="ja">
-                <span class="eyebrow">ブラウザで使える Web 版を公開しました</span>
+                <span class="eyebrow">ブラウザで使える Web アプリを公開しました</span>
                 <h1>タイムラインから学ぶ<br><span class="mark">あなただけの単語帳</span></h1>
                 <p class="lead">Bluesky で見かけた英単語を、その場で自分の単語帳に登録できます。辞書や AI の解説、読み上げ、クイズで、読んだ英語を身につけていけます。</p>
                 <div class="cta">
-                    <a class="btn btn-primary" href="https://app.kumotan.app/">Web 版をひらく</a>
+                    <a class="btn btn-primary" href="https://app.kumotan.app/">Web アプリをひらく</a>
                 </div>
-                <p class="meta">iPhone 版は 2026年10月13日に App Store での配信を終了しました。</p>
+                <p class="meta">iPhone アプリは 2026年10月13日に App Store での配信を終了しました。</p>
             </div>
             <div class="hero-text" data-lang-block="en">
-                <span class="eyebrow">The web version is now available in your browser</span>
+                <span class="eyebrow">The web app is now available in your browser</span>
                 <h1>Learn from your timeline,<br><span class="mark">build your own word list</span></h1>
                 <p class="lead">Save English words you come across on Bluesky straight into your own word list. Look them up, hear them read aloud, and review them with quizzes until they stick.</p>
                 <div class="cta">
-                    <a class="btn btn-primary" href="https://app.kumotan.app/">Open the web version</a>
+                    <a class="btn btn-primary" href="https://app.kumotan.app/">Open the web app</a>
                 </div>
                 <p class="meta">The iPhone app was removed from the App Store on October 13, 2026.</p>
             </div>
@@ -431,23 +431,23 @@
                     <details>
                         <summary>機種を変えたら、データはどうなりますか？</summary>
                         <div class="answer">
-                            <p>単語帳は PDS に保存されているので、なくなりません。iPhone 版にはもうログインできません。新しい機種では、<a href="https://app.kumotan.app/">Web 版</a>で単語帳を読んでください。</p>
+                            <p>単語帳は PDS に保存されているので、なくなりません。iPhone アプリにはもうログインできません。新しい機種では、<a href="https://app.kumotan.app/">Web アプリ</a>で単語帳を読んでください。</p>
                             <p>クイズの記録と学習の記録は iPhone の中にだけ保存されているので、新しい iPhone には移りません。</p>
                         </div>
                     </details>
                     <details>
-                        <summary>Web 版はありますか？</summary>
+                        <summary>Web アプリはありますか？</summary>
                         <div class="answer"><p>あります。パソコンやスマホのブラウザで <a href="https://app.kumotan.app/">app.kumotan.app</a> を開き、Bluesky のアカウントでログインしてください。アプリを入れる必要はありません。</p></div>
                     </details>
                     <details>
-                        <summary>Web 版で、iPhone 版のデータは使えますか？</summary>
+                        <summary>Web アプリで、iPhone アプリのデータは使えますか？</summary>
                         <div class="answer">
-                            <p>単語帳は使えます。Web 版は PDS から単語帳を読むので、iPhone 版で登録した単語がそのまま出ます。ただし、PDS への保存が終わっていない単語は出ません。</p>
-                            <p>クイズの記録と学習の記録は、iPhone の中にだけ保存されているので、Web 版には引き継ぎません。Web 版では、記録が新しく始まります。</p>
+                            <p>単語帳は使えます。Web アプリは PDS から単語帳を読むので、iPhone アプリで登録した単語がそのまま出ます。ただし、PDS への保存が終わっていない単語は出ません。</p>
+                            <p>クイズの記録と学習の記録は、iPhone の中にだけ保存されているので、Web アプリには引き継ぎません。Web アプリでは、記録が新しく始まります。</p>
                         </div>
                     </details>
                     <details>
-                        <summary>Web 版では、学習の記録はどこに保存されますか？</summary>
+                        <summary>Web アプリでは、学習の記録はどこに保存されますか？</summary>
                         <div class="answer">
                             <p>お使いのブラウザの中に保存します。記録はブラウザや端末ごとに別々になり、ブラウザのデータを消すと記録も消えます。</p>
                             <p>パソコンとスマホなど、端末をまたいで記録を揃える機能は、要望があれば、使うかどうかを選べる形で検討します。</p>
@@ -580,23 +580,23 @@
                     <details>
                         <summary>What happens to my data when I change phones?</summary>
                         <div class="answer">
-                            <p>Your word list is stored in your PDS, so it is not lost. You can no longer sign in to the iPhone app, so read your word list in the <a href="https://app.kumotan.app/">web version</a> on your new device.</p>
+                            <p>Your word list is stored in your PDS, so it is not lost. You can no longer sign in to the iPhone app, so read your word list in the <a href="https://app.kumotan.app/">web app</a> on your new device.</p>
                             <p>Your quiz history and study records are kept only on the iPhone, so they do not move to the new one.</p>
                         </div>
                     </details>
                     <details>
-                        <summary>Is there a web version?</summary>
+                        <summary>Is there a web app?</summary>
                         <div class="answer"><p>Yes. Open <a href="https://app.kumotan.app/">app.kumotan.app</a> in a browser on your computer or phone and sign in with your Bluesky account. There is nothing to install.</p></div>
                     </details>
                     <details>
-                        <summary>Can I use my iPhone data in the web version?</summary>
+                        <summary>Can I use my iPhone data in the web app?</summary>
                         <div class="answer">
-                            <p>Your word list, yes. The web version reads your word list from your PDS, so the words you saved on the iPhone appear as they are. Words that have not finished saving to your PDS do not appear.</p>
-                            <p>Your quiz history and study records are kept only on the iPhone, so they are not carried over. The web version starts a new record.</p>
+                            <p>Your word list, yes. The web app reads your word list from your PDS, so the words you saved on the iPhone appear as they are. Words that have not finished saving to your PDS do not appear.</p>
+                            <p>Your quiz history and study records are kept only on the iPhone, so they are not carried over. The web app starts a new record.</p>
                         </div>
                     </details>
                     <details>
-                        <summary>Where does the web version keep my study records?</summary>
+                        <summary>Where does the web app keep my study records?</summary>
                         <div class="answer">
                             <p>They are kept in your browser. Each browser or device has its own records, and clearing your browser data also clears them.</p>
                             <p>If people ask for it, we will consider a way to sync records across devices, such as a computer and a phone, as an option you can turn on or off.</p>
