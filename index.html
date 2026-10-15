@@ -342,12 +342,12 @@
                         <div class="feature">
                             <div class="icon i-lav"><svg viewBox="0 0 24 24"><path d="M4 5h6a2 2 0 0 1 2 2v13a2 2 0 0 0-2-2H4z"/><path d="M20 5h-6a2 2 0 0 0-2 2v13a2 2 0 0 1 2-2h6z"/></svg></div>
                             <h3>辞書と AI の解説</h3>
-                            <p>内蔵の英和辞書で、意味をすぐに確かめられます。AI が意味や使い方を解説したり、投稿を校正したりする機能は、作ってから 30 日以上たち、投稿が 10 件以上ある Bluesky アカウントで、1 日 5 回まで使えます。</p>
+                            <p>内蔵の英和辞書で、意味をすぐに確かめられます。AI による意味や使い方の解説と投稿の校正は、作ってから 30 日以上たち、投稿が 10 件以上ある Bluesky アカウントで、1 日 5 回まで使えます。</p>
                         </div>
                         <div class="feature">
                             <div class="icon i-peach"><svg viewBox="0 0 24 24"><path d="M5 10v4h3l5 4V6L8 10H5z"/><path d="M16 9a4 4 0 0 1 0 6"/><path d="M18.5 6.5a7.5 7.5 0 0 1 0 11"/></svg></div>
                             <h3>発音を聞く</h3>
-                            <p>単語や投稿の英文をブラウザの読み上げ機能で読み上げるので、耳でも覚えられます。</p>
+                            <p>単語や投稿の英文をブラウザの機能で読み上げるので、耳でも覚えられます。</p>
                         </div>
                         <div class="feature">
                             <div class="icon i-mint"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M8.5 12.5l2.5 2.5 4.5-5"/></svg></div>
@@ -440,7 +440,7 @@
                     <ul>
                         <li>単語帳や学習の記録を、運営者のサーバーで預かることはありません。単語帳はあなた自身の PDS に、学習の記録はお使いのブラウザの中に保存されます。</li>
                         <li>PDS に保存したデータは、AT Protocol の仕組み上、誰でも読める公開データです。投稿の本文は保存せず、元の投稿へのリンクだけを残します。</li>
-                        <li>AI の機能（単語の解説と投稿の校正）を使うと、単語や投稿の下書きが Cloudflare の AI サービス（Workers AI）に送られます。Cloudflare は、送った内容を AI の学習に使わないとしています。使った回数を数えるため、アカウントの DID と回数を運営者のサーバーに 7 日ほど保存します。単語や下書きは保存しません。</li>
+                        <li>AI の機能（単語の解説と投稿の校正）を使うと、単語や投稿の下書きが Cloudflare の AI サービス（Workers AI）に送られます。Cloudflare は、送った内容を AI の学習に使わないとしています。AI を使えるかどうかの確認と回数の制限のため、ログインしてアプリを開いたときや AI を使ったときに、アカウントの DID と確認の結果、使った回数を運営者のサーバーに 7 日ほど保存します。単語や下書きは保存しません。</li>
                     </ul>
                     <p>詳しくは<a href="./privacy-policy.html">プライバシーポリシー</a>をご覧ください。</p>
                 </div>
@@ -449,7 +449,7 @@
             <section id="faq-ja">
                 <div class="wrap faq">
                     <h2>よくある質問</h2>
-                    <p class="sub">わからないことがあれば、まずこちらをご覧ください</p>
+                    <p class="sub">分からないことがあれば、まずこちらをご覧ください</p>
                     <details>
                         <summary>Bluesky のパスワードをくもたんに渡しますか？</summary>
                         <div class="answer"><p>渡しません。ログインは Bluesky の画面で行い、くもたんはパスワードを受け取りません。</p></div>
@@ -461,8 +461,8 @@
                     <details>
                         <summary>機種を変えたら、データはどうなりますか？</summary>
                         <div class="answer">
-                            <p>単語帳は PDS に保存されているので、なくなりません。iPhone アプリにはもうログインできません。新しい機種では、<a href="https://app.kumotan.app/">Web アプリ</a>で単語帳を読んでください。</p>
-                            <p>クイズの記録と学習の記録は iPhone の中にだけ保存されているので、新しい iPhone には移りません。</p>
+                            <p>単語帳は PDS に保存されているので、なくなりません。新しいスマホでも、<a href="https://app.kumotan.app/">Web アプリ</a>にログインすれば、同じ単語帳を使えます。</p>
+                            <p>学習の記録（クイズの結果）はスマホのブラウザの中に保存されているので、新しいスマホには移りません。</p>
                         </div>
                     </details>
                     <details>
@@ -491,7 +491,7 @@
                         <summary>AI の機能は誰でも使えますか？</summary>
                         <div class="answer">
                             <p>作ってから 30 日以上たち、投稿が 10 件以上ある Bluesky アカウントなら使えます。単語の解説と投稿の校正を合わせて、1 日 5 回までです。回数は日本時間の午前 9 時に戻ります。条件を満たしていないアカウントでは、「AI に聞く」と「AI で校正」のボタンを押せません。</p>
-                            <p>すべての利用者を合わせた 1 日の回数にも上限があり、上限に達した日は、午前 9 時まで使えません。使える条件と今日の残りの回数は、設定画面の「AI」で確かめられます。辞書は回数の制限なく使えます。</p>
+                            <p>すべての利用者を合わせた 1 日の回数にも上限があり、上限に達した日は、日本時間の午前 9 時まで使えません。使える条件と今日の残りの回数は、設定画面の「AI」で確かめられます。辞書は回数の制限なく使えます。</p>
                         </div>
                     </details>
                     <details>
@@ -615,7 +615,7 @@
                     <ul>
                         <li>Your word list and study records are never kept on our servers. Your word list is stored in your own PDS, and your study records stay in your browser.</li>
                         <li>Data in a PDS is public by design of the AT Protocol. Kumotan does not store post text there, only a link to the original post.</li>
-                        <li>When you use AI features (word explanations and post proofreading), the word or post draft is sent to Cloudflare's AI service (Workers AI). Cloudflare states that it does not use what you send to train AI. To count your uses, your account's DID and the count are kept on the operator's servers for about 7 days. The words and drafts themselves are not kept.</li>
+                        <li>When you use AI features (word explanations and post proofreading), the word or post draft is sent to Cloudflare's AI service (Workers AI). Cloudflare states that it does not use what you send to train AI. To check whether you can use AI and to limit the number of uses, your account's DID, the result of the check and the count are kept on the operator's servers for about 7 days when you open the app while signed in or use AI. The words and drafts themselves are not kept.</li>
                     </ul>
                     <p>See the <a href="./privacy-policy.html">privacy policy</a> for details.</p>
                 </div>
@@ -636,8 +636,8 @@
                     <details>
                         <summary>What happens to my data when I change phones?</summary>
                         <div class="answer">
-                            <p>Your word list is stored in your PDS, so it is not lost. You can no longer sign in to the iPhone app, so read your word list in the <a href="https://app.kumotan.app/">web app</a> on your new device.</p>
-                            <p>Your quiz history and study records are kept only on the iPhone, so they do not move to the new one.</p>
+                            <p>Your word list is stored in your PDS, so it is not lost. Sign in to the <a href="https://app.kumotan.app/">web app</a> on your new phone to use the same word list.</p>
+                            <p>Your study records (quiz results) are kept in your phone's browser, so they do not move to the new phone.</p>
                         </div>
                     </details>
                     <details>
