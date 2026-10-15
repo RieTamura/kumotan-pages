@@ -64,7 +64,7 @@ a:hover { text-decoration: underline; }
 <p>Bluesky（AT Protocol）のOAuth認証を通じて以下の情報を取得します。</p>
 <ul><li>ユーザーのDID（分散型識別子）</li><li>ハンドル名（ユーザー名）</li><li>表示名、アバター画像、プロフィール情報</li></ul>
 <h3>【2. ブラウザの中に保存されるデータ】</h3>
-<p>以下のデータはユーザーのブラウザの中（IndexedDB・localStorage）に保存され、運営者のサーバーに送信されることはありません。</p>
+<p>以下のデータはユーザーのブラウザの中（IndexedDB・localStorage）に保存され、運営者のサーバーには保存されません。投稿の下書きは、AIによる校正を使ったときだけ、校正のために運営者のサーバーを通ってCloudflare Workers AIに送られます（【4】）。</p>
 <ul><li>ログインの状態（認証トークン）</li><li>単語帳の控え（PDSの単語データの写しです。ログアウトすると削除されます）</li><li>学習の記録（クイズの結果です。アカウントごとに分けて保存し、ログアウトしても削除されません）</li><li>投稿の下書き</li><li>設定（表示言語、効果音等）</li></ul>
 <h3>【3. PDSに保存されるデータ】</h3>
 <p>AT Protocolの仕組みに基づき、以下のデータがユーザー自身のPDS（Personal Data Server）に保存されます。</p>
@@ -72,7 +72,11 @@ a:hover { text-decoration: underline; }
 <p>PDSに保存されたデータは、AT Protocolの仕組み上、公開され、誰でも読むことができます。そのため、登録元の投稿の本文は保存しません。</p>
 <h3>【4. 外部サービスに送信されるデータ】</h3>
 <p>本アプリの機能を提供するため、以下のデータが外部サービスに送信されます。</p>
-<ul><li>Bluesky / AT Protocol: タイムライン取得リクエスト、投稿内容（投稿・進捗シェア時）、画像データ（投稿添付時）、いいね・リポスト、ログイン時のアカウント情報の照会（plc.directoryを含みます）</li><li>cardyb API（Bluesky公式）: 投稿に含まれるURL（リンクカード付きの投稿を作る際のみ）</li><li>Cloudflare（本アプリの配信元）: 本アプリを開いたときの通信（IPアドレス、ブラウザの種類等）、AI機能を使ったときの依頼内容とBlueskyが発行するアカウントの証明（DIDを含みます）</li><li>Cloudflare Workers AI（Gemma）: 解説を求めた英単語、校正を求めた投稿の下書き（運営者が許可したアカウントのみ）</li><li>ブラウザの音声合成機能: 読み上げる文章（読み上げを使った場合のみ）</li></ul>
+<ul><li>Bluesky / AT Protocol: タイムライン取得リクエスト、投稿内容（投稿・進捗シェア時）、画像データ（投稿添付時）、いいね・リポスト、ログイン時のアカウント情報の照会（plc.directoryを含みます）</li><li>cardyb API（Bluesky公式）: 投稿に含まれるURL（リンクカード付きの投稿を作る際のみ）</li><li>Cloudflare（本アプリの配信元）: 本アプリを開いたときの通信（IPアドレス、ブラウザの種類等）、AI機能を使ったときと設定画面の「AI」を開いたときの依頼内容とBlueskyが発行するアカウントの証明（DIDを含みます）</li><li>Cloudflare Workers AI（Gemma）: 解説を求めた英単語、校正を求めた投稿の下書き（AI機能を使った場合のみ）</li><li>ブラウザの音声合成機能: 読み上げる文章（読み上げを使った場合のみ）</li></ul>
+<h3>【5. 運営者のサーバーに保存されるデータ】</h3>
+<p>AI機能を利用できるかどうかの確認と、1日の利用回数の制限のため、以下の情報を運営者のサーバー（Cloudflare D1）に保存します。解説を求めた英単語や投稿の下書きは保存しません。</p>
+<ul><li>1日の利用回数（DID、日付〈協定世界時〉、回数）: AI機能を使ったときに保存します。利用した日から7日を過ぎたあと、毎日1回の処理で削除します</li><li>利用できる条件を確かめた結果（DID、条件を満たすかどうか、確かめた日時）: AI機能を使ったときと、設定画面の「AI」を開いたときに保存します。確かめた日時から7日を過ぎたあと、毎日1回の処理で削除します。確かめ直したときは、その日時から数えます</li></ul>
+<p>利用できる条件（アカウントの作成日と投稿数）は、運営者のサーバーから、Blueskyの公開API（public.api.bsky.app）で、誰でも読める公開プロフィールを読んで確かめます。そのとき、DIDをBlueskyに送ります。</p>
 
 <h2>第3条（情報の利用目的）</h2>
 <p>運営者が情報を利用する目的は、以下のとおりです。</p>
@@ -80,14 +84,15 @@ a:hover { text-decoration: underline; }
 <p>2. ユーザー認証およびBlueskyアカウントとの連携のため</p>
 <p>3. 単語帳の保存・同期の機能を提供するため</p>
 <p>4. 辞書検索、AIによる解説、投稿の校正、読み上げ等の学習支援機能を提供するため</p>
-<p>5. AI機能の不正利用を防ぐため（利用できるアカウントの確認と、IPアドレスごとの利用回数の制限）</p>
+<p>5. AI機能の不正利用を防ぐため（利用できる条件の確認、アカウントごとの1日の利用回数の制限、IPアドレスごとの利用回数の制限）</p>
 <p>6. ユーザーからのお問い合わせに対応し、本アプリを改善するため</p>
 <p>7. 本アプリの不具合の修正および機能改善のため</p>
 
 <h2>第4条（個人情報の第三者提供）</h2>
 <p>1. 運営者は、次に掲げる場合を除いて、あらかじめユーザーの同意を得ることなく、第三者に個人情報を提供することはありません。</p>
 <ul><li>人の生命、身体または財産の保護のために必要がある場合であって、本人の同意を得ることが困難であるとき</li><li>公衆衛生の向上または児童の健全な育成の推進のために特に必要がある場合であって、本人の同意を得ることが困難であるとき</li><li>国の機関もしくは地方公共団体またはその委託を受けた者が法令の定める事務を遂行することに対して協力する必要がある場合であって、本人の同意を得ることにより当該事務の遂行に支障を及ぼすおそれがあるとき</li><li>その他法令で認められる場合</li></ul>
-<p>2. 本アプリのAI機能（単語の解説・投稿の校正）は、運営者が許可したアカウントだけが利用できます。利用した場合、第2条【4】に記載した内容が、Cloudflare Workers AI（Gemma）に送信されます。運営者が許可していないアカウントの情報が送信されることはありません。</p>
+<p>2. 本アプリのAI機能（単語の解説・投稿の校正）を利用した場合、第2条【4】に記載した内容が、Cloudflare Workers AI（Gemma）に送信されます。AI機能を使わない場合や、依頼が断られた場合（利用できる条件を満たさない、回数の上限に達した等）は、送信されません。</p>
+<p>3. AI機能を利用できる条件を確かめるため、運営者のサーバーから、Blueskyの公開API（public.api.bsky.app）にユーザーのDIDを送り、誰でも読める公開プロフィール（作成日・投稿数）を読みます（第2条【5】）。</p>
 
 <h2>第5条（外部送信規律への対応）</h2>
 <p>電気通信事業法第27条の12（外部送信規律）に基づき、本アプリが利用者の情報を外部に送信する場合の詳細を以下のとおり開示します。</p>
@@ -105,11 +110,12 @@ a:hover { text-decoration: underline; }
 <p>運営者の目的: リンクプレビュー（OGPカード）の取得</p>
 <p>送信先の目的: URLのメタデータ抽出サービス提供</p>
 <h3>【Cloudflare（Cloudflare, Inc.）】</h3>
-<p>送信情報: 本アプリを開いたときの通信（IPアドレス、ブラウザの種類等）、AI機能を使ったときの依頼内容とアカウントの証明</p>
+<p>送信情報: 本アプリを開いたときの通信（IPアドレス、ブラウザの種類等）、AI機能を使ったときと設定画面の「AI」を開いたときの依頼内容とアカウントの証明</p>
 <p>運営者の目的: 本アプリの配信、AI機能の中継と不正利用の防止</p>
 <p>送信先の目的: ウェブサイトの配信・実行環境の提供</p>
+<p>備考: AI機能の1日の利用回数と、利用できる条件を確かめた結果を、Cloudflare D1に保存します（第2条【5】）。</p>
 <h3>【Cloudflare Workers AI（Cloudflare, Inc.）】</h3>
-<p>送信情報: 解説を求めた英単語、校正を求めた投稿の下書き（運営者が許可したアカウントのみ）</p>
+<p>送信情報: 解説を求めた英単語、校正を求めた投稿の下書き（AI機能を使った場合のみ）</p>
 <p>運営者の目的: AI機能（単語の解説・投稿の校正）の提供</p>
 <p>送信先の目的: AIテキスト生成サービスの提供</p>
 <p>備考: Cloudflareは、Workers AIに送信された内容と生成された応答を、AIモデルの学習や、Cloudflareおよび第三者のサービスの改善に使わないとしています。AIのモデルはGoogleが公開しているGemmaで、Cloudflareのサーバーで動いており、Googleには送信されません。個人情報や機密情報は送信しないでください。</p>
@@ -122,7 +128,7 @@ a:hover { text-decoration: underline; }
 
 <h2>第6条（安全管理措置）</h2>
 <p>運営者は、個人情報の漏えい、滅失またはき損の防止その他の個人情報の安全管理のために、以下の措置を講じています。</p>
-<ul><li>Bluesky認証にはOAuth（PKCE + DPoP）を採用し、ユーザーのパスワードを取得・保存しません</li><li>認証トークンはユーザーのブラウザの中に保存し、運営者のサーバーには送りません</li><li>AI機能では、Blueskyが発行するアカウントの証明を確かめ、運営者が許可したアカウント以外の依頼を断ります</li><li>外部サービスとの通信はHTTPSによる暗号化通信を使用します</li></ul>
+<ul><li>Bluesky認証にはOAuth（PKCE + DPoP）を採用し、ユーザーのパスワードを取得・保存しません</li><li>認証トークンはユーザーのブラウザの中に保存し、運営者のサーバーには送りません</li><li>AI機能では、Blueskyが発行するアカウントの証明を確かめたうえで、利用できる条件と1日の利用回数に応じて依頼を断ります</li><li>外部サービスとの通信はHTTPSによる暗号化通信を使用します</li></ul>
 
 <h2>第7条（アナリティクス・トラッキング）</h2>
 <p>本アプリは、アクセス解析ツール、広告配信SDK、トラッキングツール等を使用しておりません。ユーザーの行動データを収集・分析する機能は搭載していません。</p>
@@ -137,6 +143,7 @@ a:hover { text-decoration: underline; }
 <p>4. ブラウザでこのサイトのデータを削除すると、ブラウザの中に保存されたすべてのデータ（学習の記録を含みます）が削除されます。</p>
 <p>5. 本アプリから削除しなかったPDSのデータの扱いは、ユーザー自身のPDSの管理に委ねられます。</p>
 <p>6. 削除されたデータは、運営者も復元できません。削除する前に設定画面の「データ」から書き出したCSVファイルがあれば、ユーザー自身がそのファイルを読み込んで戻すことができます。</p>
+<p>7. AI機能の利用回数と、利用できる条件を確かめた結果は、第2条【5】のとおり、自動で削除されます。</p>
 
 <h2>第10条（未成年者の利用）</h2>
 <p>本アプリは、特に未成年者を対象としたサービスではありませんが、未成年者が利用する場合は、保護者の同意のもとで利用することを推奨します。</p>
@@ -152,7 +159,7 @@ a:hover { text-decoration: underline; }
 <div class="footer">
 <p>運営者: RieTamura</p>
 <p>お問い合わせ: <a href="mailto:contact@kumotan.app">contact@kumotan.app</a> / <a href="https://github.com/RieTamura/kumotan-pages/issues">GitHub Issues</a> / <a href="https://bsky.app/profile/kumotan.app">Bluesky @kumotan.app</a></p>
-<p>最終更新日: 2026年10月14日</p>
+<p>最終更新日: 2026年10月15日</p>
 </div>
 </div>
 
@@ -169,7 +176,7 @@ a:hover { text-decoration: underline; }
 <p>The following information is obtained through Bluesky (AT Protocol) OAuth authentication:</p>
 <ul><li>User's DID (Decentralized Identifier)</li><li>Handle (username)</li><li>Display name, avatar image, profile information</li></ul>
 <h3>[2. Data Stored in the Browser]</h3>
-<p>The following data is stored in the User's browser (IndexedDB and localStorage) and is never sent to the Operator's servers:</p>
+<p>The following data is stored in the User's browser (IndexedDB and localStorage) and is not stored on the Operator's servers. Post drafts are sent through the Operator's servers to Cloudflare Workers AI only when AI proofreading is used, for proofreading ([4]):</p>
 <ul><li>Sign-in state (authentication tokens)</li><li>A copy of the word list (a copy of the word data in the PDS; deleted when you sign out)</li><li>Learning records (quiz results; kept separately for each account and not deleted when you sign out)</li><li>Post drafts</li><li>Settings (display language, sound effects, etc.)</li></ul>
 <h3>[3. Data Stored in the PDS]</h3>
 <p>Based on the AT Protocol, the following data is stored in the User's own PDS (Personal Data Server):</p>
@@ -177,7 +184,11 @@ a:hover { text-decoration: underline; }
 <p>Data stored in a PDS is public by design of the AT Protocol and can be read by anyone. For this reason, the text of the source post is not stored.</p>
 <h3>[4. Data Sent to External Services]</h3>
 <p>To provide the App's features, the following data is sent to external services:</p>
-<ul><li>Bluesky / AT Protocol: Timeline requests, post content (when posting or sharing progress), image data (when attaching images), likes and reposts, account lookups at sign-in (including plc.directory)</li><li>cardyb API (official Bluesky service): URLs in posts (only when creating posts with link cards)</li><li>Cloudflare (host of this App): Connections made when opening this App (IP address, browser type, etc.), and when AI features are used, the request and the account proof issued by Bluesky (including the DID)</li><li>Cloudflare Workers AI (Gemma): English words you ask to have explained, post drafts you ask to have proofread (only for accounts the Operator has allowed)</li><li>The browser's speech synthesis: Text to be read aloud (only when text-to-speech is used)</li></ul>
+<ul><li>Bluesky / AT Protocol: Timeline requests, post content (when posting or sharing progress), image data (when attaching images), likes and reposts, account lookups at sign-in (including plc.directory)</li><li>cardyb API (official Bluesky service): URLs in posts (only when creating posts with link cards)</li><li>Cloudflare (host of this App): Connections made when opening this App (IP address, browser type, etc.), and when AI features are used or &quot;AI&quot; on the settings screen is opened, the request and the account proof issued by Bluesky (including the DID)</li><li>Cloudflare Workers AI (Gemma): English words you ask to have explained, post drafts you ask to have proofread (only when AI features are used)</li><li>The browser's speech synthesis: Text to be read aloud (only when text-to-speech is used)</li></ul>
+<h3>[5. Data Stored on the Operator's Servers]</h3>
+<p>To check whether an account may use AI features and to limit how many times they are used each day, the following information is stored on the Operator's servers (Cloudflare D1). The English words you ask about and your post drafts are not stored.</p>
+<ul><li>Daily usage count (DID, date in UTC, count): stored when AI features are used, and deleted by a daily cleanup once 7 days have passed since the day of use</li><li>Result of the eligibility check (DID, whether the conditions are met, time of the check): stored when AI features are used and when &quot;AI&quot; on the settings screen is opened, and deleted by a daily cleanup once 7 days have passed since the check; when the account is checked again, the period starts over from that time</li></ul>
+<p>The eligibility conditions (account age and number of posts) are checked from the Operator's servers by reading the account's public profile, which anyone can read, through Bluesky's public API (public.api.bsky.app). The DID is sent to Bluesky for this.</p>
 
 <h2>Article 3 (Purpose of Information Use)</h2>
 <p>The Operator uses information for the following purposes:</p>
@@ -185,14 +196,15 @@ a:hover { text-decoration: underline; }
 <p>2. For user authentication and integration with Bluesky accounts</p>
 <p>3. To provide saving and syncing of the word list</p>
 <p>4. To provide learning support features such as dictionary lookup, AI explanations, post proofreading, and text-to-speech</p>
-<p>5. To prevent misuse of AI features (checking which accounts may use them, and limiting the number of uses per IP address)</p>
+<p>5. To prevent misuse of AI features (checking whether an account meets the conditions, limiting the number of uses per account per day, and limiting the number of uses per IP address)</p>
 <p>6. To respond to inquiries from users and improve this App</p>
 <p>7. To fix bugs and improve features of this App</p>
 
 <h2>Article 4 (Provision of Personal Information to Third Parties)</h2>
 <p>1. The Operator will not provide personal information to third parties without prior consent of the User, except in the following cases:</p>
 <ul><li>When necessary to protect the life, body, or property of a person and it is difficult to obtain the consent of the person</li><li>When particularly necessary to improve public health or promote the sound development of children and it is difficult to obtain consent</li><li>When it is necessary to cooperate with a national organ or local government body in executing affairs prescribed by law and obtaining consent may impede such execution</li><li>Other cases permitted by law</li></ul>
-<p>2. The AI features of this App (word explanations and post proofreading) are available only to accounts the Operator has allowed. When they are used, the content described in Article 2 [4] is sent to Cloudflare Workers AI (Gemma). Information from accounts the Operator has not allowed is never sent.</p>
+<p>2. When the AI features of this App (word explanations and post proofreading) are used, the content described in Article 2 [4] is sent to Cloudflare Workers AI (Gemma). Nothing is sent when AI features are not used, or when the request is refused (for example, because the account does not meet the conditions or a usage limit has been reached).</p>
+<p>3. To check whether an account may use AI features, the Operator's servers send the User's DID to Bluesky's public API (public.api.bsky.app) and read the public profile (account age and number of posts), which anyone can read (Article 2 [5]).</p>
 
 <h2>Article 5 (External Transmission Disclosure)</h2>
 <p>In accordance with Article 27-12 of the Telecommunications Business Act (External Transmission Rules), we disclose the following details regarding external transmission of user information:</p>
@@ -210,11 +222,12 @@ a:hover { text-decoration: underline; }
 <p>Operator's purpose: Fetching link previews (OGP cards)</p>
 <p>Recipient's purpose: Providing URL metadata extraction services</p>
 <h3>[Cloudflare (Cloudflare, Inc.)]</h3>
-<p>Information sent: Connections made when opening this App (IP address, browser type, etc.), and when AI features are used, the request and the account proof</p>
+<p>Information sent: Connections made when opening this App (IP address, browser type, etc.), and when AI features are used or &quot;AI&quot; on the settings screen is opened, the request and the account proof</p>
 <p>Operator's purpose: Delivering this App, relaying AI features and preventing their misuse</p>
 <p>Recipient's purpose: Providing website delivery and runtime services</p>
+<p>Note: The daily AI usage count and the result of the eligibility check are stored in Cloudflare D1 (Article 2 [5]).</p>
 <h3>[Cloudflare Workers AI (Cloudflare, Inc.)]</h3>
-<p>Information sent: English words you ask to have explained, post drafts you ask to have proofread (only for accounts the Operator has allowed)</p>
+<p>Information sent: English words you ask to have explained, post drafts you ask to have proofread (only when AI features are used)</p>
 <p>Operator's purpose: Providing AI features (word explanations and post proofreading)</p>
 <p>Recipient's purpose: Providing AI text generation services</p>
 <p>Note: Cloudflare states that it does not use content sent to Workers AI or the responses generated to train AI models or to improve Cloudflare or third-party services. The AI model is Gemma, published by Google, and it runs on Cloudflare's servers; nothing is sent to Google. Do not send personal or confidential information.</p>
@@ -227,7 +240,7 @@ a:hover { text-decoration: underline; }
 
 <h2>Article 6 (Security Measures)</h2>
 <p>The Operator takes the following measures to prevent leakage, loss, or damage of personal information and for other security management:</p>
-<ul><li>OAuth (PKCE + DPoP) is used for Bluesky authentication, and the User's password is never obtained or stored</li><li>Authentication tokens are stored in the User's browser and are not sent to the Operator's servers</li><li>For AI features, the account proof issued by Bluesky is verified, and requests from accounts the Operator has not allowed are refused</li><li>Communication with external services uses HTTPS encryption</li></ul>
+<ul><li>OAuth (PKCE + DPoP) is used for Bluesky authentication, and the User's password is never obtained or stored</li><li>Authentication tokens are stored in the User's browser and are not sent to the Operator's servers</li><li>For AI features, the account proof issued by Bluesky is verified, and requests are refused according to the eligibility conditions and the daily usage limit</li><li>Communication with external services uses HTTPS encryption</li></ul>
 
 <h2>Article 7 (Analytics and Tracking)</h2>
 <p>This App does not use analytics tools, advertising SDKs, or tracking tools. No features for collecting or analyzing user behavioral data are included.</p>
@@ -242,6 +255,7 @@ a:hover { text-decoration: underline; }
 <p>4. Deleting this site's data in the browser deletes all data stored in the browser, including learning records.</p>
 <p>5. PDS data not deleted through this App is left to the management of the User's own PDS.</p>
 <p>6. The Operator cannot restore deleted data. If the User exported a CSV file from &quot;Data&quot; on the settings screen before deleting, the User can bring the data back by importing that file.</p>
+<p>7. The AI usage count and the result of the eligibility check are deleted automatically, as described in Article 2 [5].</p>
 
 <h2>Article 10 (Use by Minors)</h2>
 <p>This App is not specifically targeted at minors, but it is recommended that minors use it with parental consent.</p>
@@ -257,7 +271,7 @@ a:hover { text-decoration: underline; }
 <div class="footer">
 <p>Operator: RieTamura</p>
 <p>Contact: <a href="mailto:contact@kumotan.app">contact@kumotan.app</a> / <a href="https://github.com/RieTamura/kumotan-pages/issues">GitHub Issues</a> / <a href="https://bsky.app/profile/kumotan.app">Bluesky @kumotan.app</a></p>
-<p>Last updated: October 14, 2026</p>
+<p>Last updated: October 15, 2026</p>
 </div>
 </div>
 </div>

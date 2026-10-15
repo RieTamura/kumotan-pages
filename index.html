@@ -335,7 +335,7 @@
                         <div class="feature">
                             <div class="icon i-lav"><svg viewBox="0 0 24 24"><path d="M4 5h6a2 2 0 0 1 2 2v13a2 2 0 0 0-2-2H4z"/><path d="M20 5h-6a2 2 0 0 0-2 2v13a2 2 0 0 1 2-2h6z"/></svg></div>
                             <h3>辞書と AI の解説</h3>
-                            <p>内蔵の英和辞書で、意味をすぐに確かめられます。AI が意味や使い方を解説したり、投稿を校正したりする機能は、今は運営者が許可したアカウントだけが使えます。</p>
+                            <p>内蔵の英和辞書で、意味をすぐに確かめられます。AI が意味や使い方を解説したり、投稿を校正したりする機能は、作ってから 30 日以上たち、投稿が 10 件以上ある Bluesky アカウントで、1 日 5 回まで使えます。</p>
                         </div>
                         <div class="feature">
                             <div class="icon i-peach"><svg viewBox="0 0 24 24"><path d="M5 10v4h3l5 4V6L8 10H5z"/><path d="M16 9a4 4 0 0 1 0 6"/><path d="M18.5 6.5a7.5 7.5 0 0 1 0 11"/></svg></div>
@@ -411,7 +411,7 @@
                     <ul>
                         <li>単語帳や学習の記録を、運営者のサーバーで預かることはありません。単語帳はあなた自身の PDS に、学習の記録はお使いのブラウザの中に保存されます。</li>
                         <li>PDS に保存したデータは、AT Protocol の仕組み上、誰でも読める公開データです。投稿の本文は保存せず、元の投稿へのリンクだけを残します。</li>
-                        <li>AI の機能（単語の解説と投稿の校正）を使うと、単語や投稿の下書きが Cloudflare の AI サービス（Workers AI）に送られます。Cloudflare は、送った内容を AI の学習に使わないとしています。今は運営者が許可したアカウントだけが使えます。</li>
+                        <li>AI の機能（単語の解説と投稿の校正）を使うと、単語や投稿の下書きが Cloudflare の AI サービス（Workers AI）に送られます。Cloudflare は、送った内容を AI の学習に使わないとしています。使った回数を数えるため、アカウントの DID と回数を運営者のサーバーに 7 日ほど保存します。単語や下書きは保存しません。</li>
                     </ul>
                     <p>詳しくは<a href="./privacy-policy.html">プライバシーポリシー</a>をご覧ください。</p>
                 </div>
@@ -455,6 +455,13 @@
                         </div>
                     </details>
                     <details>
+                        <summary>AI の機能は誰でも使えますか？</summary>
+                        <div class="answer">
+                            <p>作ってから 30 日以上たち、投稿が 10 件以上ある Bluesky アカウントなら使えます。単語の解説と投稿の校正を合わせて、1 日 5 回までです。回数は日本時間の午前 9 時に戻ります。</p>
+                            <p>すべての利用者を合わせた 1 日の回数にも上限があり、上限に達した日は、午前 9 時まで使えません。今日の残りの回数は、設定画面の「AI」で確かめられます。辞書は回数の制限なく使えます。</p>
+                        </div>
+                    </details>
+                    <details>
                         <summary>質問や要望はどこに送ればよいですか？</summary>
                         <div class="answer"><p>メール（<a href="mailto:contact@kumotan.app">contact@kumotan.app</a>）、<a href="https://github.com/RieTamura/kumotan-pages/issues">GitHub の Issues</a>、Bluesky の <a href="https://bsky.app/profile/kumotan.app">@kumotan.app</a> のどれかへお寄せください。</p><p>メールへの返信は、contact@kumotan.app ではなく運営者の Gmail のアドレスから届きます。数日たっても返信が無いときは、迷惑メールフォルダも確かめてください。</p></div>
                     </details>
@@ -477,7 +484,7 @@
                         <div class="feature">
                             <div class="icon i-lav"><svg viewBox="0 0 24 24"><path d="M4 5h6a2 2 0 0 1 2 2v13a2 2 0 0 0-2-2H4z"/><path d="M20 5h-6a2 2 0 0 0-2 2v13a2 2 0 0 1 2-2h6z"/></svg></div>
                             <h3>Dictionary and AI explanations</h3>
-                            <p>See meanings right away with the built-in English-Japanese dictionary. AI explanations of meaning and usage, and proofreading of your posts, are currently available only to accounts the operator has allowed.</p>
+                            <p>See meanings right away with the built-in English-Japanese dictionary. AI explanations of meaning and usage, and proofreading of your posts, are available up to 5 times a day to Bluesky accounts that are at least 30 days old and have at least 10 posts.</p>
                         </div>
                         <div class="feature">
                             <div class="icon i-peach"><svg viewBox="0 0 24 24"><path d="M5 10v4h3l5 4V6L8 10H5z"/><path d="M16 9a4 4 0 0 1 0 6"/><path d="M18.5 6.5a7.5 7.5 0 0 1 0 11"/></svg></div>
@@ -553,7 +560,7 @@
                     <ul>
                         <li>Your word list and study records are never kept on our servers. Your word list is stored in your own PDS, and your study records stay in your browser.</li>
                         <li>Data in a PDS is public by design of the AT Protocol. Kumotan does not store post text there, only a link to the original post.</li>
-                        <li>When you use AI features (word explanations and post proofreading), the word or post draft is sent to Cloudflare's AI service (Workers AI). Cloudflare states that it does not use what you send to train AI. They are currently available only to accounts the operator has allowed.</li>
+                        <li>When you use AI features (word explanations and post proofreading), the word or post draft is sent to Cloudflare's AI service (Workers AI). Cloudflare states that it does not use what you send to train AI. To count your uses, your account's DID and the count are kept on the operator's servers for about 7 days. The words and drafts themselves are not kept.</li>
                     </ul>
                     <p>See the <a href="./privacy-policy.html">privacy policy</a> for details.</p>
                 </div>
@@ -594,6 +601,13 @@
                         <div class="answer">
                             <p>They are kept in your browser. Each browser or device has its own records, and clearing your browser data also clears them.</p>
                             <p>If people ask for it, we will consider a way to sync records across devices, such as a computer and a phone, as an option you can turn on or off.</p>
+                        </div>
+                    </details>
+                    <details>
+                        <summary>Can anyone use the AI features?</summary>
+                        <div class="answer">
+                            <p>Bluesky accounts that are at least 30 days old and have at least 10 posts can use them, up to 5 times a day for word explanations and post proofreading combined. The count resets at 00:00 UTC (9:00 a.m. Japan time).</p>
+                            <p>There is also a daily limit for all users combined; once it is reached, AI features are unavailable until 00:00 UTC. You can see how many uses you have left today under "AI" on the settings screen. The dictionary has no limit.</p>
                         </div>
                     </details>
                     <details>
