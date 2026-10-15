@@ -124,7 +124,6 @@
         .btn { display: inline-flex; align-items: center; gap: 8px; padding: 13px 24px; border-radius: 999px; font-weight: 700; text-decoration: none; font-size: 15px; }
         .btn-primary { background: var(--primaryStrong); color: var(--onPrimary); box-shadow: 0 6px 16px rgba(13, 139, 217, 0.28); }
         .btn-primary:hover { filter: brightness(0.95); }
-        .btn-ghost { background: var(--surface); color: var(--ink3); border: 1px dashed var(--ink4); cursor: default; }
         .meta { margin: 12px 0 0; font-size: 13px; color: var(--ink3); }
 
         /* 画面の見本（HTML で描く。スクリーンショットのように古くならない） */
@@ -274,20 +273,20 @@
     <header class="hero">
         <div class="wrap hero-grid">
             <div class="hero-text is-active" data-lang-block="ja">
-                <span class="eyebrow">ブラウザで使える Web 版を準備しています</span>
+                <span class="eyebrow">ブラウザで使える Web 版を公開しました</span>
                 <h1>タイムラインから学ぶ<br><span class="mark">あなただけの単語帳</span></h1>
                 <p class="lead">Bluesky で見かけた英単語を、その場で自分の単語帳に登録できます。辞書や AI の解説、読み上げ、クイズで、読んだ英語を身につけていけます。</p>
                 <div class="cta">
-                    <span class="btn btn-ghost">Web 版（準備中）</span>
+                    <a class="btn btn-primary" href="https://app.kumotan.app/">Web 版をひらく</a>
                 </div>
                 <p class="meta">iPhone 版は 2026年10月13日に App Store での配信を終了しました。</p>
             </div>
             <div class="hero-text" data-lang-block="en">
-                <span class="eyebrow">A web version that runs in your browser is on the way</span>
+                <span class="eyebrow">The web version is now available in your browser</span>
                 <h1>Learn from your timeline,<br><span class="mark">build your own word list</span></h1>
                 <p class="lead">Save English words you come across on Bluesky straight into your own word list. Look them up, hear them read aloud, and review them with quizzes until they stick.</p>
                 <div class="cta">
-                    <span class="btn btn-ghost">Web version (coming soon)</span>
+                    <a class="btn btn-primary" href="https://app.kumotan.app/">Open the web version</a>
                 </div>
                 <p class="meta">The iPhone app was removed from the App Store on October 13, 2026.</p>
             </div>
@@ -432,13 +431,13 @@
                     <details>
                         <summary>機種を変えたら、データはどうなりますか？</summary>
                         <div class="answer">
-                            <p>単語帳は PDS に保存されているので、なくなりません。iPhone 版にはもうログインできません。新しい機種では、公開後の Web 版で単語帳を読んでください。</p>
+                            <p>単語帳は PDS に保存されているので、なくなりません。iPhone 版にはもうログインできません。新しい機種では、<a href="https://app.kumotan.app/">Web 版</a>で単語帳を読んでください。</p>
                             <p>クイズの記録と学習の記録は iPhone の中にだけ保存されているので、新しい iPhone には移りません。</p>
                         </div>
                     </details>
                     <details>
                         <summary>Web 版はありますか？</summary>
-                        <div class="answer"><p>準備中です。公開の時期は決まっていません。</p></div>
+                        <div class="answer"><p>あります。パソコンやスマホのブラウザで <a href="https://app.kumotan.app/">app.kumotan.app</a> を開き、Bluesky のアカウントでログインしてください。アプリを入れる必要はありません。</p></div>
                     </details>
                     <details>
                         <summary>Web 版で、iPhone 版のデータは使えますか？</summary>
@@ -581,13 +580,13 @@
                     <details>
                         <summary>What happens to my data when I change phones?</summary>
                         <div class="answer">
-                            <p>Your word list is stored in your PDS, so it is not lost. You can no longer sign in to the iPhone app, so read your word list in the web version on your new device once it is released.</p>
+                            <p>Your word list is stored in your PDS, so it is not lost. You can no longer sign in to the iPhone app, so read your word list in the <a href="https://app.kumotan.app/">web version</a> on your new device.</p>
                             <p>Your quiz history and study records are kept only on the iPhone, so they do not move to the new one.</p>
                         </div>
                     </details>
                     <details>
                         <summary>Is there a web version?</summary>
-                        <div class="answer"><p>It is in preparation. There is no release date yet.</p></div>
+                        <div class="answer"><p>Yes. Open <a href="https://app.kumotan.app/">app.kumotan.app</a> in a browser on your computer or phone and sign in with your Bluesky account. There is nothing to install.</p></div>
                     </details>
                     <details>
                         <summary>Can I use my iPhone data in the web version?</summary>
