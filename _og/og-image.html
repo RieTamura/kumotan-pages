@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<!--
+  リンクカードの画像（og.png、1200×630）の元。Jekyll は _ で始まるフォルダを公開しないので、このファイルはサイトに出ない。
+  作り直すとき（Chrome の場所は環境に合わせる）:
+    chrome --headless=new --disable-gpu --hide-scrollbars --window-size=1200,630 --screenshot=og.png _og/og-image.html
+  画面の見本は index.html のヒーローと同じもの。色は index.html のライトモードのトークンを写している。
+-->
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<style>
+    :root {
+        --bg: #F6F8FC; --bgSoft: #EAF2FB; --surface: #FFFFFF; --surfaceAlt: #F5F8FD;
+        --ink: #1A2436; --ink2: #3A4C66; --ink3: #5A6B83; --line: #E3EAF3;
+        --primary: #1DA1F2; --primaryStrong: #0d8bd9; --primarySoft: #E8F4FD; --onPrimary: #FFFFFF;
+        --mintSoft: #E0F3E7; --mintInk: #3C8B5E; --peachSoft: #FFEBD6; --peachInk: #C07A3D;
+        --yellowSoft: #FFF5D1; --accentSoft: #FDE9ED; --saved: #4CAF50; --savedInk: #3C8B5E;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; width: 1200px; height: 630px; overflow: hidden; }
+    body {
+        position: relative;
+        font-family: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Segoe UI", "Noto Sans JP", "Yu Gothic UI", Meiryo, sans-serif;
+        font-feature-settings: "palt" 1;
+        color: var(--ink);
+        background: linear-gradient(135deg, #F3F8FE 0%, var(--primarySoft) 55%, #DCEEFC 100%);
+    }
+    /* 雲のにじみ */
+    body::before {
+        content: ""; position: absolute; right: -160px; top: -200px; width: 760px; height: 760px;
+        background: radial-gradient(closest-side, rgba(255, 255, 255, 0.9), transparent);
+    }
+    .text { position: absolute; left: 88px; top: 92px; width: 640px; }
+    .logo { width: 132px; height: 95px; display: block; }
+    h1 { margin: 22px 0 8px; font-size: 84px; line-height: 1.1; letter-spacing: 0.04em; font-weight: 800; }
+    .tagline { margin: 0 0 26px; font-size: 25px; font-weight: 700; color: var(--primaryStrong); letter-spacing: 0.02em; }
+    .lead { margin: 0; font-size: 25px; line-height: 1.7; font-weight: 700; color: var(--ink2); }
+    .pill {
+        display: inline-block; margin-top: 30px; padding: 8px 20px; border-radius: 999px;
+        background: var(--surface); color: var(--ink2); font-size: 19px; font-weight: 700;
+        box-shadow: 0 6px 16px rgba(26, 36, 54, 0.08);
+    }
+
+    /* 画面の見本（index.html と同じ） */
+    .phone-wrap { position: absolute; right: 96px; top: 64px; transform: rotate(-3deg); }
+    .phone {
+        width: 300px; border-radius: 40px; padding: 10px;
+        background: #0B0F14; box-shadow: 0 30px 60px rgba(26, 36, 54, 0.22);
+    }
+    .screen { position: relative; height: 560px; border-radius: 31px; overflow: hidden; background: var(--bg); font-size: 13px; line-height: 1.6; }
+    .s-head { display: flex; align-items: center; gap: 6px; padding: 18px 16px 8px; font-weight: 800; font-size: 15px; }
+    .s-head .mascot { width: 28px; height: 20px; flex: none; }
+    .post { margin: 12px; padding: 12px; border-radius: 14px; background: var(--surface); border: 1px solid var(--line); }
+    .post-h { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+    .avatar { width: 28px; height: 28px; border-radius: 50%; background: var(--peachSoft); color: var(--peachInk); display: grid; place-items: center; font-weight: 700; font-size: 12px; }
+    .post-h b { font-size: 12.5px; }
+    .post-h small { color: var(--ink3); font-size: 11px; }
+    .ww { border-radius: 4px; padding: 0 2px; }
+    .ww.sel { background: var(--accentSoft); }
+    .ww.reg { color: var(--savedInk); font-weight: 600; text-decoration: underline dotted var(--saved); text-decoration-thickness: 1.5px; text-underline-offset: 3px; }
+    .sheet {
+        position: absolute; left: 0; right: 0; bottom: 0; padding: 10px 16px 18px;
+        background: var(--surface); border-radius: 22px 22px 0 0; box-shadow: 0 -10px 30px rgba(26, 36, 54, 0.14);
+    }
+    .grabber { width: 36px; height: 4px; border-radius: 2px; background: #B4C0D0; margin: 0 auto 10px; }
+    .s-word b { font-size: 20px; }
+    .s-label { margin: 10px 0 2px; font-size: 11px; color: var(--ink3); }
+    .cands { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px; }
+    .cand { padding: 2px 10px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); font-size: 11.5px; color: var(--ink2); }
+    .cand.on { border-color: var(--primary); background: var(--primarySoft); color: var(--ink); font-weight: 700; }
+    .s-btn { margin-top: 12px; display: flex; gap: 8px; }
+    .s-btn span { flex: 1; text-align: center; padding: 9px 0; border-radius: 999px; font-weight: 700; font-size: 12.5px; }
+    .s-btn .add { background: var(--primaryStrong); color: var(--onPrimary); }
+    .s-btn .close { background: var(--surfaceAlt); color: var(--ink2); }
+</style>
+</head>
+<body>
+    <div class="text">
+        <svg class="logo" viewBox="0 0 100 72" aria-hidden="true"><path d="M22 56C12 56 4 48 4 38c0-9 7-17 16-18 2-9 10-16 20-16 10 0 18 7 20 16 1 0 2 0 3 0 10 0 17 8 17 17s-7 17-17 17H22z" fill="#FFFFFF" stroke="#AFD1ED" stroke-width="3.5"/><circle cx="38" cy="38" r="3" fill="#1A2436"/><circle cx="62" cy="38" r="3" fill="#1A2436"/><path d="M42 46 Q50 52 58 46" fill="none" stroke="#1A2436" stroke-width="2.6" stroke-linecap="round"/><circle cx="30" cy="44" r="2.5" fill="#F7A9B0" opacity="0.7"/><circle cx="70" cy="44" r="2.5" fill="#F7A9B0" opacity="0.7"/></svg>
+        <h1>くもたん</h1>
+        <p class="tagline">Bluesky で英語を学ぶ単語帳</p>
+        <p class="lead">タイムラインで見かけた英単語を、<br>その場で自分の単語帳に。<br>辞書・AI の解説・クイズで身につけよう。</p>
+        <span class="pill">ブラウザで使える Web アプリ</span>
+    </div>
+
+    <div class="phone-wrap" aria-hidden="true">
+        <div class="phone">
+            <div class="screen">
+                <div class="s-head"><svg class="mascot" viewBox="0 0 100 72"><path d="M22 56C12 56 4 48 4 38c0-9 7-17 16-18 2-9 10-16 20-16 10 0 18 7 20 16 1 0 2 0 3 0 10 0 17 8 17 17s-7 17-17 17H22z" fill="#FFFFFF" stroke="#AFD1ED" stroke-width="3.5"/><circle cx="38" cy="38" r="3" fill="#1A2436"/><circle cx="62" cy="38" r="3" fill="#1A2436"/><path d="M42 46 Q50 52 58 46" fill="none" stroke="#1A2436" stroke-width="2.6" stroke-linecap="round"/><circle cx="30" cy="44" r="2.5" fill="#F7A9B0" opacity="0.7"/><circle cx="70" cy="44" r="2.5" fill="#F7A9B0" opacity="0.7"/></svg>くもたん</div>
+                <div class="post">
+                    <div class="post-h"><span class="avatar">S</span><b>Sora</b><small>@sora.example · 12m</small></div>
+                    京都の紅葉が <span class="ww sel">gorgeous</span> でした。空気も <span class="ww reg">crisp</span> で、walking するだけで幸せ。
+                </div>
+                <div class="post">
+                    <div class="post-h"><span class="avatar" style="background:var(--mintSoft);color:var(--mintInk)">K</span><b>Kai</b><small>@kai.example · 1h</small></div>
+                    新しい cafe で本を読みました。
+                </div>
+                <div class="sheet">
+                    <div class="grabber"></div>
+                    <div class="s-word"><b>gorgeous</b></div>
+                    <div class="s-label">日本語訳</div>
+                    <div class="cands"><span class="cand on">豪華な</span><span class="cand">とても美しい</span></div>
+                    <div class="s-btn"><span class="add">単語帳に追加</span><span class="close">閉じる</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
