@@ -72,10 +72,10 @@ a:hover { text-decoration: underline; }
 <p>PDSに保存されたデータは、AT Protocolの仕組み上、公開され、誰でも読むことができます。そのため、登録元の投稿の本文は保存しません。</p>
 <h3>【4. 外部サービスに送信されるデータ】</h3>
 <p>本アプリの機能を提供するため、以下のデータが外部サービスに送信されます。</p>
-<ul><li>Bluesky / AT Protocol: タイムライン取得リクエスト、投稿内容（投稿・進捗シェア時）、画像データ（投稿添付時）、いいね・リポスト、ログイン時のアカウント情報の照会（plc.directoryを含みます）、投稿された動画のサムネイルと、再生を押したときの動画本体（video.bsky.appから読み込みます）</li><li>cardyb API（Bluesky公式）: 投稿に含まれるURL（リンクカード付きの投稿を作る際のみ）</li><li>Cloudflare（本アプリの配信元）: 本アプリを開いたときの通信（IPアドレス、ブラウザの種類等）、AI機能を使ったときと設定画面の「AI」を開いたときの依頼内容とBlueskyが発行するアカウントの証明（DIDを含みます）</li><li>Cloudflare Workers AI（Gemma）: 解説を求めた英単語、校正を求めた投稿の下書き（AI機能を使った場合のみ）</li><li>ブラウザの音声合成機能: 読み上げる文章（読み上げを使った場合のみ）</li><li>YouTube（Google）: 投稿に含まれるYouTubeの動画の再生を押したときの通信（IPアドレス、ブラウザの種類、本アプリのアドレス、YouTubeのCookie等）。再生を押すまでは送信されません。設定の「外部メディア」でオフにできます</li></ul>
+<ul><li>Bluesky / AT Protocol: タイムライン取得リクエスト、投稿内容（投稿・進捗シェア時）、画像データ（投稿添付時）、いいね・リポスト、ログイン時のアカウント情報の照会（plc.directoryを含みます）、投稿された動画のサムネイルと、再生を押したときの動画本体（video.bsky.appから読み込みます）</li><li>cardyb API（Bluesky公式）: 投稿に含まれるURL（リンクカード付きの投稿を作る際のみ）</li><li>Cloudflare（本アプリの配信元）: 本アプリを開いたときの通信（IPアドレス、ブラウザの種類等）、ログインして本アプリを開いたとき・AI機能を使ったとき・設定画面の「AI」を開いたときの依頼内容とBlueskyが発行するアカウントの証明（DIDを含みます）</li><li>Cloudflare Workers AI（Gemma）: 解説を求めた英単語、校正を求めた投稿の下書き（AI機能を使った場合のみ）</li><li>ブラウザの音声合成機能: 読み上げる文章（読み上げを使った場合のみ）</li><li>YouTube（Google）: 投稿に含まれるYouTubeの動画の再生を押したときの通信（IPアドレス、ブラウザの種類、本アプリのアドレス、YouTubeのCookie等）。再生を押すまでは送信されません。設定の「外部メディア」でオフにできます</li></ul>
 <h3>【5. 運営者のサーバーに保存されるデータ】</h3>
 <p>AI機能を利用できるかどうかの確認と、1日の利用回数の制限のため、以下の情報を運営者のサーバー（Cloudflare D1）に保存します。解説を求めた英単語や投稿の下書きは保存しません。</p>
-<ul><li>1日の利用回数（DID、日付〈協定世界時〉、回数）: AI機能を使ったときに保存します。利用した日から7日を過ぎたあと、毎日1回の処理で削除します</li><li>利用できる条件を確かめた結果（DID、条件を満たすかどうか、確かめた日時）: AI機能を使ったときと、設定画面の「AI」を開いたときに保存します。確かめた日時から7日を過ぎたあと、毎日1回の処理で削除します。確かめ直したときは、その日時から数えます</li></ul>
+<ul><li>1日の利用回数（DID、日付〈協定世界時〉、回数）: AI機能を使ったときに保存します。利用した日から7日を過ぎたあと、毎日1回の処理で削除します</li><li>利用できる条件を確かめた結果（DID、条件を満たすかどうか、確かめた日時）: ログインして本アプリを開いたとき、AI機能を使ったとき、設定画面の「AI」を開いたときに保存します。確かめた日時から7日を過ぎたあと、毎日1回の処理で削除します。確かめ直したときは、その日時から数えます</li></ul>
 <p>利用できる条件（アカウントの作成日と投稿数）は、運営者のサーバーから、Blueskyの公開API（public.api.bsky.app）で、誰でも読める公開プロフィールを読んで確かめます。そのとき、DIDをBlueskyに送ります。</p>
 
 <h2>第3条（情報の利用目的）</h2>
@@ -110,7 +110,7 @@ a:hover { text-decoration: underline; }
 <p>運営者の目的: リンクプレビュー（OGPカード）の取得</p>
 <p>送信先の目的: URLのメタデータ抽出サービス提供</p>
 <h3>【Cloudflare（Cloudflare, Inc.）】</h3>
-<p>送信情報: 本アプリを開いたときの通信（IPアドレス、ブラウザの種類等）、AI機能を使ったときと設定画面の「AI」を開いたときの依頼内容とアカウントの証明</p>
+<p>送信情報: 本アプリを開いたときの通信（IPアドレス、ブラウザの種類等）、ログインして本アプリを開いたとき・AI機能を使ったとき・設定画面の「AI」を開いたときの依頼内容とアカウントの証明</p>
 <p>運営者の目的: 本アプリの配信、AI機能の中継と不正利用の防止</p>
 <p>送信先の目的: ウェブサイトの配信・実行環境の提供</p>
 <p>備考: AI機能の1日の利用回数と、利用できる条件を確かめた結果を、Cloudflare D1に保存します（第2条【5】）。</p>
@@ -190,10 +190,10 @@ a:hover { text-decoration: underline; }
 <p>Data stored in a PDS is public by design of the AT Protocol and can be read by anyone. For this reason, the text of the source post is not stored.</p>
 <h3>[4. Data Sent to External Services]</h3>
 <p>To provide the App's features, the following data is sent to external services:</p>
-<ul><li>Bluesky / AT Protocol: Timeline requests, post content (when posting or sharing progress), image data (when attaching images), likes and reposts, account lookups at sign-in (including plc.directory), and video thumbnails in posts and, when play is pressed, the videos themselves (loaded from video.bsky.app)</li><li>cardyb API (official Bluesky service): URLs in posts (only when creating posts with link cards)</li><li>Cloudflare (host of this App): Connections made when opening this App (IP address, browser type, etc.), and when AI features are used or &quot;AI&quot; on the settings screen is opened, the request and the account proof issued by Bluesky (including the DID)</li><li>Cloudflare Workers AI (Gemma): English words you ask to have explained, post drafts you ask to have proofread (only when AI features are used)</li><li>The browser's speech synthesis: Text to be read aloud (only when text-to-speech is used)</li><li>YouTube (Google): The connection made when play is pressed on a YouTube video in a post (IP address, browser type, the address of this App, YouTube cookies, etc.). Nothing is sent until play is pressed. This can be turned off under &quot;External media&quot; in the settings</li></ul>
+<ul><li>Bluesky / AT Protocol: Timeline requests, post content (when posting or sharing progress), image data (when attaching images), likes and reposts, account lookups at sign-in (including plc.directory), and video thumbnails in posts and, when play is pressed, the videos themselves (loaded from video.bsky.app)</li><li>cardyb API (official Bluesky service): URLs in posts (only when creating posts with link cards)</li><li>Cloudflare (host of this App): Connections made when opening this App (IP address, browser type, etc.), and when signed in and opening this App, using AI features, or opening &quot;AI&quot; on the settings screen, the request and the account proof issued by Bluesky (including the DID)</li><li>Cloudflare Workers AI (Gemma): English words you ask to have explained, post drafts you ask to have proofread (only when AI features are used)</li><li>The browser's speech synthesis: Text to be read aloud (only when text-to-speech is used)</li><li>YouTube (Google): The connection made when play is pressed on a YouTube video in a post (IP address, browser type, the address of this App, YouTube cookies, etc.). Nothing is sent until play is pressed. This can be turned off under &quot;External media&quot; in the settings</li></ul>
 <h3>[5. Data Stored on the Operator's Servers]</h3>
 <p>To check whether an account may use AI features and to limit how many times they are used each day, the following information is stored on the Operator's servers (Cloudflare D1). The English words you ask about and your post drafts are not stored.</p>
-<ul><li>Daily usage count (DID, date in UTC, count): stored when AI features are used, and deleted by a daily cleanup once 7 days have passed since the day of use</li><li>Result of the eligibility check (DID, whether the conditions are met, time of the check): stored when AI features are used and when &quot;AI&quot; on the settings screen is opened, and deleted by a daily cleanup once 7 days have passed since the check; when the account is checked again, the period starts over from that time</li></ul>
+<ul><li>Daily usage count (DID, date in UTC, count): stored when AI features are used, and deleted by a daily cleanup once 7 days have passed since the day of use</li><li>Result of the eligibility check (DID, whether the conditions are met, time of the check): stored when signed in and opening this App, when AI features are used, and when &quot;AI&quot; on the settings screen is opened, and deleted by a daily cleanup once 7 days have passed since the check; when the account is checked again, the period starts over from that time</li></ul>
 <p>The eligibility conditions (account age and number of posts) are checked from the Operator's servers by reading the account's public profile, which anyone can read, through Bluesky's public API (public.api.bsky.app). The DID is sent to Bluesky for this.</p>
 
 <h2>Article 3 (Purpose of Information Use)</h2>
@@ -228,7 +228,7 @@ a:hover { text-decoration: underline; }
 <p>Operator's purpose: Fetching link previews (OGP cards)</p>
 <p>Recipient's purpose: Providing URL metadata extraction services</p>
 <h3>[Cloudflare (Cloudflare, Inc.)]</h3>
-<p>Information sent: Connections made when opening this App (IP address, browser type, etc.), and when AI features are used or &quot;AI&quot; on the settings screen is opened, the request and the account proof</p>
+<p>Information sent: Connections made when opening this App (IP address, browser type, etc.), and when signed in and opening this App, using AI features, or opening &quot;AI&quot; on the settings screen, the request and the account proof</p>
 <p>Operator's purpose: Delivering this App, relaying AI features and preventing their misuse</p>
 <p>Recipient's purpose: Providing website delivery and runtime services</p>
 <p>Note: The daily AI usage count and the result of the eligibility check are stored in Cloudflare D1 (Article 2 [5]).</p>
