@@ -240,7 +240,15 @@
         .faq .answer p:last-child { margin-bottom: 0; }
 
         footer { padding: 36px 0 52px; color: var(--ink3); font-size: 14px; }
-        footer ul { list-style: none; padding: 0; margin: 0 0 14px; display: flex; flex-wrap: wrap; gap: 8px 22px; justify-content: center; }
+        footer ul { list-style: none; padding: 0; margin: 0 0 14px; display: flex; flex-wrap: wrap; gap: 8px 0; justify-content: center; }
+        /* 区切りの縦線は飾りなので読み上げない（content の代替テキストを空にする） */
+        footer li + li::before { content: "|"; content: "|" / ""; margin: 0 12px; color: var(--ink3); }
+        /* 1 行に収まらない幅では、Bluesky の前で改行して 2 行にする（折り返した行の頭に縦線が来ないように） */
+        @media (max-width: 600px) {
+            footer ul::before { content: ""; width: 100%; order: 1; }
+            footer li:nth-child(n + 4) { order: 2; }
+            footer li:nth-child(4)::before { content: none; }
+        }
         footer p { text-align: center; margin: 4px 0; }
 
         @media (max-width: 860px) {
@@ -685,9 +693,10 @@
     <footer>
         <div class="wrap">
             <ul>
-                <li><a href="./privacy-policy.html"><span data-lang-inline="ja">プライバシーポリシー</span><span data-lang-inline="en" hidden>Privacy Policy</span></a></li>
                 <li><a href="./terms-of-service.html"><span data-lang-inline="ja">利用規約</span><span data-lang-inline="en" hidden>Terms of Service</span></a></li>
-                <li><a href="https://bsky.app/profile/kumotan.app">Bluesky @kumotan.app</a></li>
+                <li><a href="./privacy-policy.html"><span data-lang-inline="ja">プライバシーポリシー</span><span data-lang-inline="en" hidden>Privacy Policy</span></a></li>
+                <li><a href="./licenses.html"><span data-lang-inline="ja">ライセンス</span><span data-lang-inline="en" hidden>Licenses</span></a></li>
+                <li><a href="https://bsky.app/profile/kumotan.app">Bluesky</a></li>
                 <li><a href="mailto:contact@kumotan.app"><span data-lang-inline="ja">お問い合わせ</span><span data-lang-inline="en" hidden>Contact</span></a></li>
             </ul>
             <p>© くもたん (Kumotan)</p>

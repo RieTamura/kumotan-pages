@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ライセンス / Licenses - くもたん</title>
+<link rel="icon" href="./icon.png">
+<!-- このファイルは kumotan リポジトリの scripts/legal/build-licenses-html.js が生成する。直接編集しないこと -->
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Hiragino Sans', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif; line-height: 1.8; color: #333; background-color: #f5f5f5; padding: 20px; }
+.container { max-width: 800px; margin: 0 auto; background-color: #fff; padding: 40px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+h1 { color: #1DA1F2; margin-bottom: 30px; font-size: 2em; border-bottom: 3px solid #1DA1F2; padding-bottom: 10px; }
+h2 { color: #333; margin-top: 30px; margin-bottom: 15px; font-size: 1.5em; }
+h3 { color: #555; margin-top: 20px; margin-bottom: 10px; font-size: 1.2em; }
+p { margin-bottom: 15px; }
+ul { margin-left: 20px; margin-bottom: 15px; }
+li { margin-bottom: 8px; }
+a { color: #1DA1F2; text-decoration: none; }
+a:hover { text-decoration: underline; }
+.footer { margin-top: 40px; padding-top: 20px; border-top: 1px solid #ddd; text-align: center; color: #666; }
+/* 紹介ページ（index.html）と同じ見た目の上部バー。ボタンの塗りは #0d8bd9（白文字との比 3.68:1） */
+.page-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-bottom: 28px; }
+.back { display: inline-flex; align-items: center; gap: 6px; padding: 8px 18px; border-radius: 999px; background: #0d8bd9; color: #fff; font-size: 14px; font-weight: 700; text-decoration: none; }
+.back:hover { text-decoration: none; filter: brightness(0.95); }
+.back:focus-visible, .lang-tab:focus-visible { outline: 2px solid #1DA1F2; outline-offset: 2px; }
+.lang-tabs { display: flex; gap: 4px; padding: 3px; border-radius: 999px; background: #fff; border: 1px solid #E3EAF3; }
+.lang-tab { padding: 4px 12px; border-radius: 999px; border: 0; cursor: pointer; background: transparent; color: #5A6B83; font-size: 13px; font-family: inherit; }
+.lang-tab[aria-pressed="true"] { background: #1A2436; color: #fff; }
+.lang-block { display: none; }
+.lang-block.is-active { display: block; }
+@media (max-width: 600px) { .container { padding: 20px; } h1 { font-size: 1.5em; } h2 { font-size: 1.3em; } }
+@media (prefers-color-scheme: dark) {
+  body { background-color: #10171e; color: #e6edf3; }
+  .container { background-color: #17212b; box-shadow: none; }
+  h2 { color: #e6edf3; } h3 { color: #c3cdd6; }
+  .footer { color: #9aa8b5; border-top-color: #26343f; }
+  .lang-tabs { background: #1A2538; border-color: #2A3650; }
+  .lang-tab { color: #8495AE; }
+  .lang-tab[aria-pressed="true"] { background: #F1F5FB; color: #0E1521; }
+}
+details { border-bottom: 1px solid #e3eaf3; padding: 8px 0; }
+summary { cursor: pointer; font-weight: 600; }
+summary .license { font-weight: 400; color: #666; margin-left: 6px; }
+details[open] summary { margin-bottom: 10px; }
+details p { margin-bottom: 10px; font-size: 14px; overflow-wrap: anywhere; }
+pre { white-space: pre-wrap; overflow-wrap: anywhere; font-size: 12px; line-height: 1.6; background: #f5f7fa; padding: 12px; border-radius: 6px; margin-bottom: 10px; }
+@media (prefers-color-scheme: dark) {
+  details { border-bottom-color: #26343f; }
+  summary .license { color: #9aa8b5; }
+  pre { background: #10171e; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="page-top">
+<a class="back" href="./index.html"><span data-lang-inline="ja">← くもたん トップへ</span><span data-lang-inline="en" hidden>← Back to Kumotan</span></a>
+<div class="lang-tabs" role="group" aria-label="Language">
+<button type="button" class="lang-tab" data-lang="ja" aria-pressed="true">日本語</button>
+<button type="button" class="lang-tab" data-lang="en" aria-pressed="false">English</button>
+</div>
+</div>
+
+<h1><span data-lang-inline="ja">ライセンス</span><span data-lang-inline="en" hidden>Licenses</span></h1>
+<p><span data-lang-inline="ja">くもたんは、以下のオープンソースソフトウェアとデータを使って作られています。作者のみなさんに感謝します。各ライブラリの名前を押すと、ライセンスの全文が開きます。</span><span data-lang-inline="en" hidden>Kumotan is built with the following open source software and data. Thank you to all their authors. Select a library name to open its full license text.</span></p>
+
+<h2><span data-lang-inline="ja">辞書と AI</span><span data-lang-inline="en" hidden>Dictionary and AI</span></h2>
+<ul>
+<li><a href="https://github.com/kujirahand/EJDict">EJDict</a> — kujirahand — CC0 1.0 (Public Domain)<br><span data-lang-inline="ja">英和辞書のデータ</span><span data-lang-inline="en" hidden>English-Japanese dictionary data</span></li>
+<li><a href="https://ai.google.dev/gemma">Gemma 4 (gemma-4-26b-a4b-it)</a> — Google — Apache-2.0<br><span data-lang-inline="ja">AI による解説・校正（Cloudflare Workers AI で動かしています）</span><span data-lang-inline="en" hidden>AI explanations and proofreading (run on Cloudflare Workers AI)</span></li>
+</ul>
+
+<h2><span data-lang-inline="ja">ライブラリ（39 件）</span><span data-lang-inline="en" hidden>Libraries (39)</span></h2>
+<details>
+<summary>@atproto-labs/did-resolver 0.3.10 <span class="license">MIT</span></summary>
+<p><span data-lang-inline="ja">配布元</span><span data-lang-inline="en" hidden>Source</span>: <a href="https://github.com/bluesky-social/atproto">https://github.com/bluesky-social/atproto</a></p>
+<pre>Dual MIT/Apache-2.0 License
+
+Copyright (c) 2022-2026 Bluesky Social PBC, and Contributors
+
+Except as otherwise noted in individual files, this software is licensed under the MIT license (&lt;http://opensource.org/licenses/MIT&gt;), or the Apache License, Version 2.0 (&lt;http://www.apache.org/licenses/LICENSE-2.0&gt;).
+
+Downstream projects and end users may chose either license individually, or both together, at their discretion. The motivation for this dual-licensing is the additional software patent assurance provided by Apache 2.0.</pre>
+</details>
+<details>
+<summary>@atproto-labs/fetch 0.3.6 <span class="license">MIT</span></summary>
+<p><span data-lang-inline="ja">配布元</span><span data-lang-inline="en" hidden>Source</span>: <a href="https://github.com/bluesky-social/atproto">https://github.com/bluesky-social/atproto</a></p>
+<pre>Dual MIT/Apache-2.0 License
+
+Copyright (c) 2022-2026 Bluesky Social PBC, and Contributors
+
+Except as otherwise noted in individual files, this software is licensed under the MIT license (&lt;http://opensource.org/licenses/MIT&gt;), or the Apache License, Version 2.0 (&lt;http://www.apache.org/licenses/LICENSE-2.0&gt;).
+
+Downstream projects and end users may chose either license individually, or both together, at their discretion. The motivation for this dual-licensing is the additional software patent assurance provided by Apache 2.0.</pre>
+</details>
+<details>
+<summary>@atproto-labs/handle-resolver 0.4.10 <span class="license">MIT</span></summary>
+<p><span data-lang-inline="ja">配布元</span><span data-lang-inline="en" hidden>Source</span>: <a href="https://github.com/bluesky-social/atproto">https://github.com/bluesky-social/atproto</a></p>
+<pre>Dual MIT/Apache-2.0 License
+
+Copyright (c) 2022-2026 Bluesky Social PBC, and Contributors
+
+Except as otherwise noted in individual files, this software is licensed under the MIT license (&lt;http://opensource.org/licenses/MIT&gt;), or the Apache License, Version 2.0 (&lt;http://www.apache.org/licenses/LICENSE-2.0&gt;).
+
+Downstream projects and end users may chose either license individually, or both together, at their discretion. The motivation for this dual-licensing is the additional software patent assurance provided by Apache 2.0.</pre>
+</details>
+<details>
+<summary>@atproto-labs/identity-resolver 0.4.10 <span class="license">MIT</span></summary>
+<p><span data-lang-inline="ja">配布元</span><span data-lang-inline="en" hidden>Source</span>: <a href="https://github.com/bluesky-social/atproto">https://github.com/bluesky-social/atproto</a></p>
+<pre>Dual MIT/Apache-2.0 License
+
+Copyright (c) 2022-2026 Bluesky Social PBC, and Contributors
+
+Except as otherwise noted in individual files, this software is licensed under the MIT license (&lt;http://opensource.org/licenses/MIT&gt;), or the Apache License, Version 2.0 (&lt;http://www.apache.org/licenses/LICENSE-2.0&gt;).
+
+Downstream projects and end users may chose either license individually, or both together, at their discretion. The motivation for this dual-licensing is the additional software patent assurance provided by Apache 2.0.</pre>
+</details>
+<details>
+<summary>@atproto-labs/pipe 0.2.4 <span class="license">MIT</span></summary>
+<p><span data-lang-inline="ja">配布元</span><span data-lang-inline="en" hidden>Source</span>: <a href="https://github.com/bluesky-social/atproto">https://github.com/bluesky-social/atproto</a></p>
+<pre>Dual MIT/Apache-2.0 License
+
+Copyright (c) 2022-2026 Bluesky Social PBC, and Contributors
+
+Except as otherwise noted in individual files, this software is licensed under the MIT license (&lt;http://opensource.org/licenses/MIT&gt;), or the Apache License, Version 2.0 (&lt;http://www.apache.org/licenses/LICENSE-2.0&gt;).
+
+Downstream projects and end users may chose either license individually, or both together, at their discretion. The motivation for this dual-licensing is the additional software patent assurance provided by Apache 2.0.</pre>
+</details>
+<details>
+<summary>@atproto-labs/simple-store 0.5.1 <span class="license">MIT</span></summary>
+<p><span data-lang-inline="ja">配布元</span><span data-lang-inline="en" hidden>Source</span>: <a href="https://github.com/bluesky-social/atproto">https://github.com/bluesky-social/atproto</a></p>
+<pre>Dual MIT/Apache-2.0 License
+
+Copyright (c) 2022-2026 Bluesky Social PBC, and Contributors
+
+Except as otherwise noted in individual files, this software is licensed under the MIT license (&lt;http://opensource.org/licenses/MIT&gt;), or the Apache License, Version 2.0 (&lt;http://www.apache.org/licenses/LICENSE-2.0&gt;).
+
+Downstream projects and end users may chose either license individually, or both together, at their discretion. The motivation for this dual-licensing is the additional software patent assurance provided by Apache 2.0.</pre>
+</details>
+<details>
+<summary>@atproto-labs/simple-store-memory 0.2.6 <span class="license">MIT</span></summary>
+<p><span data-lang-inline="ja">配布元</span><span data-lang-inline="en" hidden>Source</span>: <a href="https://github.com/bluesky-social/atproto">https://github.com/bluesky-social/atproto</a></p>
+<pre>Dual MIT/Apache-2.0 License
+
+Copyright (c) 2022-2026 Bluesky Social PBC, and Contributors
+
+Except as otherwise noted in individual files, this software is licensed under the MIT license (&lt;http://opensource.org/licenses/MIT&gt;), or the Apache License, Version 2.0 (&lt;http://www.apache.org/licenses/LICENSE-2.0&gt;).
+
+Downstream projects and end users may chose either license individually, or both together, at their discretion. The motivation for this dual-licensing is the additional software patent assurance provided by Apache 2.0.</pre>
+</details>
+<details>
+<summary>@atproto/api 0.24.3 <span class="license">MIT</span></summary>
+<p><span data-lang-inline="ja">配布元</span><span data-lang-inline="en" hidden>Source</span>: <a href="https://github.com/bluesky-social/atproto">https://github.com/bluesky-social/atproto</a></p>
+<pre>Dual MIT/Apache-2.0 License
+
+Copyright (c) 2022-2026 Bluesky Social PBC, and Contributors
+
+Except as otherwise noted in individual files, this software is licensed under the MIT license (&lt;http://opensource.org/licenses/MIT&gt;), or the Apache License, Version 2.0 (&lt;http://www.apache.org/licenses/LICENSE-2.0&gt;).
+
+Downstream projects and end users may chose either license individually, or both together, at their discretion. The motivation for this dual-licensing is the additional software patent assurance provided by Apache 2.0.</pre>
+</details>
+<details>
+<summary>@atproto/common-web 0.5.14 <span class="license">MIT</span></summary>
+<p><span data-lang-inline="ja">配布元</span><span data-lang-inline="en" hidden>Source</span>: <a href="https://github.com/bluesky-social/atproto">https://github.com/bluesky-social/atproto</a></p>
+<pre>Dual MIT/Apache-2.0 License
+
+Copyright (c) 2022-2026 Bluesky Social PBC, and Contributors
+
+Except as otherwise noted in individual files, this software is licensed under the MIT license (&lt;http://opensource.org/licenses/MIT&gt;), or the Apache License, Version 2.0 (&lt;http://www.apache.org/licenses/LICENSE-2.0&gt;).
+
+Downstream projects and end users may chose either license individually, or both together, at their discretion. The motivation for this dual-licensing is the additional software patent assurance provided by Apache 2.0.</pre>
+</details>
+<details>
+<summary>@atproto/crypto 0.5.7 <span class="license">MIT</span></summary>
+<p><span data-lang-inline="ja">配布元</span><span data-lang-inline="en" hidden>Source</span>: <a href="https://github.com/bluesky-social/atproto">https://github.com/bluesky-social/atproto</a></p>
+<pre>Dual MIT/Apache-2.0 License
+
+Copyright (c) 2022-2026 Bluesky Social PBC, and Contributors
+
+Except as otherwise noted in individual files, this software is licensed under the MIT license (&lt;http://opensource.org/licenses/MIT&gt;), or the Apache License, Version 2.0 (&lt;http://www.apache.org/licenses/LICENSE-2.0&gt;).
+
+Downstream projects and end users may chose either license individually, or both together, at their discretion. The motivation for this dual-licensing is the additional software patent assurance provided by Apache 2.0.</pre>
+</details>
+<details>
+<summary>@atproto/did 0.5.6 <span class="license">MIT</span></summary>
+<p><span data-lang-inline="ja">配布元</span><span data-lang-inline="en" hidden>Source</span>: <a href="https://github.com/bluesky-social/atproto">https://github.com/bluesky-social/atproto</a></p>
+<pre>Dual MIT/Apache-2.0 License
+
+Copyright (c) 2022-2026 Bluesky Social PBC, and Contributors
+
+Except as otherwise noted in individual files, this software is licensed under the MIT license (&lt;http://opensource.org/licenses/MIT&gt;), or the Apache License, Version 2.0 (&lt;http://www.apache.org/licenses/LICENSE-2.0&gt;).
+
+Downstream projects and end users may chose either license individually, or both together, at their discretion. The motivation for this dual-licensing is the additional software patent assurance provided by Apache 2.0.</pre>
+</details>
+<details>
+<summary>@atproto/jwk 0.7.4 <span class="license">MIT</span></summary>
+<p><span data-lang-inline="ja">配布元</span><span data-lang-inline="en" hidden>Source</span>: <a href="https://github.com/bluesky-social/atproto">https://github.com/bluesky-social/atproto</a></p>
+<pre>Dual MIT/Apache-2.0 License
+
+Copyright (c) 2022-2026 Bluesky Social PBC, and Contributors
+
+Except as otherwise noted in individual files, this software is licensed under the MIT license (&lt;http://opensource.org/licenses/MIT&gt;), or the Apache License, Version 2.0 (&lt;http://www.apache.org/licenses/LICENSE-2.0&gt;).
+
+Downstream projects and end users may chose either license individually, or both together, at their discretion. The motivation for this dual-licensing is the additional software patent assurance provided by Apache 2.0.</pre>
+</details>
+<details>
+<summary>@atproto/jwk-jose 0.2.4 <span class="license">MIT</span></summary>
+<p><span data-lang-inline="ja">配布元</span><span data-lang-inline="en" hidden>Source</span>: <a href="https://github.com/bluesky-social/atproto">https://github.com/bluesky-social/atproto</a></p>
+<pre>Dual MIT/Apache-2.0 License
+
+Copyright (c) 2022-2026 Bluesky Social PBC, and Contributors
+
+Except as otherwise noted in individual files, this software is licensed under the MIT license (&lt;http://opensource.org/licenses/MIT&gt;), or the Apache License, Version 2.0 (&lt;http://www.apache.org/licenses/LICENSE-2.0&gt;).
+
+Downstream projects and end users may chose either license individually, or both together, at their discretion. The motivation for this dual-licensing is the additional software patent assurance provided by Apache 2.0.</pre>
+</details>
+<details>
+<summary>@atproto/jwk-webcrypto 0.3.4 <span class="license">MIT</span></summary>
+<p><span data-lang-inline="ja">配布元</span><span data-lang-inline="en" hidden>Source</span>: <a href="https://github.com/bluesky-social/atproto">https://github.com/bluesky-social/atproto</a></p>
+<pre>Dual MIT/Apache-2.0 License
+
+Copyright (c) 2022-2026 Bluesky Social PBC, and Contributors
+
+Except as otherwise noted in individual files, this software is licensed under the MIT license (&lt;http://opensource.org/licenses/MIT&gt;), or the Apache License, Version 2.0 (&lt;http://www.apache.org/licenses/LICENSE-2.0&gt;).
+
+Downstream projects and end users may chose either license individually, or both together, at their discretion. The motivation for this dual-licensing is the additional software patent assurance provided by Apache 2.0.</pre>
+</details>
+<details>
+<summary>@atproto/lex-data 0.1.8 <span class="license">MIT</span></summary>
+<p><span data-lang-inline="ja">配布元</span><span data-lang-inline="en" hidden>Source</span>: <a href="https://github.com/bluesky-social/atproto">https://github.com/bluesky-social/atproto</a></p>
+<pre>Dual MIT/Apache-2.0 License
+
+Copyright (c) 2022-2026 Bluesky Social PBC, and Contributors
+
+Except as otherwise noted in individual files, this software is licensed under the MIT license (&lt;http://opensource.org/licenses/MIT&gt;), or the Apache License, Version 2.0 (&lt;http://www.apache.org/licenses/LICENSE-2.0&gt;).
+
+Downstream projects and end users may chose either license individually, or both together, at their discretion. The motivation for this dual-licensing is the additional software patent assurance provided by Apache 2.0.</pre>
+</details>
+<details>
+<summary>@atproto/lex-json 0.1.7 <span class="license">MIT</span></summary>
+<p><span data-lang-inline="ja">配布元</span><span data-lang-inline="en" hidden>Source</span>: <a href="https://github.com/bluesky-social/atproto">https://github.com/bluesky-social/atproto</a></p>
+<pre>Dual MIT/Apache-2.0 License
+
+Copyright (c) 2022-2026 Bluesky Social PBC, and Contributors
+
+Except as otherwise noted in individual files, this software is licensed under the MIT license (&lt;http://opensource.org/licenses/MIT&gt;), or the Apache License, Version 2.0 (&lt;http://www.apache.org/licenses/LICENSE-2.0&gt;).
+
+Downstream projects and end users may chose either license individually, or both together, at their discretion. The motivation for this dual-licensing is the additional software patent assurance provided by Apache 2.0.</pre>
+</details>
+<details>
+<summary>@atproto/lexicon 0.7.16 <span class="license">MIT</span></summary>
+<p><span data-lang-inline="ja">配布元</span><span data-lang-inline="en" hidden>Source</span>: <a href="https://github.com/bluesky-social/atproto">https://github.com/bluesky-social/atproto</a></p>
+<pre>Dual MIT/Apache-2.0 License
+
+Copyright (c) 2022-2026 Bluesky Social PBC, and Contributors
+
+Except as otherwise noted in individual files, this software is licensed under the MIT license (&lt;http://opensource.org/licenses/MIT&gt;), or the Apache License, Version 2.0 (&lt;http://www.apache.org/licenses/LICENSE-2.0&gt;).
+
+Downstream projects and end users may chose either license individually, or both together, at their discretion. The motivation for this dual-licensing is the additional software patent assurance provided by Apache 2.0.</pre>
+</details>
+<details>
+<summary>@atproto/oauth-client 0.8.9 <span class="license">MIT</span></summary>
+<p><span data-lang-inline="ja">配布元</span><span data-lang-inline="en" hidden>Source</span>: <a href="https://github.com/bluesky-social/atproto">https://github.com/bluesky-social/atproto</a></p>
+<pre>Dual MIT/Apache-2.0 License
+
+Copyright (c) 2022-2026 Bluesky Social PBC, and Contributors
+
+Except as otherwise noted in individual files, this software is licensed under the MIT license (&lt;http://opensource.org/licenses/MIT&gt;), or the Apache License, Version 2.0 (&lt;http://www.apache.org/licenses/LICENSE-2.0&gt;).
+
+Downstream projects and end users may chose either license individually, or both together, at their discretion. The motivation for this dual-licensing is the additional software patent assurance provided by Apache 2.0.</pre>
+</details>
+<details>
+<summary>@atproto/oauth-client-browser 0.5.9 <span class="license">MIT</span></summary>
+<p><span data-lang-inline="ja">配布元</span><span data-lang-inline="en" hidden>Source</span>: <a href="https://github.com/bluesky-social/atproto">https://github.com/bluesky-social/atproto</a></p>
+<pre>Dual MIT/Apache-2.0 License
+
+Copyright (c) 2022-2026 Bluesky Social PBC, and Contributors
+
+Except as otherwise noted in individual files, this software is licensed under the MIT license (&lt;http://opensource.org/licenses/MIT&gt;), or the Apache License, Version 2.0 (&lt;http://www.apache.org/licenses/LICENSE-2.0&gt;).
+
+Downstream projects and end users may chose either license individually, or both together, at their discretion. The motivation for this dual-licensing is the additional software patent assurance provided by Apache 2.0.</pre>
+</details>
+<details>
+<summary>@atproto/oauth-types 0.7.7 <span class="license">MIT</span></summary>
+<p><span data-lang-inline="ja">配布元</span><span data-lang-inline="en" hidden>Source</span>: <a href="https://github.com/bluesky-social/atproto">https://github.com/bluesky-social/atproto</a></p>
+<pre>Dual MIT/Apache-2.0 License
+
+Copyright (c) 2022-2026 Bluesky Social PBC, and Contributors
+
+Except as otherwise noted in individual files, this software is licensed under the MIT license (&lt;http://opensource.org/licenses/MIT&gt;), or the Apache License, Version 2.0 (&lt;http://www.apache.org/licenses/LICENSE-2.0&gt;).
+
+Downstream projects and end users may chose either license individually, or both together, at their discretion. The motivation for this dual-licensing is the additional software patent assurance provided by Apache 2.0.</pre>
+</details>
+<details>
+<summary>@atproto/syntax 0.7.6 <span class="license">MIT</span></summary>
+<p><span data-lang-inline="ja">配布元</span><span data-lang-inline="en" hidden>Source</span>: <a href="https://github.com/bluesky-social/atproto">https://github.com/bluesky-social/atproto</a></p>
+<pre>Dual MIT/Apache-2.0 License
+
+Copyright (c) 2022-2026 Bluesky Social PBC, and Contributors
+
+Except as otherwise noted in individual files, this software is licensed under the MIT license (&lt;http://opensource.org/licenses/MIT&gt;), or the Apache License, Version 2.0 (&lt;http://www.apache.org/licenses/LICENSE-2.0&gt;).
+
+Downstream projects and end users may chose either license individually, or both together, at their discretion. The motivation for this dual-licensing is the additional software patent assurance provided by Apache 2.0.</pre>
+</details>
+<details>
+<summary>@atproto/xrpc 0.8.15 <span class="license">MIT</span></summary>
+<p><span data-lang-inline="ja">配布元</span><span data-lang-inline="en" hidden>Source</span>: <a href="https://github.com/bluesky-social/atproto">https://github.com/bluesky-social/atproto</a></p>
+<pre>Dual MIT/Apache-2.0 License
+
+Copyright (c) 2022-2026 Bluesky Social PBC, and Contributors
+
+Except as otherwise noted in individual files, this software is licensed under the MIT license (&lt;http://opensource.org/licenses/MIT&gt;), or the Apache License, Version 2.0 (&lt;http://www.apache.org/licenses/LICENSE-2.0&gt;).
+
+Downstream projects and end users may chose either license individually, or both together, at their discretion. The motivation for this dual-licensing is the additional software patent assurance provided by Apache 2.0.</pre>
+</details>
+<details>
+<summary>@noble/curves 1.9.7 <span class="license">MIT</span></summary>
+<p><span data-lang-inline="ja">配布元</span><span data-lang-inline="en" hidden>Source</span>: <a href="https://github.com/paulmillr/noble-curves">https://github.com/paulmillr/noble-curves</a></p>
+<pre>The MIT License (MIT)
+
+Copyright (c) 2022 Paul Miller (https://paulmillr.com)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the “Software”), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.</pre>
+</details>
+<details>
+<summary>@noble/hashes 1.8.0 <span class="license">MIT</span></summary>
+<p><span data-lang-inline="ja">配布元</span><span data-lang-inline="en" hidden>Source</span>: <a href="https://github.com/paulmillr/noble-hashes">https://github.com/paulmillr/noble-hashes</a></p>
+<pre>The MIT License (MIT)
+
+Copyright (c) 2022 Paul Miller (https://paulmillr.com)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the “Software”), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.</pre>
+</details>
+<details>
+<summary>await-lock 3.0.0 <span class="license">MIT</span></summary>
+<p><span data-lang-inline="ja">配布元</span><span data-lang-inline="en" hidden>Source</span>: <a href="https://github.com/ide/await-lock">https://github.com/ide/await-lock</a></p>
+<pre>The MIT License (MIT)
+
+Copyright (c) 2015-present James Ide
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the &quot;Software&quot;), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.</pre>
+</details>
+<details>
+<summary>core-js 3.50.0 <span class="license">MIT</span></summary>
+<p><span data-lang-inline="ja">配布元</span><span data-lang-inline="en" hidden>Source</span>: <a href="https://github.com/zloirock/core-js">https://github.com/zloirock/core-js</a></p>
+<pre>Copyright (c) 2013–2025 Denis Pushkarev (zloirock.ru)
+Copyright (c) 2025–2026 CoreJS Company (core-js.io)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the &quot;Software&quot;), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.</pre>
+</details>
+<details>
+<summary>hls.js 1.7.3 <span class="license">Apache-2.0</span></summary>
+<p><span data-lang-inline="ja">配布元</span><span data-lang-inline="en" hidden>Source</span>: <a href="https://github.com/video-dev/hls.js">https://github.com/video-dev/hls.js</a></p>
+<pre>Copyright (c) 2017 Dailymotion (http://www.dailymotion.com)
+
+Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+src/remux/mp4-generator.js and src/demux/exp-golomb.ts implementation in this project
+are derived from the HLS library for video.js (https://github.com/videojs/videojs-contrib-hls)
+
+That work is also covered by the Apache 2 License, following copyright:
+Copyright (c) 2013-2015 Brightcove
+
+
+THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.</pre>
+</details>
+<details>
+<summary>iso-datestring-validator 2.2.2 <span class="license">MIT</span></summary>
+<p><span data-lang-inline="ja">配布元</span><span data-lang-inline="en" hidden>Source</span>: <a href="https://github.com/Bwca/iso-datestring-validator">https://github.com/Bwca/iso-datestring-validator</a></p>
+<pre>MIT License
+
+Copyright (c) 2019 Volodymyr Yepishev
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the &quot;Software&quot;), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.</pre>
+</details>
+<details>
+<summary>jose 5.10.0 <span class="license">MIT</span></summary>
+<p><span data-lang-inline="ja">配布元</span><span data-lang-inline="en" hidden>Source</span>: <a href="https://github.com/panva/jose">https://github.com/panva/jose</a></p>
+<pre>The MIT License (MIT)
+
+Copyright (c) 2018 Filip Skokan
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the &quot;Software&quot;), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.</pre>
+</details>
+<details>
+<summary>lru-cache 10.4.3 <span class="license">ISC</span></summary>
+<p><span data-lang-inline="ja">配布元</span><span data-lang-inline="en" hidden>Source</span>: <a href="https://github.com/isaacs/node-lru-cache">https://github.com/isaacs/node-lru-cache</a></p>
+<pre>The ISC License
+
+Copyright (c) 2010-2023 Isaac Z. Schlueter and Contributors
+
+Permission to use, copy, modify, and/or distribute this software for any
+purpose with or without fee is hereby granted, provided that the above
+copyright notice and this permission notice appear in all copies.
+
+THE SOFTWARE IS PROVIDED &quot;AS IS&quot; AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
+ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR
+IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.</pre>
+</details>
+<details>
+<summary>multiformats 13.4.2 <span class="license">Apache-2.0 OR MIT</span></summary>
+<p><span data-lang-inline="ja">配布元</span><span data-lang-inline="en" hidden>Source</span>: <a href="https://github.com/multiformats/js-multiformats">https://github.com/multiformats/js-multiformats</a></p>
+<pre>This project is dual licensed under MIT and Apache-2.0.
+
+MIT: https://www.opensource.org/licenses/mit
+Apache-2.0: https://www.apache.org/licenses/license-2.0</pre>
+</details>
+<details>
+<summary>react 19.3.0 <span class="license">MIT</span></summary>
+<p><span data-lang-inline="ja">配布元</span><span data-lang-inline="en" hidden>Source</span>: <a href="https://github.com/react/react">https://github.com/react/react</a></p>
+<pre>MIT License
+
+Copyright (c) Meta Platforms, Inc. and affiliates.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the &quot;Software&quot;), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.</pre>
+</details>
+<details>
+<summary>react-dom 19.3.0 <span class="license">MIT</span></summary>
+<p><span data-lang-inline="ja">配布元</span><span data-lang-inline="en" hidden>Source</span>: <a href="https://github.com/react/react">https://github.com/react/react</a></p>
+<pre>MIT License
+
+Copyright (c) Meta Platforms, Inc. and affiliates.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the &quot;Software&quot;), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.</pre>
+</details>
+<details>
+<summary>scheduler 0.28.0 <span class="license">MIT</span></summary>
+<p><span data-lang-inline="ja">配布元</span><span data-lang-inline="en" hidden>Source</span>: <a href="https://github.com/react/react">https://github.com/react/react</a></p>
+<pre>MIT License
+
+Copyright (c) Meta Platforms, Inc. and affiliates.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the &quot;Software&quot;), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.</pre>
+</details>
+<details>
+<summary>tlds 1.261.0 <span class="license">MIT</span></summary>
+<p><span data-lang-inline="ja">配布元</span><span data-lang-inline="en" hidden>Source</span>: <a href="https://github.com/stephenmathieson/node-tlds">https://github.com/stephenmathieson/node-tlds</a></p>
+<pre>MIT License
+
+Copyright (c) 2013 Stephen Mathieson and 2020 Richie Bendall
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the &quot;Software&quot;), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.</pre>
+</details>
+<details>
+<summary>tslib 2.8.1 <span class="license">0BSD</span></summary>
+<p><span data-lang-inline="ja">配布元</span><span data-lang-inline="en" hidden>Source</span>: <a href="https://github.com/Microsoft/tslib">https://github.com/Microsoft/tslib</a></p>
+<pre>Copyright (c) Microsoft Corporation.
+
+Permission to use, copy, modify, and/or distribute this software for any
+purpose with or without fee is hereby granted.
+
+THE SOFTWARE IS PROVIDED &quot;AS IS&quot; AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
+REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
+AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
+INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
+LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
+OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+PERFORMANCE OF THIS SOFTWARE.</pre>
+</details>
+<details>
+<summary>uint8arrays 5.1.1 <span class="license">Apache-2.0 OR MIT</span></summary>
+<p><span data-lang-inline="ja">配布元</span><span data-lang-inline="en" hidden>Source</span>: <a href="https://github.com/achingbrain/uint8arrays">https://github.com/achingbrain/uint8arrays</a></p>
+<p><span data-lang-inline="ja">このパッケージにはライセンスのファイルが含まれていません。条文は配布元をご覧ください。</span><span data-lang-inline="en" hidden>This package does not include a license file. See the source for the license text.</span></p>
+</details>
+<details>
+<summary>unicode-segmenter 0.14.5 <span class="license">MIT</span></summary>
+<p><span data-lang-inline="ja">配布元</span><span data-lang-inline="en" hidden>Source</span>: <a href="https://github.com/cometkim/unicode-segmenter">https://github.com/cometkim/unicode-segmenter</a></p>
+<pre>MIT License
+
+Copyright (c) 2024 Hyeseong Kim &lt;hey@hyeseong.kim&gt;
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the &quot;Software&quot;), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.</pre>
+<pre>unicode-segmentation_MIT.txt
+
+Copyright (c) 2015 The Rust Project Developers
+
+Permission is hereby granted, free of charge, to any
+person obtaining a copy of this software and associated
+documentation files (the &quot;Software&quot;), to deal in the
+Software without restriction, including without
+limitation the rights to use, copy, modify, merge,
+publish, distribute, sublicense, and/or sell copies of
+the Software, and to permit persons to whom the Software
+is furnished to do so, subject to the following
+conditions:
+
+The above copyright notice and this permission notice
+shall be included in all copies or substantial portions
+of the Software.
+
+THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF
+ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
+PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT
+SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
+IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+DEALINGS IN THE SOFTWARE.</pre>
+</details>
+<details>
+<summary>zod 3.25.76 <span class="license">MIT</span></summary>
+<p><span data-lang-inline="ja">配布元</span><span data-lang-inline="en" hidden>Source</span>: <a href="https://github.com/colinhacks/zod">https://github.com/colinhacks/zod</a></p>
+<pre>MIT License
+
+Copyright (c) 2025 Colin McDonnell
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the &quot;Software&quot;), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.</pre>
+</details>
+
+<div class="footer">
+<p><span data-lang-inline="ja">Webアプリ 2.0.0 の時点の内容です。</span><span data-lang-inline="en" hidden>As of Web app 2.0.0.</span></p>
+</div>
+</div>
+<script>
+(function () {
+  var KEY = 'kumotan-lang'; // 紹介ページ・規約のページと共通
+  function apply(lang) {
+    document.documentElement.lang = lang;
+    document.querySelectorAll('[data-lang-block]').forEach(function (el) {
+      el.classList.toggle('is-active', el.getAttribute('data-lang-block') === lang);
+    });
+    document.querySelectorAll('[data-lang-inline]').forEach(function (el) {
+      el.hidden = el.getAttribute('data-lang-inline') !== lang;
+    });
+    document.querySelectorAll('.lang-tab').forEach(function (b) {
+      b.setAttribute('aria-pressed', String(b.getAttribute('data-lang') === lang));
+    });
+  }
+  function initial() {
+    var hash = location.hash.replace('#', '');
+    if (hash === 'ja' || hash === 'en') return hash;
+    try {
+      var saved = localStorage.getItem(KEY);
+      if (saved === 'ja' || saved === 'en') return saved;
+    } catch (e) { /* 読めなければブラウザの言語で決める */ }
+    return (navigator.language || '').toLowerCase().indexOf('ja') === 0 ? 'ja' : 'en';
+  }
+  document.querySelectorAll('.lang-tab').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var lang = b.getAttribute('data-lang');
+      apply(lang);
+      try { localStorage.setItem(KEY, lang); } catch (e) { /* 保存できなくても表示は切り替える */ }
+    });
+  });
+  apply(initial());
+})();
+</script>
+</body>
+</html>
