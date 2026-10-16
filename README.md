@@ -11,6 +11,9 @@ GitHub Pages で配信されます: <https://kumotan.app/>（独自ドメイン�
 | トップ（紹介ページ・日本語／英語） | <https://kumotan.app/> |
 | プライバシーポリシー | <https://kumotan.app/privacy-policy.html> |
 | 利用規約 | <https://kumotan.app/terms-of-service.html> |
+| ライセンス（使っているソフトウェアとデータ） | <https://kumotan.app/licenses.html> |
+
+規約・ポリシー・ライセンスの 3 ページは、kumotan リポジトリのスクリプト（`npm run legal:build`・`npm run licenses:build`）が作ります。直接編集しないでください。
 
 iPhone 版の OAuth Client Metadata（`oauth-client-metadata.json`）は、独自ドメインに移ったときに削除しました。client_id が旧アドレスそのものなので、転送されると使えなくなるためです。Web 版のメタデータは Web 版（<https://app.kumotan.app/oauth-client-metadata.json>）が配ります。
 
